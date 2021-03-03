@@ -1,0 +1,32 @@
+@charset "UTF-8";
+table
+ {
+ border-collapse:collapse;
+ }
+
+.a td
+ {
+
+
+ }
+ 
+#title
+ {
+ width:100%;
+ height:100px;
+　
+ 
+ }
+ #job
+ {
+ width: 100%;
+ height:50px;
+ 
+ 
+ }
+ #bioadan
+ {
+ width:800px;
+font-size:20px;
+ 
+ }

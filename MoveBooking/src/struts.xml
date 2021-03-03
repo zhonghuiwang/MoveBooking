@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<package name="booking" extends="struts-default">
+		<!-- <interceptors>
+			<interceptor name="permission" class="com.leonyip.movebooking.struts.interceptor.PermissionInterceptor"></interceptor>
+			<interceptor-stack name="permissionStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="permission"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors> -->
+		<!-- <global-results>
+			<result name="login">/WEB-INF/jsp/login.jsp</result>
+		</global-results> -->
+		<action name="booking_*"
+			class="com.leonyip.movebooking.struts.action.BookingAction" method="{1}">
+			<result type="redirectAction">booking_doSearch</result>
+			<result name="list">/WEB-INF/jsp/list.jsp</result>
+			<result name="detail">/WEB-INF/jsp/detail.jsp</result>
+			<result name="edit">/WEB-INF/jsp/edit.jsp</result>
+			<param name="pageNum">1</param>
+			<param name="pageSize">5</param>
+			
+			<!-- <interceptor-ref name="permissionStack"></interceptor-ref> -->
+		</action>
+	</package>
+	<package name="users" extends="struts-default">
+		<!-- <global-results>
+			<result name="login">/WEB-INF/jsp/login.jsp</result>
+		</global-results> -->
+		<action name="users_*"
+			class="com.leonyip.movebooking.struts.action.UsersAction" method="{1}">
+			<result name="success">/index.jsp</result>
+			<result name="goMarkert">/market.jsp</result>
+			<result name="backmanage">/WEB-INF/jsp/login.jsp</result>
+			<result name="allusers">/WEB-INF/jsp/userlist.jsp</result>
+			<result name="backlogin">/backlogin.jsp</result>
+			<result name="register">/registration.jsp</result>
+			<result name="gotologin">/weblogin.jsp</result>
+			<result name="gotoorders">/cart2.jsp</result>
+			<param name="pageNum">1</param>
+			<param name="pageSize">15</param>
+		</action>
+	</package>
+	<package name="jobsearch" extends="struts-default">
+		<action name="jobsearch_*"
+			class="com.leonyip.movebooking.struts.action.JobSearchAction" method="{1}">
+			<result name="addjobs">/WEB-INF/jsp/addjobs.jsp</result>
+			<result name="jobs_chain" type="chain">jobsearch_getJobsBasic</result>
+		</action>
+	</package>
+	<package name="goods_*" extends="struts-default">
+		<action name="goods_*"
+			class="com.leonyip.movebooking.struts.action.GoodsAction" method="{1}">
+			<result name="addgoods">/WEB-INF/jsp/addgoods.jsp</result>
+			<result name="goods_chain" type="chain">goods_getGoodsBasic</result>
+		</action>
+	</package>
+	<package name="jobApply" extends="struts-default">
+		<action name="jobApply_*"
+			class="com.leonyip.movebooking.struts.action.JobApplyAction" method="{1}">
+			<result name="edit">/index.jsp</result>
+		</action>
+	</package>
+	<package name="orders" extends="struts-default">
+		<action name="orders_*"
+			class="com.leonyip.movebooking.struts.action.OrdersAction" method="{1}">
+			<result name="edit">/index.jsp</result>
+		</action>
+	</package>
+</struts>    

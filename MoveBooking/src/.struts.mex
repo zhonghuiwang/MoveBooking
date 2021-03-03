@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="booking" location="84,3" size="207,176">
+    <action name="booking_*" location="48,63" size="150,104">
+      <result name="success" />
+      <result name="list">
+        <resourceEdge source="list" routing="0" target="list.jsp" />
+      </result>
+      <result name="detail">
+        <resourceEdge source="detail" routing="0" target="detail.jsp" />
+      </result>
+      <result name="edit">
+        <resourceEdge source="edit" routing="0" target="edit.jsp" />
+      </result>
+    </action>
+  </package>
+  <webResource name="list.jsp" path="/WEB-INF/jsp/list.jsp" location="350,50" size="150,55" />
+  <webResource name="detail.jsp" path="/WEB-INF/jsp/detail.jsp" location="50,200" size="150,55" />
+  <webResource name="edit.jsp" path="/WEB-INF/jsp/edit.jsp" location="350,200" size="150,55" />
+  <package name="users" location="619,55" size="197,172">
+    <action name="users_*" location="142,66" size="150,40" />
+  </package>
+</Struts2Diagram>
+
