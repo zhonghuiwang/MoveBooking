@@ -383,7 +383,7 @@ public class UsersAction extends ActionSupport implements ModelDriven<Users> ,Se
 				return SUCCESS;
 			}
 			map.put("ifSuccess","no");
-			return "stillLogin";
+			return "goMarkert";
 		}
 		
 	  //¹ºÂòÒ³ÃæµÇÂ¼
