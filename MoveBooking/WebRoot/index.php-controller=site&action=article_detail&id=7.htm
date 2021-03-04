@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>内蒙古未莱网络营销科技有限公司</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link type="image/x-icon" href="favicon.ico" tppabs="http://xfjining.com/favicon.ico" rel="icon">
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/jquery/jquery-1.12.4.min.js" tppabs="http://xfjining.com/runtime/_systemjs/jquery/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/form/form.js" tppabs="http://xfjining.com/runtime/_systemjs/form/form.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/autovalidate/validate.js-v=5.1.js" tppabs="http://xfjining.com/runtime/_systemjs/autovalidate/validate.js?v=5.1"></script><link rel="stylesheet" type="text/css" href="runtime/_systemjs/autovalidate/style.css" tppabs="http://xfjining.com/runtime/_systemjs/autovalidate/style.css" />
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artdialog/artDialog.js-v=4.8.js" tppabs="http://xfjining.com/runtime/_systemjs/artdialog/artDialog.js?v=4.8"></script><script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artdialog/plugins/iframeTools.js" tppabs="http://xfjining.com/runtime/_systemjs/artdialog/plugins/iframeTools.js"></script><link rel="stylesheet" type="text/css" href="runtime/_systemjs/artdialog/skins/black.css" tppabs="http://xfjining.com/runtime/_systemjs/artdialog/skins/black.css" />
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artTemplate/artTemplate.js" tppabs="http://xfjining.com/runtime/_systemjs/artTemplate/artTemplate.js"></script><script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artTemplate/artTemplate-plugin.js" tppabs="http://xfjining.com/runtime/_systemjs/artTemplate/artTemplate-plugin.js"></script>
+	<!--[if IE]><script src="views/huawei/javascript/html5.js" tppabs="http://xfjining.com/views/huawei/javascript/html5.js"></script><![endif]-->
+	<script src="views/huawei/javascript/site.js" tppabs="http://xfjining.com/views/huawei/javascript/site.js"></script>
+	<script type='text/javascript' src="public/javascript/public.js" tppabs="http://xfjining.com/public/javascript/public.js"></script>
+	<link rel="stylesheet" href="views/huawei/skin/default/style/style.css" tppabs="http://xfjining.com/views/huawei/skin/default/style/style.css">
+</head>
+<body>
+<!--
+
+模版使用字体图标为优化过的 awesome 3.0 图标字体库
+
+使用帮助见:http://www.bootcss.com/p/font-awesome/
+
+ -->
+<!-- 顶部工具栏 -->
+<div class="header_top">
+	<div class="web">
+		<div class="welcome">
+			欢迎您来到 内蒙古未莱网络营销科技有限公司！
+		</div>
+		<ul class="top_tool">
+			<li></li>
+			<li><a href="">个人中心</a></li>
+			<li><a href="">申请开店</a></li>
+            <li><a href="">商家列表</a></li>
+			<!--<li><a href="/index.php?controller=seller&action=index">商家管理</a></li>-->
+			<li><a href="">使用帮助</a></li>
+		</ul>
+	</div>
+</div>
+<!-- 顶部工具栏 -->
+<header class="header">
+	<!-- logo与搜索 -->
+	<div class="body_wrapper">
+		<div class="web">
+			<!-- logo -->
+			<div class="logo_layer">
+				<a title="内蒙古未莱网络营销科技有限公司" href="market.jsp" tppabs="http://xfjining.com/" class="logo">
+					<img src="upload/logo/20200723052427260.png" tppabs="http://xfjining.com/upload/logo/20200723052427260.png">
+				</a>
+			</div>
+			<!-- 注册与登录 -->
+			<div class="body_toolbar">
+									<div class="body_toolbar_btn login_reg">
+						<a href="index.php-controller=simple&action=login.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=login">登录</a>
+						<em> | </em>
+						<a class="reg" href="index.php-controller=simple&action=reg.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=reg">注册</a>
+					</div>
+							</div>
+			<!-- 注册与登录 -->
+			<!--购物车模板 开始-->
+			<div class="header_cart" name="mycart">
+				<a href="index.php-controller=simple&action=cart.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=cart" class="go_cart">
+					<i class="fa fa-shopping-cart"></i>
+					<em class="sign_total" name="mycart_count"]>0</em>
+				</a>
+				<div class="cart_simple" id="div_mycart"></div>
+			</div>
+			<script type='text/html' id='cartTemplete'>
+			<div class='cart_panel'>
+				<%if(goodsCount){%>
+					<!-- 购物车物品列表 -->
+					<ul class='cart_list'>
+						<%for(var item in goodsData){%>
+						<%var data = goodsData[item]%>
+						<li id="site_cart_dd_<%=item%>">
+							<em><%=(window().parseInt(item)+1)%></em>
+							<a target="_blank" href="/index.php?controller=site&action=products&id=<%=data['goods_id']%>">
+								<img src="<%=webroot(data['img'])%>">
+							</a>
+							<a class="shop_name" target="_blank" href="/index.php?controller=site&action=products&id=<%=data['goods_id']%>"><%=data['name']%></a>
+							<!-- <p class="shop_class"></p> -->
+							<div class="shop_price"><p>￥ <%=data['sell_price']%> <span>x <%=data['count']%></span></p></div>
+							<i class="fa fa-remove" onclick="removeCart('<%=data['id']%>','<%=data['type']%>');$('#site_cart_dd_<%=item%>').hide('slow');"></i>
+						</li>
+						<%}%>
+					</ul>
+					<!-- 购物车物品列表 -->
+					<!-- 购物车物品统计 -->
+					<div class="cart_total">
+						<p>
+							共<span name="mycart_count"><%=goodsCount%></span>件
+							总额：<em name="mycart_sum">￥<%=goodsSum%></em>
+						</p>
+						<a href="index.php-controller=simple&action=cart.htm"/*tpa=http://xfjining.com/index.php?controller=simple&action=cart*/>结算</a>
+					</div>
+					<!-- 购物车物品统计 -->
+				<%}else{%>
+					<!-- 购物车无内容 -->
+					<div class='cart_no'>购物车空空如也~</div>
+				<%}%>
+			</div>
+			</script>
+			<!--购物车模板 结束-->
+			<!-- 搜索框 -->
+			<div class="search_box">
+					<!-- 搜索内容 -->
+				<form method='get' action="http://xfjining.com/index.php">
+					<input type='hidden' name='controller' value='site'>
+					<input type='hidden' name='action' value='search_list'>
+					<div class="search">
+						<input type="text" name='word' class="search_keyword" autocomplete="off">
+						<button class="search_submit" type="submit">
+							<i class="fa fa-search"></i>
+						</button>
+					</div>
+				</form>
+				<!-- 热门搜索 -->
+				<div class="search_hotwords">
+									</div>
+			</div>
+		</div>
+	</div>
+		<!-- logo与搜索 -->
+
+	<div class="nav_bar">
+		<div class="home_nav_bar user_center">
+		<!-- 导航栏 -->
+		<div class="web">
+			<div class="nav_index">
+				<ul class="nav">
+					<li class="user_nav_index home_nav_index"><a href="market.jsp"><span>首 页</span></a></li>
+										<li class="user_nav_index home_nav_index"><a href="index.php-controller=site&action=article.htm"><span>有偿信息</span></a></li>
+									</ul>
+			</div>
+		</div>
+		</div>
+	</div>
+</header>
+
+<!--主要模板内容 开始-->
+<div class="home_content">
+<div class="bigweb">
+<section class="breadcrumb">
+	<span>您当前的位置：</span> <a href="market.jsp" tppabs="http://xfjining.com/">首页</a> > <a href="index.php-controller=site&action=article.htm" tppabs="http://xfjining.com/index.php?controller=site&action=article">资讯列表</a> > 市值缩水、用户停滞，蘑菇街的困境是垂直电商的宿命？</section>
+
+
+<section class="web">
+	<section class="article_main">
+		<section class="article article_infor">
+			<header>
+				<h1 class="article_title">市值缩水、用户停滞，蘑菇街的困境是垂直电商的宿命？</h1>
+				<time class="article_date">发布日期：2020-07-22 18:55:19</time>
+			</header>
+			<article id="article_content" style="line-height:40px; font-size:14px;">  在国内垂直电商领域，时尚电商曾一度踩在风口，但是随着风口消失，先不谈那些已经消失的垂直电商网站，仅从聚美优品、蘑菇街甚至唯品会等近一年来的表现不难看出，这一垂直领域不仅仅是洗牌，而是命运堪忧。<br />
+  <br />
+  近日，蘑菇街发布了上市之后的首份年报。财报显示，2019财年第四季度，蘑菇街实现营业收入2.176亿元，同比增长15.9%；净亏损达到1.408亿元，上年同期为盈利0.259亿元。整个2019财年，司实现营业收入同比增长10.39%至10.743亿元；净亏损为4.863亿元，相较于上年同期亏损5.58亿元减少0.72亿元。<br />
+  <br />
+  尽管亏损逐渐收窄、交易规模同比略增，但是年度活跃用户的增长幅停滞，整体市值的暴跌都说明，大势下垂直电商平台的尴尬。<br />
+  <br />
+  蘑菇街半年来股价走势，最新收盘价格为4.72美元（数据来源：新浪财经）<br />
+  <br />
+  去年12月5日，蘑菇街正式登陆纽交所，市值为15亿美元。6个月后，蘑菇街的最新收盘价为4.72美元，市值仅剩5.29亿美元。半年的时间，其市值蒸发超过6成。<br />
+  <br />
+  除了巨型综合电商平台对时尚类垂直电商的挤压，还有哪些趋势让时尚电商平台前途堪忧？<br />
+  <br />
+  亏损不是问题，用户增长停滞才是命门<br />
+  <br />
+  成立至今超过8年的蘑菇街仍然面临着不小的亏损，或许对于电商平台而言，盈利并不是首要任务，亏损也不是致命问题，毕竟很多电商巨头都曾经历过长期的亏损。但是一个健康发展的电商平台用长期亏损换来的，一定是用户的快速增长和交易的持续提升。<br />
+  <br />
+  对于垂直电商平台而言，用户数量无疑是重要的核心价值与竞争力。但蘑菇街在长期亏损的同时，用户GMV却未能实现预想中的增长。<br />
+  <br />
+  根据其最新公布的财报显示，截至2019年3月31日的12个月内，蘑菇街GMV同比增长18.7%至174亿元。年度活跃用户数为3280万，相较于2018年12月31日公布的3450万减少了170万。这种“停滞”对于一个电商平台，特别是长期处在亏损状态的电商平台是非常危险的。<br />
+  <br />
+  相比之下，淘宝（天猫）和京东虽然体量都已成为巨型电商平台，但用户数量依然保持了持续增长。根据阿里最新的财报显示，截至2019年3月31日，淘宝（天猫）过去一财年新增用户超1亿,移动月度活跃用户达到7.21亿,比去年同期上涨1.04亿；年度活跃消费者达到6.54亿,比去年同期上涨1.02亿。<br />
+  <br />
+  大股东腾讯过去一年来给予了蘑菇街不小的支持，尤其是在引流方面。2018年7月，蘑菇街和腾讯签订了为期5年的业务合作协议，通过合作蘑菇街获得了微信端的流量入口。但是从蘑菇街的GMV变化来看，用户增长并没有在引流下出现大幅变化。<br />
+  <br />
+  相较之下，同样拥有微信流量入口的京东和拼多多却获得了相当不错的用户增长。虽然作为时尚类垂直电商平台的蘑菇街无法和京东、拼多多这些综合类电商做比较，但在有微信加持的情况下，GMV的增长依然陷入停滞，也侧面反映出蘑菇街自身以及时尚电商行业的艰难。<br />
+  <br />
+  破局的方法不是没有尝试，包括诸多垂直电商平台目前都出现了这一个热词——直播+带货。<br />
+  <br />
+  面对用户增长的瓶颈，蘑菇街将增长重心放到了直播业务上，从一些数据来看，其直播业务的流量在官方大力支持下确实获得了一定增长。目前，蘑菇街直播业务的GMV 同比增长138.1%，继续保持三位数增速，2019财年，蘑菇街直播平均移动月活跃用户数量，同比也增长了42.1%。<br />
+  <br />
+  但是，直播+带货的生命力能否长久？<br />
+  <br />
+  遗憾的是，直播业务的高速增长并没能给蘑菇街带来新的活跃用户。同时，在直播业务保持3位数高速增长的同时，蘑菇街的全年营业总收入仅增长了10.4%（至10.74亿元）。另外，今年1~3月春节期间，蘑菇街加大了在广告营销方面的投入，期间其销售和营销费用达到了1.78亿，同比增长49.5%。但是其今年前三个月的总营收只有2.18亿，环比上个季度的3.67亿，大幅下滑了40.6%。<br />
+  <br />
+  造成这一境况的主要原因，是直播促进营收增长的同时，其曾经的营收支柱——营销服务营收却不断下滑。<br />
+  <br />
+  目前蘑菇街的营收主要由直播的佣金营收、营销服务营收和其他营收三大部分组成。这其中，作为一直以来的营收支柱，营销服务营收已经呈现连续多年的下滑态势。根据蘑菇街2017财年、2018财年以及2019财年三大主营业务数据显示，三年间蘑菇街的直播佣金营收分别3.25亿元、4.16亿元、5.07亿元。而营销服务营收则是7.40亿元、4.77亿元、3.96亿元。<br />
+  <br />
+  这样此消彼长的发展形势对于蘑菇街而言并不是“好事”，更无法用“尚处在转型期”来解释。除此以外，外部整体市场竞争态势对于定位垂直领域的蘑菇街而言，也愈发令人堪忧，对此蘑菇街又会采取何种方式突围？<br />
+  <br />
+  前有追兵，后有堵截，时尚电商如何突围<br />
+  <br />
+  目前，蘑菇街的发展重心显然是直播业务。蘑菇街CEO陈琪在财报会议中也表示：“过去一个季度里，我们通过丰富内容，提升用户对于直播业务的参与度，促成复购率的提升，继续扩展、优化和提升了时尚生态系统的供应链。”<br />
+  <br />
+  但是环顾整个电商市场现状后就会发现，直播这种以“实物+真人”带货的模式早已成为众多场内玩家的选择。这其中，海外市场有知名时尚电商平台Yoox Net-A-Porter，一直以网红直播+电商模式而著称；国内的淘宝直播已经形成规模，在阿里2019年财报中其月活用户同比增长100%，同时提出“3年GMV破5000亿”的目标；另一位巨头腾讯已经在3月中旬启动了 “腾讯直播”测试，预计未来将对平台上数十万时尚类公众号开放平台直播资源的支持。<br />
+  <br />
+  与此同时，京东直播、小红书、唯品会和洋码头等垂直平台也都已经启动了直播带货模式。至于抖音、快手这两大短视频巨头，更是在一年内纷纷与部分垂直电商平台合作，同时大力拓展自身内容+短视频+电商带货的新业务。<br />
+  <br />
+  如此看来，聚焦年轻女性的垂直类时尚电商平台蘑菇街，未来在垂直电商、综合电商领域都会遭遇直播带货的同质化竞争，在业务发展过程中或将无可避免地遭遇瓶颈。对此，相关电商行业自身分析师对懂懂笔记表示：“这种定位小众目标用户群体的电商平台，在前期的发展过程中相比那些综合类电商平台会更加容易脱颖而出，但它们也非常容易触及到天花板。而且，由于其用户类型相对固定，在未来发展到一定体量之后如扩充品类甚至转型，都会是一件非常困难同时极为危险的事情。”<br />
+  <br />
+  同时该人士强调：“目前蘑菇街更加偏向于导购类网站，这一点类似小红书。而在电商领域，综合类电商平台的估值往往是高于导购类电商平台的。”<br />
+  <br />
+  纵观目前包括唯品会、聚美优品、小红书甚至当当网在内的一众垂直类电商平台，且不说相较于淘宝、京东和苏宁易购，即便是新生力量拼多多、云集等社交电商平台，相比之下存在感都要弱小很多。<br />
+  <br />
+  唯品会一年来股价走势，目前最新收盘价格为7.57美元（数据来源：新浪财经）<br />
+  <br />
+  之前垂直电商领域的两个典型案例，就是陈欧的聚美优品和李国庆（曾经任职时）的当当网——一个是前期偏向女性美妆，一个是聚焦图书类产品。如今，二者在国内电商领域早已被远远落在队尾：当当网卖身海航无果后，李国庆离职；聚美优品目前市值相比最高时的57.8亿美元已经蒸发超过9成（最新市值为2.88亿美元），陈欧如今也不再“为自己代言”。<br />
+  <br />
+  聚美优品一年来股价走势，目前最新收盘价格为2.43美元（数据来源：新浪财经）<br />
+  <br />
+  而对于蘑菇街转型和突围的前景前景，上述分析师对懂懂笔记表示：“蘑菇街未来想要做到真正的可持续发展，还要面临着三个主要的挑战。首先是必须打造自己的核心优势，从而构建自己的护城河，拥有竞争力门槛的业务。这一点，直播业务显然不太合适；其次是要拥有足够活跃且优质的用户结构，并和自身核心业务相结合，形成属于自己的用户生态；最后，在持续亏损的情况下寻求更多的资本支持。”<br />
+  <br />
+  【结束语】<br />
+  <br />
+  对于蘑菇街而言，亏损并不是核心问题，目前其最首要的任务是必须尽快恢复用户增长。一旦用户增长陷入停滞甚至下滑，势必会严重影响资本市场的信心。而对于处在亏损状态，未来甚至会长期亏损的蘑菇街而言，资本市场的支持尤为重要。<br />
+  <br />
+  从垂直电商市场发展规律来看，直播带货只能解蘑菇街暂时之急，但绝非长久之计，毕竟直播+只是“术”而不是“道”。这一判断，不妨留待其今年下半年的市场表现后再做评议。如果希望真正实现突围，蘑菇街必须要对目前的商业模式做出颠覆性变革，挖掘出目标用户深层需求，激发潜在用户群体的消费欲望，这个结也只有蘑菇街自己才能解开。<br /></article>……
+		</section>
+      <section id="demoBtn" style="text-align:center; line-height:60px;">单篇阅读<span style="color:#ec1717">3元/条</span>，请点击<a href="index.php-controller=site&action=notice_detail&id=1.htm" tppabs="http://xfjining.com/index.php?controller=site&action=notice_detail&id=1" target="_blank" style="color:#ec1717">付款</a>后查看（开通年费会员600/年）</section>
+<script>
+    var oP = document.getElementById('article_content');
+    var oBtn = document.getElementById('demoBtn');
+    var allContent = oP.innerHTML;                   //存放所有内容
+    oP.innerHTML = oP.innerHTML.substr(0,240);        //截取前100个字符
+    oBtn.onclick=function(){
+    //    oP.innerHTML = allContent;                    //显示所有内容
+    }
+</script>
+        
+			</section>
+	<!-- 文章详情侧边 -->
+	<aside class="article_bar">
+		<!-- 资讯分类 -->
+		<nav class="news_article_box">
+			<h3 class="news_article_box_head">资讯分类</h3>
+			<ul class="news_article_infor">
+							</ul>
+		</nav>
+		<!-- 资讯分类 -->
+	</aside>
+	<!-- 文章详情侧边 -->
+</section>
+</div>
+
+</div>
+<!--主要模板内容 结束-->
+
+<footer class="foot">
+	<!--<section class="service">
+		<ul>
+			<li class="item1">
+				<i class="fa fa-star"></i>
+				<strong>正品优选</strong>
+			</li>
+			<li class="item2">
+				<i class="fa fa-globe"></i>
+				<strong>上市公司</strong>
+			</li>
+			<li class="item3">
+				<i class="fa fa-inbox"></i>
+				<strong>300家连锁门店</strong>
+			</li>
+			<li class="item4">
+				<i class="fa fa-map-marker"></i>
+				<strong>上百家维修网点 全国联保</strong>
+			</li>
+		</ul>
+	</section>-->
+	<section class="copy">
+		<div class="footer" style="text-align:center;">	<p class="copyright">		Powered by <span style="font-family:'微软雅黑';"><span style="background-color:#FFEDC4;">内蒙古未莱网络营销科技有限公司</span></span><span style="background-color:#FFEDC4;font-family:'微软雅黑';"></span> 	</p>Copyright © 2021 <a href="javascript:if(confirm(%27https://beian.miit.gov.cn/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://beian.miit.gov.cn/%27" tppabs="https://beian.miit.gov.cn/" target="_blank">蒙ICP备2021000771号-1</a> </div>	</section>
+</footer>
+
+</body>
+</html>
+<script>
+//当首页时显示分类
+
+$(function(){
+	$('input:text[name="word"]').val("");
+});
+</script>
+<script type="text/javascript">
+_webUrl = "index.php-controller=errors&action=error&message=.htm"/*tpa=http://xfjining.com/index.php?controller=errors&action=error&message=*/;_themePath = "/views/huawei/";_skinPath = "/views/huawei/skin/default/";_webRoot = "/";
+</script>

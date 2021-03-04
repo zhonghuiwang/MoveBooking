@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>内蒙古未莱网络营销科技有限公司</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link type="image/x-icon" href="favicon.ico" tppabs="http://xfjining.com/favicon.ico" rel="icon">
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/jquery/jquery-1.12.4.min.js" tppabs="http://xfjining.com/runtime/_systemjs/jquery/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/form/form.js" tppabs="http://xfjining.com/runtime/_systemjs/form/form.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/autovalidate/validate.js-v=5.1.js" tppabs="http://xfjining.com/runtime/_systemjs/autovalidate/validate.js?v=5.1"></script><link rel="stylesheet" type="text/css" href="runtime/_systemjs/autovalidate/style.css" tppabs="http://xfjining.com/runtime/_systemjs/autovalidate/style.css" />
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artdialog/artDialog.js-v=4.8.js" tppabs="http://xfjining.com/runtime/_systemjs/artdialog/artDialog.js?v=4.8"></script><script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artdialog/plugins/iframeTools.js" tppabs="http://xfjining.com/runtime/_systemjs/artdialog/plugins/iframeTools.js"></script><link rel="stylesheet" type="text/css" href="runtime/_systemjs/artdialog/skins/black.css" tppabs="http://xfjining.com/runtime/_systemjs/artdialog/skins/black.css" />
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artTemplate/artTemplate.js" tppabs="http://xfjining.com/runtime/_systemjs/artTemplate/artTemplate.js"></script><script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artTemplate/artTemplate-plugin.js" tppabs="http://xfjining.com/runtime/_systemjs/artTemplate/artTemplate-plugin.js"></script>
+	<!--[if IE]><script src="views/huawei/javascript/html5.js" tppabs="http://xfjining.com/views/huawei/javascript/html5.js"></script><![endif]-->
+	<script src="views/huawei/javascript/site.js" tppabs="http://xfjining.com/views/huawei/javascript/site.js"></script>
+	<script type='text/javascript' src="public/javascript/public.js" tppabs="http://xfjining.com/public/javascript/public.js"></script>
+	<link rel="stylesheet" href="views/huawei/skin/default/style/style.css" tppabs="http://xfjining.com/views/huawei/skin/default/style/style.css">
+</head>
+<body>
+<!--
+
+模版使用字体图标为优化过的 awesome 3.0 图标字体库
+
+使用帮助见:http://www.bootcss.com/p/font-awesome/
+
+ -->
+<!-- 顶部工具栏 -->
+<div class="header_top">
+	<div class="web">
+		<div class="welcome">
+			欢迎您来到 内蒙古未莱网络营销科技有限公司！
+		</div>
+		<ul class="top_tool">
+			<li></li>
+			<li><a href="">个人中心</a></li>
+			<li><a href="">申请开店</a></li>
+            <li><a href="">商家列表</a></li>
+			<!--<li><a href="/index.php?controller=seller&action=index">商家管理</a></li>-->
+			<li><a href="">使用帮助</a></li>
+		</ul>
+	</div>
+</div>
+<!-- 顶部工具栏 -->
+<header class="header">
+	<!-- logo与搜索 -->
+	<div class="body_wrapper">
+		<div class="web">
+			<!-- logo -->
+			<div class="logo_layer">
+				<a title="内蒙古未莱网络营销科技有限公司" href="market.jsp" tppabs="http://xfjining.com/" class="logo">
+					<img src="upload/logo/20200723052427260.png" tppabs="http://xfjining.com/upload/logo/20200723052427260.png">
+				</a>
+			</div>
+			<!-- 注册与登录 -->
+			<div class="body_toolbar">
+									<div class="body_toolbar_btn login_reg">
+						<a href="index.php-controller=simple&action=login.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=login">登录</a>
+						<em> | </em>
+						<a class="reg" href="index.php-controller=simple&action=reg.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=reg">注册</a>
+					</div>
+							</div>
+			<!-- 注册与登录 -->
+			<!--购物车模板 开始-->
+			<div class="header_cart" name="mycart">
+				<a href="index.php-controller=simple&action=cart.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=cart" class="go_cart">
+					<i class="fa fa-shopping-cart"></i>
+					<em class="sign_total" name="mycart_count"]>0</em>
+				</a>
+				<div class="cart_simple" id="div_mycart"></div>
+			</div>
+			<script type='text/html' id='cartTemplete'>
+			<div class='cart_panel'>
+				<%if(goodsCount){%>
+					<!-- 购物车物品列表 -->
+					<ul class='cart_list'>
+						<%for(var item in goodsData){%>
+						<%var data = goodsData[item]%>
+						<li id="site_cart_dd_<%=item%>">
+							<em><%=(window().parseInt(item)+1)%></em>
+							<a target="_blank" href="/index.php?controller=site&action=products&id=<%=data['goods_id']%>">
+								<img src="<%=webroot(data['img'])%>">
+							</a>
+							<a class="shop_name" target="_blank" href="/index.php?controller=site&action=products&id=<%=data['goods_id']%>"><%=data['name']%></a>
+							<!-- <p class="shop_class"></p> -->
+							<div class="shop_price"><p>￥ <%=data['sell_price']%> <span>x <%=data['count']%></span></p></div>
+							<i class="fa fa-remove" onclick="removeCart('<%=data['id']%>','<%=data['type']%>');$('#site_cart_dd_<%=item%>').hide('slow');"></i>
+						</li>
+						<%}%>
+					</ul>
+					<!-- 购物车物品列表 -->
+					<!-- 购物车物品统计 -->
+					<div class="cart_total">
+						<p>
+							共<span name="mycart_count"><%=goodsCount%></span>件
+							总额：<em name="mycart_sum">￥<%=goodsSum%></em>
+						</p>
+						<a href="index.php-controller=simple&action=cart.htm"/*tpa=http://xfjining.com/index.php?controller=simple&action=cart*/>结算</a>
+					</div>
+					<!-- 购物车物品统计 -->
+				<%}else{%>
+					<!-- 购物车无内容 -->
+					<div class='cart_no'>购物车空空如也~</div>
+				<%}%>
+			</div>
+			</script>
+			<!--购物车模板 结束-->
+			<!-- 搜索框 -->
+			<div class="search_box">
+					<!-- 搜索内容 -->
+				<form method='get' action="http://xfjining.com/index.php">
+					<input type='hidden' name='controller' value='site'>
+					<input type='hidden' name='action' value='search_list'>
+					<div class="search">
+						<input type="text" name='word' class="search_keyword" autocomplete="off">
+						<button class="search_submit" type="submit">
+							<i class="fa fa-search"></i>
+						</button>
+					</div>
+				</form>
+				<!-- 热门搜索 -->
+				<div class="search_hotwords">
+									</div>
+			</div>
+		</div>
+	</div>
+		<!-- logo与搜索 -->
+
+	<div class="nav_bar">
+		<div class="home_nav_bar user_center">
+		<!-- 导航栏 -->
+		<div class="web">
+			<div class="nav_index">
+				<ul class="nav">
+					<li class="user_nav_index home_nav_index"><a href="market.jsp"><span>首 页</span></a></li>
+										<li class="user_nav_index home_nav_index"><a href="index.php-controller=site&action=article.htm"><span>有偿信息</span></a></li>
+									</ul>
+			</div>
+		</div>
+		</div>
+	</div>
+</header>
+
+<!--主要模板内容 开始-->
+<div class="home_content">
+<div class="bigweb">
+<section class="breadcrumb">
+	<span>您当前的位置：</span> <a href="market.jsp" tppabs="http://xfjining.com/">首页</a> > <a href="index.php-controller=site&action=article.htm" tppabs="http://xfjining.com/index.php?controller=site&action=article">资讯列表</a> > 注意力分散时代，如何抢占用户注意力？</section>
+
+
+<section class="web">
+	<section class="article_main">
+		<section class="article article_infor">
+			<header>
+				<h1 class="article_title">注意力分散时代，如何抢占用户注意力？</h1>
+				<time class="article_date">发布日期：2020-07-22 18:55:44</time>
+			</header>
+			<article id="article_content" style="line-height:40px; font-size:14px;">  大家好，今天为大家分享的是“如何用社交电商打破传统格局”，虽然我们自己没有流量，也并不会直接给商家带来很多的流量。<br />
+  <br />
+  但是，我们能给商家提供管理全渠道粉丝及用户的工具和平台，通过我们的营销插件，帮助商家低成本获客，帮助管理好商家的生意。<br />
+  <br />
+  一、从整个大盘来看<br />
+  <br />
+  移动互联网增量市场<br />
+  <br />
+  1.移动互联网大环境<br />
+  <br />
+  以拼多多为例，我们从拼多多6.18数据表现来看，今年6.18拼多多订单超过了11亿笔，而这11亿笔订单里，70%来自于三线城市以下。<br />
+  <br />
+  拼多多抓住了这个爆发点。为什么是这样专注这个市场呢？流量市场已经下沉了，跟我们现在整个的移动互联网基础设施是有关的。<br />
+  <br />
+  VIVO及OPPO在整个移动互联网是非常有代表性的，乡镇级一些居民、智能手机，再加上4G网络的普及。<br />
+  <br />
+  所以，整个移动互联网下沉至乡镇级城市，他们聊天过程中，一定会装微信，会有一些红包。因此，拼多多基于这种形式分享是非常快的。<br />
+  <br />
+  还有一个场景，就是这些人其实工作程度没有一线二线那么繁忙，有时间也会看微博，随着这几年移动互联网基础设施的完善，已经沉淀了很久却没火的微博又火了一把，这就是一个市场爆发点。<br />
+  <br />
+  从移动社交来讲，移动社交成为第二生活，核心原因就是因为移动互联网增量市场的出现。<br />
+  <br />
+  举个例子：<br />
+  <br />
+  今天大家打开微信的频次绝对是超过了淘宝、天猫或京东。<br />
+  <br />
+  但从占用时长看，微信并不是占用时长最高的社交软件，比微信更高是抖音短视频；大家刷一下抖音，不知不觉一两个小时就过去了。<br />
+  <br />
+  然而抖音不是最耗时的，最耗时是直播。<br />
+  <br />
+  我们认为，所有流量转化都是来自于时间，时间越长转化效果越高。直播在未来是非常重要的一个点，近期有赞云的第三方开发者已经上线了“爱逛直播”小程序，有赞商家可以通过该小程序实现边直播边卖货。<br />
+  <br />
+  所以，我们认为：<br />
+  <br />
+  移动互联网化的生活，消费是不可少的。<br />
+  <br />
+  这就是商家做生意的流量来源，也是整个大环境的证明。<br />
+  <br />
+  2.平台电商和自营电商的区别<br />
+  <br />
+  平台电商是什么？就是在京东、天猫这样的平台上，商家通过不断地购买流量来做成果转化。<br />
+  <br />
+  对于用户来讲，比如买一双鞋，用户需要登录平台、搜索，看到都有哪些品牌，然后看到评价最高、信用最高的店铺，感觉这个价格还可以，就产生了购买行为。下一次购买东西的时候也是这样，所以我们称之为搜索式电商。<br />
+  <br />
+  哪怕是今天下单了，下一次来还是搜索、购买，这个背后逻辑是什么？因为用户不是你的，而是平台的。<br />
+  <br />
+  只有你花钱购买了流量，你才能够获得转化，这就是平台电商的逻辑。<br />
+  <br />
+  作为商家来讲，我们研究每一个用户的行为习惯、平台的规则，来获得更高的转化。其实就是吃透平台规则，持续购买流量获取转化。<br />
+  <br />
+  通过研究买家的行为，匹配相应的推广手段，如优化广告、搜索池等等一系列的东西。<br />
+  <br />
+  所以，我们的核心逻辑是不断私有化自己的客户资产，为每一个单客提供单客服务，通过他来分享裂变，获得更多的用户，这是关键。<br />
+  <br />
+  因此，在整个逻辑来讲，我们建议平台电商也做，自营电商也做，但核心逻辑是在付费购买流量的时候，一定要将这些用户转成私有流量。这就是我们的自营电商逻辑。<br />
+  <br />
+  通过我的推广、广告，还有其他一些方式去获客，然后，让这些新的客户变成老顾客，老客户又带来新顾客，不断地成交转化。<br />
+  <br />
+  二、2018年，我们的经营全况<br />
+  <br />
+  整体上，我们2018年电商成交额大概是330亿，不包含没有审计进来的订单。<br />
+  <br />
+  什么意思呢？就是我在线上下了订单，到店支付，类似这些订单我们没有算进来。<br />
+  <br />
+  从2017年1月开始，到2019年3月，除了中间的几个特殊时间段（例如春节）有下滑现象，其后的每个月都是爆发式增长。从订单数来看，2018年共产生2.3亿笔。<br />
+  <br />
+  整体上，我们是持续增长的状态。<br />
+  <br />
+  营销玩儿法上，我们其实也是实实在在地为商家提供价值。所谓的有赞玩儿法，2018年我们统计了一下为商家带来最大利益的玩法（满减满送），贡献的收益达到40.9亿。<br />
+  <br />
+  除了纯线上，还有线下。我们有很多种方式，扫码订单、配送、到店订单等等。我们为商家平均带来了15.9%增量的订单，如果你们有门店，这个就是商家的增量点。<br />
+  <br />
+  从商家内部讲，整个2018年，有赞所有的商家都是持续增长，增长最大是美妆，141%。其次是日用百货，还有酒店旅游、教育培训等，增长最低是68%。<br />
+  <br />
+  所以大家可以看一下自己所处的行业，自己如何获得更好的发展和收益。<br />
+  <br />
+  如今，越来越多商家在用有赞小程序做生意。小程序访问来源中占比最多的是微信下单，几乎占了整个流量来源的29%，公众号菜单栏小程序，占17%，公众号图文里的小程序链接，占15%，还有就是小程序搜索入口等。<br />
+  <br />
+  我们统计了一下，小程序目前有60多个入口。可以说，小程序在接下来是一个比较大的爆发增长点。<br />
+  <br />
+  三、我们的成绩<br />
+  <br />
+  1.帮助商家成功<br />
+  <br />
+  在我们认知里面，帮助客户成功，意味着我们不光是要提供一个专业化的工具，还要为我们的商家提供客户管理，帮助他们建立客户分层，帮助留存客户，复购客户。<br />
+  <br />
+  在我们的整个逻辑里，有社交电商，有移动电商，所以，我们要提供这些方面的人才服务，人才孵化服务等培养服务。<br />
+  <br />
+  只有我们帮助商家获得利润，它们才会转介绍，为我们带来更多的客户，我们才能够真正地了解客户的需求，进而理解这些场景，最终做出更多的解决方案。<br />
+  <br />
+  2.有赞微商城<br />
+  <br />
+  有赞微商城，是我们帮助商家建立自营商城，帮助他们做客户管理、粉丝营销、数据营销等。<br />
+  <br />
+  如今，我们访问页面的速度，大概1秒钟左右，迭代速度也非常快，基本上是2.5天迭代一个版本。我们提供全行业的解决方案，主要面向有实物电商、同城电商、虚拟电商、社群电商。<br />
+  <br />
+  虚拟电商是什么？<br />
+  <br />
+  比如酒店行业的预订，就是对比实际发货的环节。所以，它们统称虚拟电商。另外还有这两年比较火的社群电商。<br />
+  <br />
+  今天，不管你的客户在哪里，我们都能通过线上管理软件，把客户粉丝管理在一起，做一些活动，把活动放到微博，然后在微博上开始购买，我们提供快速打通的方式，实现快速直播时的购买行为。<br />
+  <br />
+  3.多人拼团<br />
+  <br />
+  多人拼团好处是什么？<br />
+  <br />
+  第一层价值，随时随地可以拉人。<br />
+  <br />
+  比如，做一个拼团活动，第一时间肯定是将这个内容发到老客户手中，老客户收到这个平台链接，真正想买的时候，是不是会拉身边的朋友来参团？<br />
+  <br />
+  说明什么？说明你做商业平台的时候，是可以带来新客户的。<br />
+  <br />
+  第二层价值，线上为线下引流。<br />
+  <br />
+  做得更深一点，将这些线上客户导入到线下门店，到店拿货。去门店的时候，有可能经过导购、营业员。<br />
+  <br />
+  比如，今天消费者今天可以打7折、打8折，还有其他一些产品过来可以体验一下，这个时候是不是有可能是会到门店去呢？<br />
+  <br />
+  第三层价值，低成本获客。<br />
+  <br />
+  这些通过拼团来的新客户有可能变成老客户。比如，达到20%~30%转化率，这个就是拼团带来的价值点。<br />
+  <br />
+  大家可以看到，一个拼团产品本身就10块钱，成本9块钱，我8块钱就是亏了。但是，你看下获客成本就不这么认为了。<br />
+  <br />
+  就现在来说，一块钱两块钱的获客成本，可以说是非常便宜了。<br />
+  <br />
+  4.多网点<br />
+  <br />
+  多网点是什么意思呢？不同的门店可以经营不同的产品，不同产品有不同的价格，来为我们客户提供服务，这个就是多网点。这主要是帮助商家把线下网点的经营带上网络上面去。<br />
+  <br />
+  我们的整个逻辑其实就是五个点，所有的功能搭建都是围绕这5个模型过来的：<br />
+  <br />
+  转化成交、客户留存、复购、增购、分享裂变。<br />
+  <br />
+  获得更多的客户，是一个客户进来时，他肯定是买东西转化思维，转化完了下一次还要过来，这个就是客户留存。<br />
+  <br />
+  客户留存以后是复购，不是简单的复购，而是还会带来新客户，这是我们整个社交电商运营的核心逻辑。<br />
+  <br />
+  所以，商家可以围绕5个步骤做运营。但是，整个运营当中应该配上功能，比如，我刚刚讲的多平台就是很好的获客的方式。可以做会员体系，因为会员体系是最实在的客户留存体系。另外，分享、裂变都是可以做的。<br />
+  <br />
+  理解了这个模型以后，你就知道运营的工作重点了，什么地方不足就补足什么内容。<br />
+  <br />
+  比如王府井百货，做的最大的一个点在哪里呢？线上卖券，线下核销。<br />
+  <br />
+  在线上花100块钱买这个券，到店抵150-200块钱，虽然是个很小的应用，但2018年双11为商场带来了两千多万的销售额。<br />
+  <br />
+  5.零售互联网化<br />
+  <br />
+  在零售行业，绝大部分商家，就是日常采购、收银等等这些业务，这些流程各自分工。<br />
+  <br />
+  但今天整个流程在发生变化，其实就是一个互联网化的过程，我们不光是经营我们内部，提升我们内部管理的规范，还丰富我们经营场景和客户的选择。再往后，就到智能化阶段了。<br />
+  <br />
+  什么叫做互联网化？就是智慧零售的前提是一切实时在线的，比如客户在线，商品在线，员工在线，经营在线等等。<br />
+  <br />
+  客户在线，是指我的客户时时刻刻都是在线上，无论何时，他都能买到我的产品。<br />
+  <br />
+  商品在线，是指原来很多商品就是在店里面，店里打烊就买不到商品了，这时候我们搬到线上。<br />
+  <br />
+  打一个比方，员工下班了基本上是做不了业务了，但是推出一个导购的功能，只要有客户进店，我们的导购可以与之建立联系，可能没有成交，但后面可以通过导购能力来建立关系，进而产生购行为。<br />
+  <br />
+  所以，完成这些商品在线、员工在线、数据在线，基本上这个产品的核心功能就会打通商品，就会有一些营销资产数据。<br />
+  <br />
+  比如新零售是什么呢？我们认为新零售不光是人货场，还有进销存，人财物。这个就变成提高复购，让老顾客带来新顾客，围绕人来做生意。<br />
+  <br />
+  货，是基于客户的需求，我们也有一些限制，不断丰富我们经营场景，通过互联网手段，给这个客户提供更多的服务。<br />
+  <br />
+  在导购这一块儿，他们能为商家做些什么呢？发展一批客户。<br />
+  <br />
+  因此，我们做了一个导购的功能，所有东西通过系统化信息化管理，当一个顾客来店的时候跟他建立联系，进行购买。<br />
+  <br />
+  总而言之，是通过这样一个社交工具，与客户产生互动。<br />
+  <br />
+  我们还可以通过任务设置业绩，设置每天的目标。设置目标以后，管理情况也是一目了然。<br />
+  <br />
+  大概过一下整个产品的核心逻辑，我们是针对前端，主要是有自己门店的部分商家，他们有自己的网点，自己的分销；对于线上，我们帮助他们打通O2O，根据商品订单、客户、营销数据资产、员工等衔接起来。<br />
+  <br />
+  包括总部的数据中台、运营中台、财务中台，都与后台进行实时打通。<br />
+  <br />
+  比如，结合打通的O2O，充分利用导购发展成会员。<br />
+  <br />
+  虽然我人在杭州，但我的会员在昆明店消费，杭州店的也可能有一些佣金，不断让我们终端的用户、门店发展更多的会员，把这个生意盘活。<br />
+  <br />
+  6.有赞云<br />
+  <br />
+  我们是一个SaaS公司，SaaS是比较标准化的。如果你有个性需求，需要个性解决方案的时候，在SaaS当中是比较困难的事情。<br />
+  <br />
+  但事实上，整个软件行业来和整个线上来看，特别是投入商家，都是有个性需求的，一套SaaS完全满足不了这个需求，还有个性化一些解决方案的需求。<br />
+  <br />
+  怎么解决这个问题呢？我们拉了一个团队，用了2年左右的时间打造了有赞云，原来在SaaS上面的订单商品交易、营销等底层逻辑，我们一一找出来分解到有赞云上，以满足各种个性化需求。<br />
+  <br />
+  它能解决什么场景呢？比如商品的详细页，如果今天你觉得商品页不好看了，想自己做一个更好的。<br />
+  <br />
+  包括下单页，还有订单页、订单详情页、支付页、个人中心等等，这些都是可以做的。<br /></article>……
+		</section>
+      <section id="demoBtn" style="text-align:center; line-height:60px;">单篇阅读<span style="color:#ec1717">3元/条</span>，请点击<a href="index.php-controller=site&action=notice_detail&id=1.htm" tppabs="http://xfjining.com/index.php?controller=site&action=notice_detail&id=1" target="_blank" style="color:#ec1717">付款</a>后查看（开通年费会员600/年）</section>
+<script>
+    var oP = document.getElementById('article_content');
+    var oBtn = document.getElementById('demoBtn');
+    var allContent = oP.innerHTML;                   //存放所有内容
+    oP.innerHTML = oP.innerHTML.substr(0,240);        //截取前100个字符
+    oBtn.onclick=function(){
+    //    oP.innerHTML = allContent;                    //显示所有内容
+    }
+</script>
+        
+			</section>
+	<!-- 文章详情侧边 -->
+	<aside class="article_bar">
+		<!-- 资讯分类 -->
+		<nav class="news_article_box">
+			<h3 class="news_article_box_head">资讯分类</h3>
+			<ul class="news_article_infor">
+							</ul>
+		</nav>
+		<!-- 资讯分类 -->
+	</aside>
+	<!-- 文章详情侧边 -->
+</section>
+</div>
+
+</div>
+<!--主要模板内容 结束-->
+
+<footer class="foot">
+	<!--<section class="service">
+		<ul>
+			<li class="item1">
+				<i class="fa fa-star"></i>
+				<strong>正品优选</strong>
+			</li>
+			<li class="item2">
+				<i class="fa fa-globe"></i>
+				<strong>上市公司</strong>
+			</li>
+			<li class="item3">
+				<i class="fa fa-inbox"></i>
+				<strong>300家连锁门店</strong>
+			</li>
+			<li class="item4">
+				<i class="fa fa-map-marker"></i>
+				<strong>上百家维修网点 全国联保</strong>
+			</li>
+		</ul>
+	</section>-->
+	<section class="copy">
+		<div class="footer" style="text-align:center;">	<p class="copyright">		Powered by <span style="font-family:'微软雅黑';"><span style="background-color:#FFEDC4;">内蒙古未莱网络营销科技有限公司</span></span><span style="background-color:#FFEDC4;font-family:'微软雅黑';"></span> 	</p>Copyright © 2021 <a href="javascript:if(confirm(%27https://beian.miit.gov.cn/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://beian.miit.gov.cn/%27" tppabs="https://beian.miit.gov.cn/" target="_blank">蒙ICP备2021000771号-1</a> </div>	</section>
+</footer>
+
+</body>
+</html>
+<script>
+//当首页时显示分类
+
+$(function(){
+	$('input:text[name="word"]').val("");
+});
+</script>
+<script type="text/javascript">
+_webUrl = "index.php-controller=errors&action=error&message=.htm"/*tpa=http://xfjining.com/index.php?controller=errors&action=error&message=*/;_themePath = "/views/huawei/";_skinPath = "/views/huawei/skin/default/";_webRoot = "/";
+</script>

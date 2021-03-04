@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>乌兰察布市慧联信息技术有限公司</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link type="image/x-icon" href="favicon.ico" tppabs="http://xfjining.com/favicon.ico" rel="icon">
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/jquery/jquery-1.12.4.min.js" tppabs="http://xfjining.com/runtime/_systemjs/jquery/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/form/form.js" tppabs="http://xfjining.com/runtime/_systemjs/form/form.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/autovalidate/validate.js-v=5.1.js" tppabs="http://xfjining.com/runtime/_systemjs/autovalidate/validate.js?v=5.1"></script><link rel="stylesheet" type="text/css" href="runtime/_systemjs/autovalidate/style.css" tppabs="http://xfjining.com/runtime/_systemjs/autovalidate/style.css" />
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artdialog/artDialog.js-v=4.8.js" tppabs="http://xfjining.com/runtime/_systemjs/artdialog/artDialog.js?v=4.8"></script><script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artdialog/plugins/iframeTools.js" tppabs="http://xfjining.com/runtime/_systemjs/artdialog/plugins/iframeTools.js"></script><link rel="stylesheet" type="text/css" href="runtime/_systemjs/artdialog/skins/black.css" tppabs="http://xfjining.com/runtime/_systemjs/artdialog/skins/black.css" />
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artTemplate/artTemplate.js" tppabs="http://xfjining.com/runtime/_systemjs/artTemplate/artTemplate.js"></script><script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artTemplate/artTemplate-plugin.js" tppabs="http://xfjining.com/runtime/_systemjs/artTemplate/artTemplate-plugin.js"></script>
+	<!--[if IE]><script src="views/huawei/javascript/html5.js" tppabs="http://xfjining.com/views/huawei/javascript/html5.js"></script><![endif]-->
+	<script src="views/huawei/javascript/site.js" tppabs="http://xfjining.com/views/huawei/javascript/site.js"></script>
+	<script type='text/javascript' src="public/javascript/public.js" tppabs="http://xfjining.com/public/javascript/public.js"></script>
+	<link rel="stylesheet" href="views/huawei/skin/default/style/style.css" tppabs="http://xfjining.com/views/huawei/skin/default/style/style.css">
+</head>
+<body>
+<!--
+
+模版使用字体图标为优化过的 awesome 3.0 图标字体库
+
+使用帮助见:http://www.bootcss.com/p/font-awesome/
+
+ -->
+<!-- 顶部工具栏 -->
+<div class="header_top">
+	<div class="web">
+		<div class="welcome">
+			欢迎您来到 乌兰察布市慧联信息技术有限公司！
+		</div>
+		<ul class="top_tool">
+			<li></li>
+			<li><a href="">个人中心</a></li>
+			<li><a href="">申请开店</a></li>
+            <li><a href="">商家列表</a></li>
+			<!--<li><a href="/index.php?controller=seller&action=index">商家管理</a></li>-->
+			<li><a href="">使用帮助</a></li>
+		</ul>
+	</div>
+</div>
+<!-- 顶部工具栏 -->
+<header class="header">
+	<!-- logo与搜索 -->
+	<div class="body_wrapper">
+		<div class="web">
+			<!-- logo -->
+			<div class="logo_layer">
+				<a title="内蒙古未莱网络营销科技有限公司" href="market.jsp" tppabs="http://xfjining.com/" class="logo">
+					<img src="upload/logo/20200723052427260.png" tppabs="http://xfjining.com/upload/logo/20200723052427260.png">
+				</a>
+			</div>
+			<!-- 注册与登录 -->
+			<div class="body_toolbar">
+									<div class="body_toolbar_btn login_reg">
+						<a href="index.php-controller=simple&action=login.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=login">登录</a>
+						<em> | </em>
+						<a class="reg" href="index.php-controller=simple&action=reg.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=reg">注册</a>
+					</div>
+							</div>
+			<!-- 注册与登录 -->
+			<!--购物车模板 开始-->
+			<div class="header_cart" name="mycart">
+				<a href="index.php-controller=simple&action=cart.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=cart" class="go_cart">
+					<i class="fa fa-shopping-cart"></i>
+					<em class="sign_total" name="mycart_count"]>0</em>
+				</a>
+				<div class="cart_simple" id="div_mycart"></div>
+			</div>
+			<script type='text/html' id='cartTemplete'>
+			<div class='cart_panel'>
+				<%if(goodsCount){%>
+					<!-- 购物车物品列表 -->
+					<ul class='cart_list'>
+						<%for(var item in goodsData){%>
+						<%var data = goodsData[item]%>
+						<li id="site_cart_dd_<%=item%>">
+							<em><%=(window().parseInt(item)+1)%></em>
+							<a target="_blank" href="/index.php?controller=site&action=products&id=<%=data['goods_id']%>">
+								<img src="<%=webroot(data['img'])%>">
+							</a>
+							<a class="shop_name" target="_blank" href="/index.php?controller=site&action=products&id=<%=data['goods_id']%>"><%=data['name']%></a>
+							<!-- <p class="shop_class"></p> -->
+							<div class="shop_price"><p>￥ <%=data['sell_price']%> <span>x <%=data['count']%></span></p></div>
+							<i class="fa fa-remove" onclick="removeCart('<%=data['id']%>','<%=data['type']%>');$('#site_cart_dd_<%=item%>').hide('slow');"></i>
+						</li>
+						<%}%>
+					</ul>
+					<!-- 购物车物品列表 -->
+					<!-- 购物车物品统计 -->
+					<div class="cart_total">
+						<p>
+							共<span name="mycart_count"><%=goodsCount%></span>件
+							总额：<em name="mycart_sum">￥<%=goodsSum%></em>
+						</p>
+						<a href="index.php-controller=simple&action=cart.htm"/*tpa=http://xfjining.com/index.php?controller=simple&action=cart*/>结算</a>
+					</div>
+					<!-- 购物车物品统计 -->
+				<%}else{%>
+					<!-- 购物车无内容 -->
+					<div class='cart_no'>购物车空空如也~</div>
+				<%}%>
+			</div>
+			</script>
+			<!--购物车模板 结束-->
+			<!-- 搜索框 -->
+			<div class="search_box">
+					<!-- 搜索内容 -->
+				<form method='get' action="http://xfjining.com/index.php">
+					<input type='hidden' name='controller' value='site'>
+					<input type='hidden' name='action' value='search_list'>
+					<div class="search">
+						<input type="text" name='word' class="search_keyword" autocomplete="off">
+						<button class="search_submit" type="submit">
+							<i class="fa fa-search"></i>
+						</button>
+					</div>
+				</form>
+				<!-- 热门搜索 -->
+				<div class="search_hotwords">
+									</div>
+			</div>
+		</div>
+	</div>
+		<!-- logo与搜索 -->
+
+	<div class="nav_bar">
+		<div class="home_nav_bar user_center">
+		<!-- 导航栏 -->
+		<div class="web">
+			<div class="nav_index">
+				<ul class="nav">
+					<li class="user_nav_index home_nav_index"><a href="market.jsp"><span>首 页</span></a></li>
+										<li class="user_nav_index home_nav_index"><a href="index.php-controller=site&action=article.htm"><span>有偿信息</span></a></li>
+									</ul>
+			</div>
+		</div>
+		</div>
+	</div>
+</header>
+
+<!--主要模板内容 开始-->
+<div class="home_content">
+<div class="bigweb">
+<section class="breadcrumb">
+	<span>您当前的位置：</span> <a href="index.htm" tppabs="http://xfjining.com/">首页</a> > <a href="index.php-controller=site&action=article.htm" tppabs="http://xfjining.com/index.php?controller=site&action=article">资讯列表</a> > 蘑菇街CEO陈琪：垂直电商要做“电商”和“社交”双引擎</section>
+
+
+<section class="web">
+	<section class="article_main">
+		<section class="article article_infor">
+			<header>
+				<h1 class="article_title">蘑菇街CEO陈琪：垂直电商要做“电商”和“社交”双引擎</h1>
+				<time class="article_date">发布日期：2020-07-22 18:55:31</time>
+			</header>
+			<article id="article_content" style="line-height:40px; font-size:14px;">  11月21日，蘑菇街宣布完成D轮融资，由平安创新投资基金领投，天图资本跟投，融资金额超过2亿美元。成立于2011年的蘑菇街，一直坚持“社交＋电商”结合的商业模式。<br />
+  <br />
+  从社交维度来看，蘑菇街以1.3亿注册用户，日均逾1000万活跃用户的规模，仅次于微信、新浪微博、陌陌，已成为国内第四大社交平台，并精准覆盖年轻女性人群。从电商维度来看，根据Trustdata信诺数据的统计，蘑菇街以2.99%的月度覆盖率已成为仅次于淘*宝、京东、唯品会购物和手机天猫之后的国内第五大移动电商平台，并与其他同类型竞争对手拉开近一倍以上的距离。<br />
+  <br />
+  这期做客变量的是蘑菇街的创始人陈琪，他认为，用社交固化流量，再用电商去变现，会成为垂直电商最主流的成长路径。<br />
+  <br />
+  说到蘑菇街，大家可能会把我们定义为垂直电商、垂直女性电商、垂直导购，或者其他各种各样的名字，比较多的和电商有关。<br />
+  <br />
+  以往，在做电商的创业者和企业家脑子里面，shopping就是给一个好的货，一个好的价格，交付出去就可以了，随着社会越来越发展，随着行业基础设施越来越发展，没有哪一家说，我可以得到完全不一样的货，这越来越难以做到。所以在货的层面上面同质竞争越来越多。但大家忽略了一件事情，我也和很多行业大佬沟通和交流，和创业者沟通和交流。我觉得他们一直没有理解一件事情，至少对女孩子来说，shopping这件事情根本不是把货卖出去那么简单。<br />
+  <br />
+  现在的电商格局，基本上已经是电商巨头在打淮海战役的状况了。而如果我一上来就卖衣服做一个简单的垂直电商，基本上没出路，因为现在获取客户的成本太高了。所有做电商的或者做零售的，大家都会涉及到一个问题：我的用户和流量在哪里？<br />
+  <br />
+  在电商里面，京东是一个非常典型的零售商，淘*宝是非常典型的电商平台，但是今天，纯货架式电商的时代正在远去，而通过社交的方式把用户量拉起来，再通过电商的方式变现，这种模式越来越流行了。<br />
+  <br />
+  从蘑菇街的发展经历来说，我们和京东、淘*宝的视角上有很大差异，我们从消费者那一头看回来，我们先搞定用户，帮助用户去决策，在他们购买决策这件事上来帮助他们，让他们留在我们的平台上，最终把流量导到相应的平台电商去变现。<br />
+  <br />
+  所以，在电商里面，我们是一家奇葩公司，用社交和社区的方式，把电商的事情给干了。事实上，蘑菇街的核心还是一家互联网公司，准确地说是一家互联网产品公司，社交网络和电商平台加在一起，才是一个完整的蘑菇街。<br />
+  <br />
+  我们创业的第一天的想法就是，互联网上有很多社区，社区上有很多人，但光有流量没办法变现，相反很多电商可以变现但是缺流量。我们很简单，就是把两个东西拼在一块，所以蘑菇街一直是一个双引擎，第一是我们社交的部分，第二是我们电商的部分。<br />
+  <br />
+  我们初期只是做购物决策的环节，做一个男女都有的社区，但后来发现社区上的男人都不见了，只剩下了女人。女性的社区也挺有意思的，不管你怎么设置那些栏目和主题，最后她们都会去讨论三件事情：情感、减肥和购物。所以在这三个主题内容里，我们强化的是“购物”这一部分。从一开始，我们就强调在社区里面消费者之间互相分享，什么东西值得买，什么东西流行，衣服应该怎么穿搭。这件事迅速吸引了消费者。<br />
+  <br />
+  把消费者的数量积累到一定程度以后，再去用电商的方式货币化就比较容易了。当我们发现对用户购物决策的影响越来越大，而我们自己也有稳定的货币化需要的时候，在两年前我们自己做了蘑菇街的第二个引擎——电商。<br />
+  <br />
+  但是今天你打开蘑菇街的APP，会发现我们跟所有的电商都不一样，APP上的第一屏没有什么分类和促销，而是一个穿得花枝招展的姑娘，在展示衣服应该怎么穿，什么东西在流行。这是我们社交媒体的部分，到了APP第二屏，才是买东西。蘑菇街APP分四个栏目：第一个是逛逛逛，第二个是买买买，第三个是聊聊聊，第四个是我我我。逛逛逛就是社交；买买买就是电商部分；聊聊聊就不用说了，女生到哪里都聊；最后是我我我，这就更不用说了，一天到晚自拍。所以，我们整个平台的设计看起来不是特别电商，大家把蘑菇街简单定义为一个电商其实是不准确的，也不是蘑菇街真正在做的事情。<br />
+  <br />
+  对于这两个引擎来说，一个引擎不断通过社交的方式把用户量拉起来，第二个引擎不断把拉出来的用户通过电商的方式变现，这种模式越来越流行了。特别是在女性这个圈子里，那些比我们小一些的产品，越来越多的产品采用了蘑菇街这样的架构，就是我们说的“4+1架构”——一个社交媒体，一个电商商城，一个用户沟通的渠道，最后一个是强调用户个人，还有个“1”就是APP首屏中间会放一个照相机按钮，目的是让用户创造更多的内容出来。<br />
+  <br />
+  我们会看到像大姨吗这样的用工具先搞定女性用户的产品，也有些app用社区搞定。比如淘世界，你会发现它一开始上来就是卖东西，但是做着做着，到现在越来越强调杂志和媒体的内容，给消费者介绍什么东西值得买。双引擎的结构，是目前创业公司想要做所谓的垂直电商或者交易平台，我个人觉得的唯一路径。<br />
+  <br />
+  但是，在这个路径上有一个很大的难点：现在发展到移动时代，蘑菇街上交易量超过80%都是手机上的。任何两个APP之间都是互相竞争的，竞争的是用户的时间。重度用户一天用手机大概四、五个小时，里面一半多是被微信占走的，平均下来每个用户每天打开微信50多次，刷走两个小时，晚上回家再看个电影，又一个小时没了，剩下所有的APP就抢用户一个小时的时间。蘑菇街的在线时长是平均一个用户18到20分钟。也就是说，在剩下的一个小时里，蘑菇街抢走了1/3，对其他APP的压力是很大的。<br />
+  <br />
+  关于品类渗透问题，背后的逻辑是“谁高频谁牛逼”。大的平台能够做起来，衣服肯定是先做出来的，然后是最容易数据结构化的书。当数据结构化变得简单的时候，哪个品类高频哪个品类就牛逼。所以，一定要从人群更广、品类消费频次更高的方向杀过去。所以京东这样的大集团，在目前的电商竞争格局中要选生鲜，要干就干频次最高的。<br />
+  <br />
+  蘑菇街在选择品类的时候也非常简单。哪个东西频次高，就先做哪个东西，所以上来就是衣服。因为对女孩子来说，衣服这个东西就算不买，每天也要看好几遍。蘑菇街上18岁到25岁年龄段的女性这是我们的用户主力。她们每买一件衣服之前，在PC时代要浏览5000张图片，移动时代差不多也要有3000张！下单虽然没有那么高频，但是浏览衣服这件事非常高频。还有一个更高频的是美图秀秀，但蘑菇街有一件事比美图好，美图仅仅是一件工具，我们的延展性更宽。所以当我们和其他APP在直接竞争的时候，我们总是能够抢到更多的时间，这也是蘑菇街发展里很重要的一个逻辑，也是接下来很多比较小的创业公司在成长的时候必须要解决的问题。<br />
+  <br />
+  现在已经有越来越多的人在学习我们，包括美国的公司。用社交固化流量，再用电商去变现。这会成为一种成长路径，未来几年，你会看到很多这样的公司。<br /></article>……
+		</section>
+      <section id="demoBtn" style="text-align:center; line-height:60px;">单篇阅读<span style="color:#ec1717">3元/条</span>，请点击<a href="index.php-controller=site&action=notice_detail&id=1.htm" tppabs="http://xfjining.com/index.php?controller=site&action=notice_detail&id=1" target="_blank" style="color:#ec1717">付款</a>后查看（开通年费会员600/年）</section>
+<script>
+    var oP = document.getElementById('article_content');
+    var oBtn = document.getElementById('demoBtn');
+    var allContent = oP.innerHTML;                   //存放所有内容
+    oP.innerHTML = oP.innerHTML.substr(0,240);        //截取前100个字符
+    oBtn.onclick=function(){
+    //    oP.innerHTML = allContent;                    //显示所有内容
+    }
+</script>
+        
+			</section>
+	<!-- 文章详情侧边 -->
+	<aside class="article_bar">
+		<!-- 资讯分类 -->
+		<nav class="news_article_box">
+			<h3 class="news_article_box_head">资讯分类</h3>
+			<ul class="news_article_infor">
+							</ul>
+		</nav>
+		<!-- 资讯分类 -->
+	</aside>
+	<!-- 文章详情侧边 -->
+</section>
+</div>
+
+</div>
+<!--主要模板内容 结束-->
+
+<footer class="foot">
+	<!--<section class="service">
+		<ul>
+			<li class="item1">
+				<i class="fa fa-star"></i>
+				<strong>正品优选</strong>
+			</li>
+			<li class="item2">
+				<i class="fa fa-globe"></i>
+				<strong>上市公司</strong>
+			</li>
+			<li class="item3">
+				<i class="fa fa-inbox"></i>
+				<strong>300家连锁门店</strong>
+			</li>
+			<li class="item4">
+				<i class="fa fa-map-marker"></i>
+				<strong>上百家维修网点 全国联保</strong>
+			</li>
+		</ul>
+	</section>-->
+	<section class="copy">
+		<div class="footer" style="text-align:center;">	<p class="copyright">		Powered by <span style="font-family:'微软雅黑';"><span style="background-color:#FFEDC4;">乌兰察布市慧联信息技术有限公司</span></span><span style="background-color:#FFEDC4;font-family:'微软雅黑';"></span> 	</p>Copyright © 2020 <a href="javascript:if(confirm(%27https://beian.miit.gov.cn/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://beian.miit.gov.cn/%27" tppabs="https://beian.miit.gov.cn/" target="_blank">蒙ICP备19005096号-1</a> </div>	</section>
+</footer>
+
+</body>
+</html>
+<script>
+//当首页时显示分类
+
+$(function(){
+	$('input:text[name="word"]').val("");
+});
+</script>
+<script type="text/javascript">
+_webUrl = "index.php-controller=errors&action=error&message=.htm"/*tpa=http://xfjining.com/index.php?controller=errors&action=error&message=*/;_themePath = "/views/huawei/";_skinPath = "/views/huawei/skin/default/";_webRoot = "/";
+</script>

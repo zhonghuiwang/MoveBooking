@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>内蒙古未莱网络营销科技有限公司</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link type="image/x-icon" href="favicon.ico" tppabs="http://xfjining.com/favicon.ico" rel="icon">
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/jquery/jquery-1.12.4.min.js" tppabs="http://xfjining.com/runtime/_systemjs/jquery/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/form/form.js" tppabs="http://xfjining.com/runtime/_systemjs/form/form.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/autovalidate/validate.js-v=5.1.js" tppabs="http://xfjining.com/runtime/_systemjs/autovalidate/validate.js?v=5.1"></script><link rel="stylesheet" type="text/css" href="runtime/_systemjs/autovalidate/style.css" tppabs="http://xfjining.com/runtime/_systemjs/autovalidate/style.css" />
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artdialog/artDialog.js-v=4.8.js" tppabs="http://xfjining.com/runtime/_systemjs/artdialog/artDialog.js?v=4.8"></script><script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artdialog/plugins/iframeTools.js" tppabs="http://xfjining.com/runtime/_systemjs/artdialog/plugins/iframeTools.js"></script><link rel="stylesheet" type="text/css" href="runtime/_systemjs/artdialog/skins/black.css" tppabs="http://xfjining.com/runtime/_systemjs/artdialog/skins/black.css" />
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artTemplate/artTemplate.js" tppabs="http://xfjining.com/runtime/_systemjs/artTemplate/artTemplate.js"></script><script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artTemplate/artTemplate-plugin.js" tppabs="http://xfjining.com/runtime/_systemjs/artTemplate/artTemplate-plugin.js"></script>
+	<!--[if IE]><script src="views/huawei/javascript/html5.js" tppabs="http://xfjining.com/views/huawei/javascript/html5.js"></script><![endif]-->
+	<script src="views/huawei/javascript/site.js" tppabs="http://xfjining.com/views/huawei/javascript/site.js"></script>
+	<script type='text/javascript' src="public/javascript/public.js" tppabs="http://xfjining.com/public/javascript/public.js"></script>
+	<link rel="stylesheet" href="views/huawei/skin/default/style/style.css" tppabs="http://xfjining.com/views/huawei/skin/default/style/style.css">
+</head>
+<body>
+<!--
+
+模版使用字体图标为优化过的 awesome 3.0 图标字体库
+
+使用帮助见:http://www.bootcss.com/p/font-awesome/
+
+ -->
+<!-- 顶部工具栏 -->
+<div class="header_top">
+	<div class="web">
+		<div class="welcome">
+			欢迎您来到 内蒙古未莱网络营销科技有限公司！
+		</div>
+	</div>
+</div>
+<!-- 顶部工具栏 -->
+<header class="header">
+	<!-- logo与搜索 -->
+	<div class="body_wrapper">
+		<div class="web">
+			<!-- logo -->
+			<div class="logo_layer">
+				<a title="内蒙古未莱网络营销科技有限公司" href="market.jsp" tppabs="http://xfjining.com/" class="logo">
+					<img src="upload/logo/20200723052427260.png" tppabs="http://xfjining.com/upload/logo/20200723052427260.png">
+				</a>
+			</div>
+			<!-- 注册与登录 -->
+			<div class="body_toolbar">
+									<div class="body_toolbar_btn login_reg">
+						<a href="index.php-controller=simple&action=login.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=login">登录</a>
+						<em> | </em>
+						<a class="reg" href="index.php-controller=simple&action=reg.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=reg">注册</a>
+					</div>
+							</div>
+			<!-- 注册与登录 -->
+			<!--购物车模板 开始-->
+			<div class="header_cart" name="mycart">
+				<a href="index.php-controller=simple&action=cart.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=cart" class="go_cart">
+					<i class="fa fa-shopping-cart"></i>
+					<em class="sign_total" name="mycart_count"]>0</em>
+				</a>
+				<div class="cart_simple" id="div_mycart"></div>
+			</div>
+			<script type='text/html' id='cartTemplete'>
+			<div class='cart_panel'>
+				<%if(goodsCount){%>
+					<!-- 购物车物品列表 -->
+					<ul class='cart_list'>
+						<%for(var item in goodsData){%>
+						<%var data = goodsData[item]%>
+						<li id="site_cart_dd_<%=item%>">
+							<em><%=(window().parseInt(item)+1)%></em>
+							<a target="_blank" href="/index.php?controller=site&action=products&id=<%=data['goods_id']%>">
+								<img src="<%=webroot(data['img'])%>">
+							</a>
+							<a class="shop_name" target="_blank" href="/index.php?controller=site&action=products&id=<%=data['goods_id']%>"><%=data['name']%></a>
+							<!-- <p class="shop_class"></p> -->
+							<div class="shop_price"><p>￥ <%=data['sell_price']%> <span>x <%=data['count']%></span></p></div>
+							<i class="fa fa-remove" onclick="removeCart('<%=data['id']%>','<%=data['type']%>');$('#site_cart_dd_<%=item%>').hide('slow');"></i>
+						</li>
+						<%}%>
+					</ul>
+					<!-- 购物车物品列表 -->
+					<!-- 购物车物品统计 -->
+					<div class="cart_total">
+						<p>
+							共<span name="mycart_count"><%=goodsCount%></span>件
+							总额：<em name="mycart_sum">￥<%=goodsSum%></em>
+						</p>
+						<a href="index.php-controller=simple&action=cart.htm"/*tpa=http://xfjining.com/index.php?controller=simple&action=cart*/>结算</a>
+					</div>
+					<!-- 购物车物品统计 -->
+				<%}else{%>
+					<!-- 购物车无内容 -->
+					<div class='cart_no'>购物车空空如也~</div>
+				<%}%>
+			</div>
+			</script>
+			<!--购物车模板 结束-->
+			<!-- 搜索框 -->
+			<div class="search_box">
+					<!-- 搜索内容 -->
+				<form method='get' action="http://xfjining.com/index.php">
+					<input type='hidden' name='controller' value='site'>
+					<input type='hidden' name='action' value='search_list'>
+					<div class="search">
+						<input type="text" name='word' class="search_keyword" autocomplete="off">
+						<button class="search_submit" type="submit">
+							<i class="fa fa-search"></i>
+						</button>
+					</div>
+				</form>
+				<!-- 热门搜索 -->
+				<div class="search_hotwords">
+									</div>
+			</div>
+		</div>
+	</div>
+		<!-- logo与搜索 -->
+
+	<div class="nav_bar">
+		<div class="home_nav_bar user_center">
+		<!-- 导航栏 -->
+		<div class="web">
+			<div class="nav_index">
+				<ul class="nav">
+					<li class="user_nav_index home_nav_index"><a href="market.jsp"><span>首 页</span></a></li>
+										<li class="user_nav_index home_nav_index"><a href="index.php-controller=site&action=article.htm"><span>有偿信息</span></a></li>
+									</ul>
+			</div>
+		</div>
+		</div>
+	</div>
+</header>
+
+<!--主要模板内容 开始-->
+<div class="home_content">
+<div class="bigweb">
+<section class="breadcrumb">
+	<span>您当前的位置：</span> <a href="market.jsp" tppabs="http://xfjining.com/">首页</a> > <a href="index.php-controller=site&action=article.htm" tppabs="http://xfjining.com/index.php?controller=site&action=article">资讯列表</a> > 平台电商与垂直电商，VCPE的金蛋该放哪？</section>
+
+
+<section class="web">
+	<section class="article_main">
+		<section class="article article_infor">
+			<header>
+				<h1 class="article_title">平台电商与垂直电商，VCPE的金蛋该放哪？</h1>
+				<time class="article_date">发布日期：2020-07-22 18:55:57</time>
+			</header>
+			<article id="article_content" style="line-height:40px; font-size:14px;">  电子商务运营模式简单分为两大类：平台电商和垂直电商。平台电商是集合了类产品、类服务、或者类人群的电子商务平台，诸如淘.宝等，平台电商的运营为平台上多主体服务多个用户；垂直电商是指该平台的商业模式针对终端用户，诸如当当、凡客等。简言之，垂直电商的运营为一个主体服务多个用户。两者各自运营的方式有所不同，后台支撑体系的设计理念与构建方式自然不同。<br />
+  <br />
+  现在有些电商平台是二者兼有之，如当当网上有诸多协议产品供应商，经营着图书音像外的分类产品；淘.宝网上除了有成千上万的他营店铺，还有自己的天猫商城。但是，绝大多数电商很难在早期就能同时支撑两种模式，因其后台需要的物流、客服、结算系统等差异，直接决定了其企业内核的运营效率和运营成本。<br />
+  <br />
+  那么，哪一种模式更容易成功呢？哪一种电商会得到投资者更多的青睐？电商发展的潮起潮落给了我们启示。<br />
+  <br />
+  平台电商起步慢，风险在初期得到控制。平台电商通常以电子交易信息平台为起步，初期阶段能否顺利站住脚，取决于所聚焦的服务对象。初期一旦能够获得目标对象的响应，平台电商就要一边提供增值性的服务，一边进行交易实现的平台细节建设。<br />
+  <br />
+  对于投资方来说，平台电商的投入分为两个主要阶段，初期投入和过程投入。在初期，投入的目的是用来检验项目竞争性，若无体现，投资也就到此为止。若初期顺利，开始进行持续投入，而过程投入的风险，在于把握平台电商在市场真实的反馈与平台建设之间的理解和契合度。现实中，能够发芽的种 子项目已然不多，而后续的投入机会也经常因为IT技术快速更新，而导致最初商业模式未果，使得投资终止。<br />
+  <br />
+  垂直电商起步快，风险控制周期越来越短。垂直电商的机会非常之多，源于如果我们把垂直电商看作一个渠道的话，垂直电商很容易参与到传统行业中。然而，成功的垂直电商少之又少。一些垂直电商成功过，随之又消退。全球垂直电商的大腕亚马逊，核心优势也是硬件和服务结合，运用各种新技术，构造人性化电商环境，尽量提高用户的APPU值，以此来黏住用户。反观，国内的当当、京东、凡客到目前为止，还没有赢利。究其原因，垂直电商没有带给用户更多的差异价值。这也就是为什么垂直电商在同领域内的同质化严重，即便某个垂直电商的业务一时快速增长，也很难保证持续增长。这也是这么多年以来，我们在国内几乎未见强势的垂直电商品牌的原因。<br />
+  <br />
+  纵观平台电商和垂直电商，一直受到投资者的青睐。电商是个趋势。然而，电商经济环境也是需要培养和培育的，尤其是用户。理智的用户能够分辨出并推动优质电商发展，但这些用户不是天生的，是与各种电商一同历练出来的。平台电商与垂直电商没有孰优孰劣之分，因此，VC/PE投资电商时，不但要择优投资，更要投入一份耐心和期望。<br />
+  <br />
+  北大纵横企业管理咨询公司是中国起步最早,也是目前中国最大的企业管理咨询机构.它先后为国内近千家企业提供一流管理咨询服务，其中三分之一为国内500强或上市公司，积累了丰富的管理咨询经验。公司与政府各主要部门、各行业协会、各研究机构、各高校建立了广泛联系，从而使得公司拥有众多的专家为公司项目的运作把脉。<br /></article>……
+		</section>
+      <section id="demoBtn" style="text-align:center; line-height:60px;">单篇阅读<span style="color:#ec1717">3元/条</span>，请点击<a href="index.php-controller=site&action=notice_detail&id=1.htm" tppabs="http://xfjining.com/index.php?controller=site&action=notice_detail&id=1" target="_blank" style="color:#ec1717">付款</a>后查看（开通年费会员600/年）</section>
+<script>
+    var oP = document.getElementById('article_content');
+    var oBtn = document.getElementById('demoBtn');
+    var allContent = oP.innerHTML;                   //存放所有内容
+    oP.innerHTML = oP.innerHTML.substr(0,240);        //截取前100个字符
+    oBtn.onclick=function(){
+    //    oP.innerHTML = allContent;                    //显示所有内容
+    }
+</script>
+        
+			</section>
+	<!-- 文章详情侧边 -->
+	<aside class="article_bar">
+		<!-- 资讯分类 -->
+		<nav class="news_article_box">
+			<h3 class="news_article_box_head">资讯分类</h3>
+			<ul class="news_article_infor">
+							</ul>
+		</nav>
+		<!-- 资讯分类 -->
+	</aside>
+	<!-- 文章详情侧边 -->
+</section>
+</div>
+
+</div>
+<!--主要模板内容 结束-->
+
+<footer class="foot">
+	<!--<section class="service">
+		<ul>
+			<li class="item1">
+				<i class="fa fa-star"></i>
+				<strong>正品优选</strong>
+			</li>
+			<li class="item2">
+				<i class="fa fa-globe"></i>
+				<strong>上市公司</strong>
+			</li>
+			<li class="item3">
+				<i class="fa fa-inbox"></i>
+				<strong>300家连锁门店</strong>
+			</li>
+			<li class="item4">
+				<i class="fa fa-map-marker"></i>
+				<strong>上百家维修网点 全国联保</strong>
+			</li>
+		</ul>
+	</section>-->
+	<section class="copy">
+		<div class="footer" style="text-align:center;">	<p class="copyright">		Powered by <span style="font-family:'微软雅黑';"><span style="background-color:#FFEDC4;">内蒙古未莱网络营销科技有限公司</span></span><span style="background-color:#FFEDC4;font-family:'微软雅黑';"></span> 	</p>Copyright © 2021 <a href="javascript:if(confirm(%27https://beian.miit.gov.cn/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://beian.miit.gov.cn/%27" tppabs="https://beian.miit.gov.cn/" target="_blank">蒙ICP备2021000771号-1</a> </div>	</section>
+</footer>
+
+</body>
+</html>
+<script>
+//当首页时显示分类
+
+$(function(){
+	$('input:text[name="word"]').val("");
+});
+</script>
+<script type="text/javascript">
+_webUrl = "index.php-controller=errors&action=error&message=.htm"/*tpa=http://xfjining.com/index.php?controller=errors&action=error&message=*/;_themePath = "/views/huawei/";_skinPath = "/views/huawei/skin/default/";_webRoot = "/";
+</script>

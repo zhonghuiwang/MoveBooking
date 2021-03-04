@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>内蒙古未莱网络营销科技有限公司</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link type="image/x-icon" href="favicon.ico" tppabs="http://xfjining.com/favicon.ico" rel="icon">
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/jquery/jquery-1.12.4.min.js" tppabs="http://xfjining.com/runtime/_systemjs/jquery/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/form/form.js" tppabs="http://xfjining.com/runtime/_systemjs/form/form.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/autovalidate/validate.js-v=5.1.js" tppabs="http://xfjining.com/runtime/_systemjs/autovalidate/validate.js?v=5.1"></script><link rel="stylesheet" type="text/css" href="runtime/_systemjs/autovalidate/style.css" tppabs="http://xfjining.com/runtime/_systemjs/autovalidate/style.css" />
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artdialog/artDialog.js-v=4.8.js" tppabs="http://xfjining.com/runtime/_systemjs/artdialog/artDialog.js?v=4.8"></script><script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artdialog/plugins/iframeTools.js" tppabs="http://xfjining.com/runtime/_systemjs/artdialog/plugins/iframeTools.js"></script><link rel="stylesheet" type="text/css" href="runtime/_systemjs/artdialog/skins/black.css" tppabs="http://xfjining.com/runtime/_systemjs/artdialog/skins/black.css" />
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artTemplate/artTemplate.js" tppabs="http://xfjining.com/runtime/_systemjs/artTemplate/artTemplate.js"></script><script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artTemplate/artTemplate-plugin.js" tppabs="http://xfjining.com/runtime/_systemjs/artTemplate/artTemplate-plugin.js"></script>
+	<!--[if IE]><script src="views/huawei/javascript/html5.js" tppabs="http://xfjining.com/views/huawei/javascript/html5.js"></script><![endif]-->
+	<script src="views/huawei/javascript/site.js" tppabs="http://xfjining.com/views/huawei/javascript/site.js"></script>
+	<script type='text/javascript' src="public/javascript/public.js" tppabs="http://xfjining.com/public/javascript/public.js"></script>
+	<link rel="stylesheet" href="views/huawei/skin/default/style/style.css" tppabs="http://xfjining.com/views/huawei/skin/default/style/style.css">
+</head>
+<body>
+<!--
+
+模版使用字体图标为优化过的 awesome 3.0 图标字体库
+
+使用帮助见:http://www.bootcss.com/p/font-awesome/
+
+ -->
+<!-- 顶部工具栏 -->
+<div class="header_top">
+	<div class="web">
+		<div class="welcome">
+			欢迎您来到 内蒙古未莱网络营销科技有限公司！
+		</div>
+		<ul class="top_tool">
+			<li></li>
+			<li><a href="">个人中心</a></li>
+			<li><a href="">申请开店</a></li>
+            <li><a href="">商家列表</a></li>
+			<!--<li><a href="/index.php?controller=seller&action=index">商家管理</a></li>-->
+			<li><a href="">使用帮助</a></li>
+		</ul>
+	</div>
+</div>
+<!-- 顶部工具栏 -->
+<header class="header">
+	<!-- logo与搜索 -->
+	<div class="body_wrapper">
+		<div class="web">
+			<!-- logo -->
+			<div class="logo_layer">
+				<a title="内蒙古未莱网络营销科技有限公司" href="market.jsp" tppabs="http://xfjining.com/" class="logo">
+					<img src="upload/logo/20200723052427260.png" tppabs="http://xfjining.com/upload/logo/20200723052427260.png">
+				</a>
+			</div>
+			<!-- 注册与登录 -->
+			<div class="body_toolbar">
+									<div class="body_toolbar_btn login_reg">
+						<a href="index.php-controller=simple&action=login.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=login">登录</a>
+						<em> | </em>
+						<a class="reg" href="index.php-controller=simple&action=reg.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=reg">注册</a>
+					</div>
+							</div>
+			<!-- 注册与登录 -->
+			<!--购物车模板 开始-->
+			<div class="header_cart" name="mycart">
+				<a href="index.php-controller=simple&action=cart.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=cart" class="go_cart">
+					<i class="fa fa-shopping-cart"></i>
+					<em class="sign_total" name="mycart_count"]>0</em>
+				</a>
+				<div class="cart_simple" id="div_mycart"></div>
+			</div>
+			<script type='text/html' id='cartTemplete'>
+			<div class='cart_panel'>
+				<%if(goodsCount){%>
+					<!-- 购物车物品列表 -->
+					<ul class='cart_list'>
+						<%for(var item in goodsData){%>
+						<%var data = goodsData[item]%>
+						<li id="site_cart_dd_<%=item%>">
+							<em><%=(window().parseInt(item)+1)%></em>
+							<a target="_blank" href="/index.php?controller=site&action=products&id=<%=data['goods_id']%>">
+								<img src="<%=webroot(data['img'])%>">
+							</a>
+							<a class="shop_name" target="_blank" href="/index.php?controller=site&action=products&id=<%=data['goods_id']%>"><%=data['name']%></a>
+							<!-- <p class="shop_class"></p> -->
+							<div class="shop_price"><p>￥ <%=data['sell_price']%> <span>x <%=data['count']%></span></p></div>
+							<i class="fa fa-remove" onclick="removeCart('<%=data['id']%>','<%=data['type']%>');$('#site_cart_dd_<%=item%>').hide('slow');"></i>
+						</li>
+						<%}%>
+					</ul>
+					<!-- 购物车物品列表 -->
+					<!-- 购物车物品统计 -->
+					<div class="cart_total">
+						<p>
+							共<span name="mycart_count"><%=goodsCount%></span>件
+							总额：<em name="mycart_sum">￥<%=goodsSum%></em>
+						</p>
+						<a href="index.php-controller=simple&action=cart.htm"/*tpa=http://xfjining.com/index.php?controller=simple&action=cart*/>结算</a>
+					</div>
+					<!-- 购物车物品统计 -->
+				<%}else{%>
+					<!-- 购物车无内容 -->
+					<div class='cart_no'>购物车空空如也~</div>
+				<%}%>
+			</div>
+			</script>
+			<!--购物车模板 结束-->
+			<!-- 搜索框 -->
+			<div class="search_box">
+					<!-- 搜索内容 -->
+				<form method='get' action="http://xfjining.com/index.php">
+					<input type='hidden' name='controller' value='site'>
+					<input type='hidden' name='action' value='search_list'>
+					<div class="search">
+						<input type="text" name='word' class="search_keyword" autocomplete="off">
+						<button class="search_submit" type="submit">
+							<i class="fa fa-search"></i>
+						</button>
+					</div>
+				</form>
+				<!-- 热门搜索 -->
+				<div class="search_hotwords">
+									</div>
+			</div>
+		</div>
+	</div>
+		<!-- logo与搜索 -->
+
+	<div class="nav_bar">
+		<div class="home_nav_bar user_center">
+		<!-- 导航栏 -->
+		<div class="web">
+			<div class="nav_index">
+				<ul class="nav">
+					<li class="user_nav_index home_nav_index"><a href="market.jsp"><span>首 页</span></a></li>
+										<li class="user_nav_index home_nav_index"><a href="index.php-controller=site&action=article.htm"><span>有偿信息</span></a></li>
+									</ul>
+			</div>
+		</div>
+		</div>
+	</div>
+</header>
+
+<!--主要模板内容 开始-->
+<div class="home_content">
+<div class="bigweb">
+<section class="breadcrumb">
+	<span>您当前的位置：</span> <a href="market.jsp" tppabs="http://xfjining.com/">首页</a> > <a href="index.php-controller=site&action=article.htm" tppabs="http://xfjining.com/index.php?controller=site&action=article">资讯列表</a> > 电商平台下一步：信息化的极致体验</section>
+
+
+<section class="web">
+	<section class="article_main">
+		<section class="article article_infor">
+			<header>
+				<h1 class="article_title">电商平台下一步：信息化的极致体验</h1>
+				<time class="article_date">发布日期：2020-07-22 18:55:11</time>
+			</header>
+			<article id="article_content" style="line-height:40px; font-size:14px;">  在今天，电商正在由一个过热话题变为常规话题——这句话的意思不是其已过时，恰恰相反，指的是这种模式正在彻底成为主流。当产业进入成熟期，细节的雕琢就开始带来价值。在这些细节当中，信息化提升效率、保证客.户.信.息安全甚至如何与金融机构对接实现更高效融资都可以从大财务的视角审视。正如甫瀚咨询的董事总经理及IT咨询业务负责人彭铭楷所言，随着电商领域巨头在业务上的不断创新和更多传统企业进入电商领域，电商系统和平台的建设投入也呈现爆炸式增长。但今天的IT发展水平、应用场景和技术成熟度，已与十几年前有了天渊之别。信息技术已不仅仅单纯地在为电商运营提供基础技术支撑，更实现了“技术驱动”的价值呈现。<br />
+  <br />
+  彭铭楷有多年信息技术领域的经验，负责过多个IT战略规划和改建的项目。从经手的不计其数的案例中，彭铭楷总结出对电商而言颇为实用的发展要素，涵盖系统建设、融资要点、风险控制等内容。<br />
+  <br />
+  信息化的极致体验<br />
+  <br />
+  即使在传统行业中，信息系统提升企业效率也都被日渐重视。在电商平台上，高效稳定的系统更是成为提升业绩和用户体验的充分必要条件。彭铭楷认为，电商平台的信息化建设应关注三个重点：<br />
+  <br />
+  一是从“技术实现”思维转向“技术价值导向”思维。从根源上定义和理解“技术可以带来什么业务价值”、“如何应用技术提升企业的竞争优势”的问题，这也将成为电商平台信息化建设的核心思想和指导原则；二是关注于数据价值实现。现有的电商平台，更关注于数据流和数据架构的规划：从源头建立健全数据管理和建模，实现从数据中提取用户行为和偏好、商户信用等具有商业价值的数据。电商希望通过数据分析和应用，提升业务运行目标和质量，实现企业商业上的突破；三是信息安全是电商平台建设的重中之重。<br />
+  <br />
+  小微企业的平台共赢<br />
+  <br />
+  除了企业的自有线上建设，我们所说的“电商”概念，更多是指“电商平台”，这其中就包括无数入驻平台的大小企业。彭铭楷感叹，对于电商平台上的众多小微企业（比如庞大的淘.宝店铺）而言，系统建设是一个巨大的“吞金兽”，其高昂的成本，是其无法承受之痛。彭铭楷认为，小微企业在电商化过程中，有三个维度可以提升自身价值，降低自身运营成本，实现管理上的突破，打造自身“小而美”的电商品牌：<br />
+  <br />
+  善于利用成熟的信息化工具、平台。对于小微电商企业，要勇于脱离系统建设黑洞，利用专业化电商平台和云服务，低成本、高效率地打造电商供应链和前台，并与淘.宝、ebay、Amazon等巨型电商平台进行对接，实现信息实现allinone的电商云应用；<br />
+  <br />
+  集中于自身品牌建设，产品的优化。电子商务缩短了厂商和消费者之间的距离、减少了流通环节，改善了传统经营方式和营销渠道，但本质上对品牌、品质的追求并没有改变。有效地解决工具和平台的问题后，小微企业也需要投入资源来建设品牌。小微企业需要找到自己的消费群体和利基市场进行深耕细作；<br /></article>……
+		</section>
+      <section id="demoBtn" style="text-align:center; line-height:60px;">单篇阅读<span style="color:#ec1717">3元/条</span>，请点击<a href="index.php-controller=site&action=notice_detail&id=1.htm" tppabs="http://xfjining.com/index.php?controller=site&action=notice_detail&id=1" target="_blank" style="color:#ec1717">付款</a>后查看（开通年费会员600/年）</section>
+<script>
+    var oP = document.getElementById('article_content');
+    var oBtn = document.getElementById('demoBtn');
+    var allContent = oP.innerHTML;                   //存放所有内容
+    oP.innerHTML = oP.innerHTML.substr(0,240);        //截取前100个字符
+    oBtn.onclick=function(){
+    //    oP.innerHTML = allContent;                    //显示所有内容
+    }
+</script>
+        
+			</section>
+	<!-- 文章详情侧边 -->
+	<aside class="article_bar">
+		<!-- 资讯分类 -->
+		<nav class="news_article_box">
+			<h3 class="news_article_box_head">资讯分类</h3>
+			<ul class="news_article_infor">
+							</ul>
+		</nav>
+		<!-- 资讯分类 -->
+	</aside>
+	<!-- 文章详情侧边 -->
+</section>
+</div>
+
+</div>
+<!--主要模板内容 结束-->
+
+<footer class="foot">
+	<!--<section class="service">
+		<ul>
+			<li class="item1">
+				<i class="fa fa-star"></i>
+				<strong>正品优选</strong>
+			</li>
+			<li class="item2">
+				<i class="fa fa-globe"></i>
+				<strong>上市公司</strong>
+			</li>
+			<li class="item3">
+				<i class="fa fa-inbox"></i>
+				<strong>300家连锁门店</strong>
+			</li>
+			<li class="item4">
+				<i class="fa fa-map-marker"></i>
+				<strong>上百家维修网点 全国联保</strong>
+			</li>
+		</ul>
+	</section>-->
+	<section class="copy">
+		<div class="footer" style="text-align:center;">	<p class="copyright">		Powered by <span style="font-family:'微软雅黑';"><span style="background-color:#FFEDC4;">内蒙古未莱网络营销科技有限公司</span></span><span style="background-color:#FFEDC4;font-family:'微软雅黑';"></span> 	</p>Copyright © 2021 <a href="javascript:if(confirm(%27https://beian.miit.gov.cn/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://beian.miit.gov.cn/%27" tppabs="https://beian.miit.gov.cn/" target="_blank">蒙ICP备2021000771号-1</a> </div>	</section>
+</footer>
+
+</body>
+</html>
+<script>
+//当首页时显示分类
+
+$(function(){
+	$('input:text[name="word"]').val("");
+});
+</script>
+<script type="text/javascript">
+_webUrl = "index.php-controller=errors&action=error&message=.htm"/*tpa=http://xfjining.com/index.php?controller=errors&action=error&message=*/;_themePath = "/views/huawei/";_skinPath = "/views/huawei/skin/default/";_webRoot = "/";
+</script>

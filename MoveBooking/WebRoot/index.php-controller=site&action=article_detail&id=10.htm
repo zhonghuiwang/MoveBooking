@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>内蒙古未莱网络营销科技有限公司</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link type="image/x-icon" href="favicon.ico" tppabs="http://xfjining.com/favicon.ico" rel="icon">
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/jquery/jquery-1.12.4.min.js" tppabs="http://xfjining.com/runtime/_systemjs/jquery/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/form/form.js" tppabs="http://xfjining.com/runtime/_systemjs/form/form.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/autovalidate/validate.js-v=5.1.js" tppabs="http://xfjining.com/runtime/_systemjs/autovalidate/validate.js?v=5.1"></script><link rel="stylesheet" type="text/css" href="runtime/_systemjs/autovalidate/style.css" tppabs="http://xfjining.com/runtime/_systemjs/autovalidate/style.css" />
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artdialog/artDialog.js-v=4.8.js" tppabs="http://xfjining.com/runtime/_systemjs/artdialog/artDialog.js?v=4.8"></script><script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artdialog/plugins/iframeTools.js" tppabs="http://xfjining.com/runtime/_systemjs/artdialog/plugins/iframeTools.js"></script><link rel="stylesheet" type="text/css" href="runtime/_systemjs/artdialog/skins/black.css" tppabs="http://xfjining.com/runtime/_systemjs/artdialog/skins/black.css" />
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artTemplate/artTemplate.js" tppabs="http://xfjining.com/runtime/_systemjs/artTemplate/artTemplate.js"></script><script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artTemplate/artTemplate-plugin.js" tppabs="http://xfjining.com/runtime/_systemjs/artTemplate/artTemplate-plugin.js"></script>
+	<!--[if IE]><script src="views/huawei/javascript/html5.js" tppabs="http://xfjining.com/views/huawei/javascript/html5.js"></script><![endif]-->
+	<script src="views/huawei/javascript/site.js" tppabs="http://xfjining.com/views/huawei/javascript/site.js"></script>
+	<script type='text/javascript' src="public/javascript/public.js" tppabs="http://xfjining.com/public/javascript/public.js"></script>
+	<link rel="stylesheet" href="views/huawei/skin/default/style/style.css" tppabs="http://xfjining.com/views/huawei/skin/default/style/style.css">
+</head>
+<body>
+<!--
+
+模版使用字体图标为优化过的 awesome 3.0 图标字体库
+
+使用帮助见:http://www.bootcss.com/p/font-awesome/
+
+ -->
+<!-- 顶部工具栏 -->
+<div class="header_top">
+	<div class="web">
+		<div class="welcome">
+			欢迎您来到 内蒙古未莱网络营销科技有限公司！
+		</div>
+		<ul class="top_tool">
+			<li></li>
+			<li><a href="">个人中心</a></li>
+			<li><a href="">申请开店</a></li>
+            <li><a href="">商家列表</a></li>
+			<!--<li><a href="/index.php?controller=seller&action=index">商家管理</a></li>-->
+			<li><a href="">使用帮助</a></li>
+		</ul>
+	</div>
+</div>
+<!-- 顶部工具栏 -->
+<header class="header">
+	<!-- logo与搜索 -->
+	<div class="body_wrapper">
+		<div class="web">
+			<!-- logo -->
+			<div class="logo_layer">
+				<a title="内蒙古未莱网络营销科技有限公司" href="market.jsp" tppabs="http://xfjining.com/" class="logo">
+					<img src="upload/logo/20200723052427260.png" tppabs="http://xfjining.com/upload/logo/20200723052427260.png">
+				</a>
+			</div>
+			<!-- 注册与登录 -->
+			<div class="body_toolbar">
+									<div class="body_toolbar_btn login_reg">
+						<a href="index.php-controller=simple&action=login.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=login">登录</a>
+						<em> | </em>
+						<a class="reg" href="index.php-controller=simple&action=reg.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=reg">注册</a>
+					</div>
+							</div>
+			<!-- 注册与登录 -->
+			<!--购物车模板 开始-->
+			<div class="header_cart" name="mycart">
+				<a href="index.php-controller=simple&action=cart.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=cart" class="go_cart">
+					<i class="fa fa-shopping-cart"></i>
+					<em class="sign_total" name="mycart_count"]>0</em>
+				</a>
+				<div class="cart_simple" id="div_mycart"></div>
+			</div>
+			<script type='text/html' id='cartTemplete'>
+			<div class='cart_panel'>
+				<%if(goodsCount){%>
+					<!-- 购物车物品列表 -->
+					<ul class='cart_list'>
+						<%for(var item in goodsData){%>
+						<%var data = goodsData[item]%>
+						<li id="site_cart_dd_<%=item%>">
+							<em><%=(window().parseInt(item)+1)%></em>
+							<a target="_blank" href="/index.php?controller=site&action=products&id=<%=data['goods_id']%>">
+								<img src="<%=webroot(data['img'])%>">
+							</a>
+							<a class="shop_name" target="_blank" href="/index.php?controller=site&action=products&id=<%=data['goods_id']%>"><%=data['name']%></a>
+							<!-- <p class="shop_class"></p> -->
+							<div class="shop_price"><p>￥ <%=data['sell_price']%> <span>x <%=data['count']%></span></p></div>
+							<i class="fa fa-remove" onclick="removeCart('<%=data['id']%>','<%=data['type']%>');$('#site_cart_dd_<%=item%>').hide('slow');"></i>
+						</li>
+						<%}%>
+					</ul>
+					<!-- 购物车物品列表 -->
+					<!-- 购物车物品统计 -->
+					<div class="cart_total">
+						<p>
+							共<span name="mycart_count"><%=goodsCount%></span>件
+							总额：<em name="mycart_sum">￥<%=goodsSum%></em>
+						</p>
+						<a href="index.php-controller=simple&action=cart.htm"/*tpa=http://xfjining.com/index.php?controller=simple&action=cart*/>结算</a>
+					</div>
+					<!-- 购物车物品统计 -->
+				<%}else{%>
+					<!-- 购物车无内容 -->
+					<div class='cart_no'>购物车空空如也~</div>
+				<%}%>
+			</div>
+			</script>
+			<!--购物车模板 结束-->
+			<!-- 搜索框 -->
+			<div class="search_box">
+					<!-- 搜索内容 -->
+				<form method='get' action="http://xfjining.com/index.php">
+					<input type='hidden' name='controller' value='site'>
+					<input type='hidden' name='action' value='search_list'>
+					<div class="search">
+						<input type="text" name='word' class="search_keyword" autocomplete="off">
+						<button class="search_submit" type="submit">
+							<i class="fa fa-search"></i>
+						</button>
+					</div>
+				</form>
+				<!-- 热门搜索 -->
+				<div class="search_hotwords">
+									</div>
+			</div>
+		</div>
+	</div>
+		<!-- logo与搜索 -->
+
+	<div class="nav_bar">
+		<div class="home_nav_bar user_center">
+		<!-- 导航栏 -->
+		<div class="web">
+			<div class="nav_index">
+				<ul class="nav">
+					<li class="user_nav_index home_nav_index"><a href="market.jsp"><span>首 页</span></a></li>
+										<li class="user_nav_index home_nav_index"><a href="index.php-controller=site&action=article.htm"><span>有偿信息</span></a></li>
+									</ul>
+			</div>
+		</div>
+		</div>
+	</div>
+</header>
+
+<!--主要模板内容 开始-->
+<div class="home_content">
+<div class="bigweb">
+<section class="breadcrumb">
+	<span>您当前的位置：</span> <a href="index.htm" tppabs="http://xfjining.com/">首页</a> > <a href="index.php-controller=site&action=article.htm" tppabs="http://xfjining.com/index.php?controller=site&action=article">资讯列表</a> > 从假洋河酒事件看 电商监督制度缺失</section>
+
+
+<section class="web">
+	<section class="article_main">
+		<section class="article article_infor">
+			<header>
+				<h1 class="article_title">从假洋河酒事件看 电商监督制度缺失</h1>
+				<time class="article_date">发布日期：2020-07-22 18:54:58</time>
+			</header>
+			<article id="article_content" style="line-height:40px; font-size:14px;">  最近一瓶10元廉价酒变成400元洋河天之蓝事件，因各大主流新闻报道而被坊间热议。事件中，检察院人员发现整个事件中，物流环节存在巨大漏洞，长期利用物流冒以配件、家电之名将大量假酒发向全国的行为背后，是拆包检查的自律公约的失效。<br />
+  <br />
+  同样的行为，也发生在如今野蛮生长的微商、电商中。由于在具体的运营环节相应监管体制的匮乏，大量涌入电商市场的假货通过这个巨大的销售网络向全国兜售。虽也有自律公约，但单纯依靠自律形成可靠监督的行为却在屡次假酒假货事件中被暴露出问题。<br />
+  <br />
+  问题一：国内多数电商没有独立商检部门<br />
+  <br />
+  电商平台绝对是一个鱼龙混杂的聚合性地点，在给大众生活带来巨大便利的同时，也因为渠道、销售方式等成为假货最佳的集散地。在电商刚刚起步的那些年，假货始终是盘旋在电商头顶挥之不去的乌云。即使到现在，仍然是电商的心腹之患。比如在2015年11月号《福布斯》杂志封面上，马云时隔十五年再次露脸。《福布斯》封面以“不可阻挡”为题，同时副标题却是“他的建立在假货上的2000亿帝国”。<br />
+  <br />
+  对于电商平台上的假货，马云也只能无奈地称“阿里巴巴也是假货的受害者。”而在具体打假方面，电商平台一直没有有效的手段，甚至很多电商都没有独立的商检部门。作为国内最大的电商平台，直到2015年12月上旬，阿里巴巴才宣布首次组建平台治理部，负责电商平台打假等管理事宜。阿里尚且如此，其他的电商平台在打假、商检方面的建设就可想而知了。<br />
+  <br />
+  更重要的是，电商平台对假货的态度一直暧昧不清。虽然假货带来了多种问题，但却在某种程度上也变相促进着电商平台的发展，为电商平台带去利益。而且打假需要投入的人力、资金成本太高，在残酷的市场竞争之下，电商平台也不愿意将有限的资金投入到打假中去。面对假货，电商平台往往是抱着睁一只眼闭一只眼的态度。只有被拆穿后，才采取亡羊补牢的弥补行手段。其实，看似诚恳的道歉，只是电商平台自己事先不作为种下的恶果而已。<br />
+  <br />
+  问题二：先涨后降、空买空卖信用监督缺失<br />
+  <br />
+  除了假货问题以外，电商平台在价格上玩的把戏也层出不穷。其中，最被消费者痛恨的当属先涨后降，甚至已经成为电商平台的“潜规则”。而将这一举动玩的最频繁的时候，当属双十一、六一八等所谓的电商大促时段。<br />
+  <br />
+  比如某电商平台的某品牌洗发液双十一前是60多块钱，双十一当天则把价格提到90多。再进行所谓的多种优惠活动，降价之后与平时价格相差无几。这样的例子不胜枚举，已经司空见惯。甚至为了减少消费者的比价，电商平台还出了狠招。淘宝此前就把一家比价插件公司告到法院，称其构成不正当竞争。给出的理由是被告劫持了原本淘宝享有的巨额流量，给原告造成巨大的经济损失<br />
+  <br />
+  在价格层面，电商平台并没有相对应的监督机制，或者说即使有，威慑力也很弱。早在2014年，工商总局就约谈了阿里巴巴、京东等10家大型电商，要求全面梳理近期网络商品价格，防范电商用“先涨价后降价”方法虚构优惠促销。2015年11月，国家发改委价格监督检查与反垄断局公开发布《关于规范网络零售价格行为的提醒书》，明确表示要“禁止虚构原价、虚假优惠折扣等违法行为”。但这样不具备实际操作性的举措，很显然不足以应对电商平台先涨后降的行为。<br />
+  <br />
+  此外，空买空卖、恶意刷单造成的信用问题也在电商平台上屡见不鲜。暂且不提日常数日即刷成钻石店铺这样事，单是双十一大卖家空买空卖、恶意刷单的行为就触目惊心。早在2013年双十一，猫AK男装旗舰店的销售记录中，由字母和星号组成的数个ID反复购买了该店3999元、9999元等价位的同一男装几十单。<br />
+  <br />
+  空买空卖、恶意刷单虽然能够在短期内快速提升电商平台上卖家的信用度，造成一个个销量神话，但后续的退货问题也更容易集中爆发。来自中国行业研究网的一份数据显示，2.14年双十一退货率达25%，部分商家甚至高达40%。其中，全友家私天猫旗舰店近30日的退款率为34.94%，远比行业均值高出约30%。韩都衣舍和杰克琼斯这两家分列女装与男装成交额第一位的品牌，退款率高达64.09%和38.25%。<br />
+  <br />
+  在由数字、信用度等操控一切的电商平台上，空买空卖、恶意刷单虽然是商家为追求销量不得已而为之的事情，但绝不能因此就纵容。归根到底，最后损害的还是整个电商行业的发展。而监管的缺失，也在一定程度上给予这些行为大开方便之门。如何应对，值得深思。<br />
+  <br />
+  问题三：虚假宣传泛滥<br />
+  <br />
+  电商之所以发展地如此迅速，除了便捷的购买方式以外，层出不穷、触手可及的花样优惠活动也是最重要的推手之一。登陆电商网站，映入眼帘的往往就是“秒杀价、一元购、最低折扣、好评率99%、无差评、全网销量第一”等字眼，十分具有冲击力。但如果轻信这些夸张的宣传字眼，就真的被忽悠了。<br />
+  <br />
+  无论是一般人不可能抢到的秒杀、一元购背后的陷阱，还是永远都有的最低折扣、刷出来的好评率99%等，其实不过是一场虚假、夸大宣传的游戏而已。为的就是制造各种爆点，以吸引消费者关注。至于材质造假、参数虚标等，就更加“正常”了。全棉服装里含有其他材质、真丝围巾里面没有真丝、摄像头像素玩文字游戏等都是其中的典型代表案例。<br />
+  <br />
+  去年十月份，工商总局发布《网络商品和服务集中促销活动管理暂行规定》。以详细的条例为依据，严打各种虚假宣传行为。只是面对电商平台的糟乱，并没有取得太好的效果。<br />
+  <br />
+  缺失自律 “假酒事件”将如野草<br />
+  <br />
+  “假酒事件”虽然已经被侦破，但如果物流行业没有深刻反思，最终还会有其他的“假酒事件”出现。电商出现如此多的问题也一样，如果不能在自律上做得更好，问题也会如野草一般层出不穷。就目前来看，现行的监管方式主要依靠工商部门的力量，主要通过举报、专项行动等方式履行监管职能与义务。但与传统的线下市场相比，电商市场已经发生本质变化，使得工商部门对电子商务市场监管力不从心。<br />
+  <br />
+  电子商务交易技术国家工程实验室主任、清华大学教授柴跃廷就认为，相关部门无法进行适时、精准监管及相关的统计分析工作，难以制定与出台针对性强的政策措施。那么问题来了——在政府部门尚不能对电商平台和卖家进行强有力监管的当下，如何保证问题不再出现？<br />
+  <br />
+  实事求是地说，电商将扮演极其重要的角色。不能被眼前的利润蒙蔽，必须加强自我监管的意识。并加大投入，努力斩断问题出现的根源。只是，有几家电商会心甘情愿这样去做呢？<br /></article>……
+		</section>
+      <section id="demoBtn" style="text-align:center; line-height:60px;">单篇阅读<span style="color:#ec1717">3元/条</span>，请点击<a href="index.php-controller=site&action=notice_detail&id=1.htm" tppabs="http://xfjining.com/index.php?controller=site&action=notice_detail&id=1" target="_blank" style="color:#ec1717">付款</a>后查看（开通年费会员600/年）</section>
+<script>
+    var oP = document.getElementById('article_content');
+    var oBtn = document.getElementById('demoBtn');
+    var allContent = oP.innerHTML;                   //存放所有内容
+    oP.innerHTML = oP.innerHTML.substr(0,240);        //截取前100个字符
+    oBtn.onclick=function(){
+    //    oP.innerHTML = allContent;                    //显示所有内容
+    }
+</script>
+        
+			</section>
+	<!-- 文章详情侧边 -->
+	<aside class="article_bar">
+		<!-- 资讯分类 -->
+		<nav class="news_article_box">
+			<h3 class="news_article_box_head">资讯分类</h3>
+			<ul class="news_article_infor">
+							</ul>
+		</nav>
+		<!-- 资讯分类 -->
+	</aside>
+	<!-- 文章详情侧边 -->
+</section>
+</div>
+
+</div>
+<!--主要模板内容 结束-->
+
+<footer class="foot">
+	<!--<section class="service">
+		<ul>
+			<li class="item1">
+				<i class="fa fa-star"></i>
+				<strong>正品优选</strong>
+			</li>
+			<li class="item2">
+				<i class="fa fa-globe"></i>
+				<strong>上市公司</strong>
+			</li>
+			<li class="item3">
+				<i class="fa fa-inbox"></i>
+				<strong>300家连锁门店</strong>
+			</li>
+			<li class="item4">
+				<i class="fa fa-map-marker"></i>
+				<strong>上百家维修网点 全国联保</strong>
+			</li>
+		</ul>
+	</section>-->
+	<section class="copy">
+		<div class="footer" style="text-align:center;">	<p class="copyright">		Powered by <span style="font-family:'微软雅黑';"><span style="background-color:#FFEDC4;">内蒙古未莱网络营销科技有限公司</span></span><span style="background-color:#FFEDC4;font-family:'微软雅黑';"></span> 	</p>Copyright © 2021 <a href="javascript:if(confirm(%27https://beian.miit.gov.cn/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://beian.miit.gov.cn/%27" tppabs="https://beian.miit.gov.cn/" target="_blank">蒙ICP备2021000771号-1</a> </div>	</section>
+</footer>
+
+</body>
+</html>
+<script>
+//当首页时显示分类
+
+$(function(){
+	$('input:text[name="word"]').val("");
+});
+</script>
+<script type="text/javascript">
+_webUrl = "index.php-controller=errors&action=error&message=.htm"/*tpa=http://xfjining.com/index.php?controller=errors&action=error&message=*/;_themePath = "/views/huawei/";_skinPath = "/views/huawei/skin/default/";_webRoot = "/";
+</script>

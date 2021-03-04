@@ -31,7 +31,7 @@
 		</global-results> -->
 		<action name="users_*"
 			class="com.leonyip.movebooking.struts.action.UsersAction" method="{1}">
-			<result name="success">/index.jsp</result>
+			<result name="success">/market.jsp</result>
 			<result name="goMarkert">/market.jsp</result>
 			<result name="backmanage">/WEB-INF/jsp/login.jsp</result>
 			<result name="allusers">/WEB-INF/jsp/userlist.jsp</result>

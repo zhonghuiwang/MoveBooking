@@ -27,7 +27,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="header_right_title">
     <ul>
         <li><a href="">欢迎您!</a></li>
-        <li><a href=""><s:property value="#session.user.name" /></a></li>
+        <s:if test="#session.user == null">
+        	<li><a href="index.php-controller=simple&action=login.htm">点击登录</a></li>
+        </s:if>
+        <s:else>
+        	<li><a href=""><s:property value="#session.user.name" /></a></li>
+        </s:else>
     </ul>
 </div>
     <div class="header-center-title">
@@ -68,8 +73,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="nav-daohang">
             <div class="daohang">
             <ul>
-                <li><a href="index.jsp">首页</a></li>
-                <li><a href="market.jsp">商城</a></li>
+                <li><a href="market.jsp">首页</a></li>
+                <li><a href="index.php-controller=site&action=article.htm">有偿信息</a></li>
             </ul></div>
         </div>
 

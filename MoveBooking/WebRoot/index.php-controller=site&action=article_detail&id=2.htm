@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>内蒙古未莱网络营销科技有限公司</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link type="image/x-icon" href="favicon.ico" tppabs="http://xfjining.com/favicon.ico" rel="icon">
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/jquery/jquery-1.12.4.min.js" tppabs="http://xfjining.com/runtime/_systemjs/jquery/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/form/form.js" tppabs="http://xfjining.com/runtime/_systemjs/form/form.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/autovalidate/validate.js-v=5.1.js" tppabs="http://xfjining.com/runtime/_systemjs/autovalidate/validate.js?v=5.1"></script><link rel="stylesheet" type="text/css" href="runtime/_systemjs/autovalidate/style.css" tppabs="http://xfjining.com/runtime/_systemjs/autovalidate/style.css" />
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artdialog/artDialog.js-v=4.8.js" tppabs="http://xfjining.com/runtime/_systemjs/artdialog/artDialog.js?v=4.8"></script><script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artdialog/plugins/iframeTools.js" tppabs="http://xfjining.com/runtime/_systemjs/artdialog/plugins/iframeTools.js"></script><link rel="stylesheet" type="text/css" href="runtime/_systemjs/artdialog/skins/black.css" tppabs="http://xfjining.com/runtime/_systemjs/artdialog/skins/black.css" />
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artTemplate/artTemplate.js" tppabs="http://xfjining.com/runtime/_systemjs/artTemplate/artTemplate.js"></script><script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artTemplate/artTemplate-plugin.js" tppabs="http://xfjining.com/runtime/_systemjs/artTemplate/artTemplate-plugin.js"></script>
+	<!--[if IE]><script src="views/huawei/javascript/html5.js" tppabs="http://xfjining.com/views/huawei/javascript/html5.js"></script><![endif]-->
+	<script src="views/huawei/javascript/site.js" tppabs="http://xfjining.com/views/huawei/javascript/site.js"></script>
+	<script type='text/javascript' src="public/javascript/public.js" tppabs="http://xfjining.com/public/javascript/public.js"></script>
+	<link rel="stylesheet" href="views/huawei/skin/default/style/style.css" tppabs="http://xfjining.com/views/huawei/skin/default/style/style.css">
+</head>
+<body>
+<!--
+
+模版使用字体图标为优化过的 awesome 3.0 图标字体库
+
+使用帮助见:http://www.bootcss.com/p/font-awesome/
+
+ -->
+<!-- 顶部工具栏 -->
+<div class="header_top">
+	<div class="web">
+		<div class="welcome">
+			欢迎您来到 内蒙古未莱网络营销科技有限公司！
+		</div>
+		<ul class="top_tool">
+			<li></li>
+			<li><a href="">个人中心</a></li>
+			<li><a href="">申请开店</a></li>
+            <li><a href="">商家列表</a></li>
+			<!--<li><a href="/index.php?controller=seller&action=index">商家管理</a></li>-->
+			<li><a href="">使用帮助</a></li>
+		</ul>
+	</div>
+</div>
+<!-- 顶部工具栏 -->
+<header class="header">
+	<!-- logo与搜索 -->
+	<div class="body_wrapper">
+		<div class="web">
+			<!-- logo -->
+			<div class="logo_layer">
+				<a title="内蒙古未莱网络营销科技有限公司" href="market.jsp" tppabs="http://xfjining.com/" class="logo">
+					<img src="upload/logo/20200723052427260.png" tppabs="http://xfjining.com/upload/logo/20200723052427260.png">
+				</a>
+			</div>
+			<!-- 注册与登录 -->
+			<div class="body_toolbar">
+									<div class="body_toolbar_btn login_reg">
+						<a href="index.php-controller=simple&action=login.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=login">登录</a>
+						<em> | </em>
+						<a class="reg" href="index.php-controller=simple&action=reg.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=reg">注册</a>
+					</div>
+							</div>
+			<!-- 注册与登录 -->
+			<!--购物车模板 开始-->
+			<div class="header_cart" name="mycart">
+				<a href="index.php-controller=simple&action=cart.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=cart" class="go_cart">
+					<i class="fa fa-shopping-cart"></i>
+					<em class="sign_total" name="mycart_count"]>0</em>
+				</a>
+				<div class="cart_simple" id="div_mycart"></div>
+			</div>
+			<script type='text/html' id='cartTemplete'>
+			<div class='cart_panel'>
+				<%if(goodsCount){%>
+					<!-- 购物车物品列表 -->
+					<ul class='cart_list'>
+						<%for(var item in goodsData){%>
+						<%var data = goodsData[item]%>
+						<li id="site_cart_dd_<%=item%>">
+							<em><%=(window().parseInt(item)+1)%></em>
+							<a target="_blank" href="/index.php?controller=site&action=products&id=<%=data['goods_id']%>">
+								<img src="<%=webroot(data['img'])%>">
+							</a>
+							<a class="shop_name" target="_blank" href="/index.php?controller=site&action=products&id=<%=data['goods_id']%>"><%=data['name']%></a>
+							<!-- <p class="shop_class"></p> -->
+							<div class="shop_price"><p>￥ <%=data['sell_price']%> <span>x <%=data['count']%></span></p></div>
+							<i class="fa fa-remove" onclick="removeCart('<%=data['id']%>','<%=data['type']%>');$('#site_cart_dd_<%=item%>').hide('slow');"></i>
+						</li>
+						<%}%>
+					</ul>
+					<!-- 购物车物品列表 -->
+					<!-- 购物车物品统计 -->
+					<div class="cart_total">
+						<p>
+							共<span name="mycart_count"><%=goodsCount%></span>件
+							总额：<em name="mycart_sum">￥<%=goodsSum%></em>
+						</p>
+						<a href="index.php-controller=simple&action=cart.htm"/*tpa=http://xfjining.com/index.php?controller=simple&action=cart*/>结算</a>
+					</div>
+					<!-- 购物车物品统计 -->
+				<%}else{%>
+					<!-- 购物车无内容 -->
+					<div class='cart_no'>购物车空空如也~</div>
+				<%}%>
+			</div>
+			</script>
+			<!--购物车模板 结束-->
+			<!-- 搜索框 -->
+			<div class="search_box">
+					<!-- 搜索内容 -->
+				<form method='get' action="http://xfjining.com/index.php">
+					<input type='hidden' name='controller' value='site'>
+					<input type='hidden' name='action' value='search_list'>
+					<div class="search">
+						<input type="text" name='word' class="search_keyword" autocomplete="off">
+						<button class="search_submit" type="submit">
+							<i class="fa fa-search"></i>
+						</button>
+					</div>
+				</form>
+				<!-- 热门搜索 -->
+				<div class="search_hotwords">
+									</div>
+			</div>
+		</div>
+	</div>
+		<!-- logo与搜索 -->
+
+	<div class="nav_bar">
+		<div class="home_nav_bar user_center">
+		<!-- 导航栏 -->
+		<div class="web">
+			<div class="nav_index">
+				<ul class="nav">
+					<li class="user_nav_index home_nav_index"><a href="market.jsp"><span>首 页</span></a></li>
+										<li class="user_nav_index home_nav_index"><a href="index.php-controller=site&action=article.htm"><span>有偿信息</span></a></li>
+									</ul>
+			</div>
+		</div>
+		</div>
+	</div>
+</header>
+
+<!--主要模板内容 开始-->
+<div class="home_content">
+<div class="bigweb">
+<section class="breadcrumb">
+	<span>您当前的位置：</span> <a href="market.jsp" tppabs="http://xfjining.com/">首页</a> > <a href="index.php-controller=site&action=article.htm" tppabs="http://xfjining.com/index.php?controller=site&action=article">资讯列表</a> > 短视频电商众生相：电商们偷摸搞短视频，短视频暗里想自营电商</section>
+
+
+<section class="web">
+	<section class="article_main">
+		<section class="article article_infor">
+			<header>
+				<h1 class="article_title">短视频电商众生相：电商们偷摸搞短视频，短视频暗里想自营电商</h1>
+				<time class="article_date">发布日期：2020-07-22 18:55:51</time>
+			</header>
+			<article id="article_content" style="line-height:40px; font-size:14px;"><span style="color:#343434;background-color:#F8F8F7;">  据近日业内消息，抖音与淘宝签订了70亿的年度框架协议，60亿元广告，10亿元佣金。电商部门的考核指标是GMV导向，签订GMV总目标是400亿规模。而快手介入拼多多，淘宝等各个平台，考核指标是用户满意度，试图建立一个服务于用户的短视频电商生态。<br />
+  <br />
+  6月25日下午，抖音方面回应称，“我们与淘宝一直保持良好的合作，但文中提及的数据不实。”虽然抖音回应数据有偏差，但是并未否认该事件的存在。<br />
+  <br />
+  而快手也是动作频繁，有相关人士称它近日从多家互联网公司挖来产品负责人，任职重要岗位，曾在腾讯手Q与微信任职过的王建伟目前已成为快手产品社区负责人，此外微博商业产品部原负责人也已加盟快手负责电商业务。<br />
+  <br />
+  短视频平台与电商巨头之间的关系可谓是千丝万缕，有业内人士透露：2018年快手直播实现营收400多亿，其中头部电商的直播间营收达到200多亿。快手平台直播前三排名3基本上都是电商。一代抖音电商红人，凭借卖口红“打败”马云的男人李佳琦，美妆博主赤木刚宪等，主要靠短视频算法在抖音卖货。<br />
+  <br />
+  电商巨头联手短视频平台大战618<br />
+  <br />
+  刚刚过去的618大促已落下帷幕，电商巨头们上半年的大战暂时告一段落。在他们发布成绩单里，看到有这样的描述：<br />
+  <br />
+  今年的618大促，淘宝直播引导成交130亿。仅在6月1日的预热环节中，淘宝主播薇娅直播一个半小时，成交额突破6200万，李佳琦则在3分钟内卖出了5000单资生堂红腰子，销售额超600万。<br />
+  <br />
+  京东放的大招是格外重视短视频平台的流量入口，与快手平台合作由快手达人来卖货，老铁们可以直接在快手小店点击购物链接，进入京东App完成交易。以小程序方式接入抖音，用户在抖音看到感兴趣的商品后，可进入小程序购买。<br />
+  <br />
+  京东公布618期间累计下单金额达2015亿元，较去年的1592亿增长26.6%。在实物商品消费持续增长同时，618期间整体服务类商品成交额比平时增长了73%，90%核心品牌发布新品及反向定制商品下单金额同比增长289%，这其中，快手老铁是今年贡献京东618GMV的“生力军”之一。<br />
+  <br />
+  与上一年的电商大促相比，今年618短视频电商玩法整体力度更大，市场需求也更旺盛，包括阿里、京东，拼多多在内的电商平台都在618期间接入了短视频平台，把短视频和视频直播当做主要的流量获取媒介实现引流。<br />
+  <br />
+  短视频要变现，电商要新流量，二者化学反应持续发酵<br />
+  <br />
+  经历了十多年的快速发展后，传统电商的发展模式触到了天花板。QuestMobile发布的《中国移动互联网全景生态流量洞察报告》显示，国内互联网流量红利已然枯竭。数据显示，截止2019年4月，中国移动互联网月活跃用户规模达到11.36亿，同比增速达3.1%。需要强调的是，这是2018年以来首次出现连续两个月环比下跌。QuestMobile分析认为，流量争夺将持续白热化，对于电商来说如何解决获客成了难题。<br />
+  <br />
+  电商平台不遗余力的造节，平台与平台之间除了要应对竞争，更多的关心的是流量持续获取。这种形势下，要如何破解瓶颈困局？<br />
+  <br />
+  根据极光大数据《2019年Q1移动互联网行业数据研究报告》从休闲娱乐app用户使用时长的内部占比来看，短视频和在线视频类app是最大的时间杀手，二者内部占比分别为36.4%和32.2%，其中短视频的占比增幅最大，同比增长65.5%。短视频对新增网民的拉动作用最为明显，新增网民对网络视听应用的使用率中，短视频使用率高达53.2%，高于综合视频、网络直播、网络音乐。<br />
+  <br />
+  用户的注意力已经迁徙到快手、抖音等短视频和直播的企业上，电商巨头为了获取用户自然需要做出改变。36氪研究院6月12日发布的2019《短视频平台用户调研报告》称，短视频平台中有73%的用户是青年人，与网民群体有着较大的重合，其中小镇青年用户占比高达49%。三线及以下城市的用户数量已经超过了5成，而下沉市场正是电商巨头一直在发力的地方。<br />
+  <br />
+  有超过半数的用户认为短视频会影响和改变他们的消费行为，在对平台出现的产品信息态度上，46%的受访者选择会相信，短视频平台的营销潜能有很大的挖掘空间。<br />
+  <br />
+  电商巨头都在想方设法的通过各种渠道、平台来获取更多的流量，一切能够为平台导流的流量平台都会是它们的合作伙伴。一定程度上来看，这也是电商平台在进入增量市场后的各种应对之策，但无论是跟什么样的平台合作，采取什么样的导流方式，最终的目的都是希望挖掘新的流量。<br />
+  <br />
+  短视频变现是整个行业人士所面临的“痛点”。根据字节跳动提供的数据显示，47.9%的短视频内容团队不能盈利，30.25%的内容团队略有盈余，平台补贴是多数内容方的最大收入来源。大部分短视频创业的内容方都过的比较艰难，短视频行业也有了头部效应的趋势：20%的头部挣走了80%的钱，80%的基本不盈利甚至亏损。<br />
+  <br />
+  对于大多数腰部和底部的短视频创作者而言，高额的制作成本并没有换来因流量所得的红利。对于短视频创业者，变现无外乎广告，补贴和电商，电商对创作者门槛更低，对于腰部以下的创作者也有变现的希望。短视频平台在经历了巅峰之后，内容方面开始处于增长乏力阶段。平台为了寻求新的突破口，开始加快推进商业化进程。<br />
+  <br />
+  今年5月，抖音国内DAU在3亿左右，峰值3.1亿，快手DAU在2.1亿上下，如此庞大的用户规模下，结合短视频平台的内容帮助创作者更好的变现，并在维护生态的前提下实行平台商业化，选择电商切入不失为一条好路子。<br />
+  <br />
+  短视频巨头和电商巨头未来可能会从合作走向敌对<br />
+  <br />
+  短视频平台与电商平台相比有自己的优势，同时也存在竞争关系。<br />
+  <br />
+  2018年7月，苏宁上线短视频购物平台“头号买家”；2018年9月，淘宝推出了生活消费短视频“鹿刻”APP，随后，淘宝旗下的“爱逛街”改名“哇哦视频”；2019年京东将抖音以小程序的方式接入京东商城，各大电商巨头均已悄悄在短视频布局。<br />
+  <br />
+  按照目前的运营情况来说，这类APP 短视频流量比不上抖音和快手，电商购物又比不上淘宝京东天猫这样的平台，对于阿里、拼多多等电商平台，短视频、直播带货的效率并没有广告位、钻展、直通车这类强。但是阿里还是布局了淘宝内的直播、短视频，目的是不下牌桌，一旦这个领域成气候，可以快速上马。所以抖音快手对于电商巨头平台来说，目前更像是流量收割的工具。<br />
+  <br />
+  从2018年至今，抖音、快手等短视频平台在电商领域的布局越来越深入。<br />
+  <br />
+  抖音电商带货以平台的达人为主，主要方式是拍摄短视频，这种二类电商的弊端也相当明显，带货商品单一。此前引发争议的“抖音天价烤虾”事件也暴露了字节跳动在二类电商中流程不完善的问题。<br />
+  <br />
+  从4月开始抖音上线了多款以品牌为主的电商小程序，主要有两大特点：一是支持裂变分享，小程序可以分享到抖音好友，微信和QQ同样也能分享。二是在小程序里内置了用户带货功能，当用户进入小程序之后点击拍抖音功能，拍摄的抖音视频就会带上商品的售卖链接。<br />
+  <br />
+  上线电商小程序之后，抖音在自建电商的道路上更进一步。抖音如今已跟各大互联网平台达成合作。在上线“小米商城”“小米有品”等小程序之前，抖音就与小米达成战略合作，而携程、美团也已相继将酒店预定入口放入抖音。618购物节期间，抖音与电商平台京东达成战略合作，抖音在电商领域正在逐步走向开放。<br />
+  <br />
+  据相关消息，抖音很快就会推出自己的小程序开放平台，可以预见，未来会有更多的品牌以小程序的方式进入抖音。从抖音上线电商小程序就可以窥见抖音对于电商的野心，并不仅仅局限于“中介”身份，而是想要打造自己的电商生态闭环。<br />
+  <br />
+  与抖音相比，快手目前或许并没有自建电商的打算。在电商探索方式上，快手更是早早就瞄准了电商直播，在快手的京东618战报中：6月14日到19日期间，66位快手顶级红人进行直播，总计有超过2500万人次观看直播，平均每分钟购买过万元的京东商品。在一个个惊人数据传出之后，各大品牌、公会以及个体卖家主动寻求跟快手上粉丝百万起步的网红KOL合作，以快手直播的方式为其带货，<br />
+  <br />
+  快手目前做的是“平台电商”，直接一点就是导购电商。快手电商有直播间购物车、视频页购物车以及作者个人页小店等入口，并接入了淘宝、京东、拼多多、有赞、快手商品等渠道进行后续购买。此前，官方就曾明确表示，快手会向淘宝、微信等各个平台开放。快手对于电商的态度，更多的是希望帮助红人带货，助力变现，但并不代表快手未来不会考虑自建电商。对于“老铁文化”浓厚的快手来说，已经有用户戏称现在的快手是百货市场，对以内容为主的快手来说，过度电商化伤害用户体验，这是它需要权衡的问题。<br />
+  <br />
+  著名生物学家达尔文曾经说过，“能够生存下来的物种，并不是那些最强壮的，也不是那些最聪明的，而是那些对变化作出快速反应的”。电商巨头，商家、网红……各路人马纷纷开始涌进短视频电商的风口，对流量的渴求将短视频平台在整个电商产业链中的地位急速抬升，但这或许仅仅只是个开始。<br /></span></article>……
+		</section>
+      <section id="demoBtn" style="text-align:center; line-height:60px;">单篇阅读<span style="color:#ec1717">3元/条</span>，请点击<a href="index.php-controller=site&action=notice_detail&id=1.htm" tppabs="http://xfjining.com/index.php?controller=site&action=notice_detail&id=1" target="_blank" style="color:#ec1717">付款</a>后查看（开通年费会员600/年）</section>
+<script>
+    var oP = document.getElementById('article_content');
+    var oBtn = document.getElementById('demoBtn');
+    var allContent = oP.innerHTML;                   //存放所有内容
+    oP.innerHTML = oP.innerHTML.substr(0,240);        //截取前100个字符
+    oBtn.onclick=function(){
+    //    oP.innerHTML = allContent;                    //显示所有内容
+    }
+</script>
+        
+			</section>
+	<!-- 文章详情侧边 -->
+	<aside class="article_bar">
+		<!-- 资讯分类 -->
+		<nav class="news_article_box">
+			<h3 class="news_article_box_head">资讯分类</h3>
+			<ul class="news_article_infor">
+							</ul>
+		</nav>
+		<!-- 资讯分类 -->
+	</aside>
+	<!-- 文章详情侧边 -->
+</section>
+</div>
+
+</div>
+<!--主要模板内容 结束-->
+
+<footer class="foot">
+	<!--<section class="service">
+		<ul>
+			<li class="item1">
+				<i class="fa fa-star"></i>
+				<strong>正品优选</strong>
+			</li>
+			<li class="item2">
+				<i class="fa fa-globe"></i>
+				<strong>上市公司</strong>
+			</li>
+			<li class="item3">
+				<i class="fa fa-inbox"></i>
+				<strong>300家连锁门店</strong>
+			</li>
+			<li class="item4">
+				<i class="fa fa-map-marker"></i>
+				<strong>上百家维修网点 全国联保</strong>
+			</li>
+		</ul>
+	</section>-->
+	<section class="copy">
+		<div class="footer" style="text-align:center;">	<p class="copyright">		Powered by <span style="font-family:'微软雅黑';"><span style="background-color:#FFEDC4;">内蒙古未莱网络营销科技有限公司</span></span><span style="background-color:#FFEDC4;font-family:'微软雅黑';"></span> 	</p>Copyright © 2021 <a href="javascript:if(confirm(%27https://beian.miit.gov.cn/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://beian.miit.gov.cn/%27" tppabs="https://beian.miit.gov.cn/" target="_blank">蒙ICP备2021000771号-1</a> </div>	</section>
+</footer>
+
+</body>
+</html>
+<script>
+//当首页时显示分类
+
+$(function(){
+	$('input:text[name="word"]').val("");
+});
+</script>
+<script type="text/javascript">
+_webUrl = "index.php-controller=errors&action=error&message=.htm"/*tpa=http://xfjining.com/index.php?controller=errors&action=error&message=*/;_themePath = "/views/huawei/";_skinPath = "/views/huawei/skin/default/";_webRoot = "/";
+</script>
