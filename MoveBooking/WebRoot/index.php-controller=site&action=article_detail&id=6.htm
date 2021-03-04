@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>乌兰察布市慧联信息技术有限公司</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link type="image/x-icon" href="favicon.ico" tppabs="http://xfjining.com/favicon.ico" rel="icon">
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/jquery/jquery-1.12.4.min.js" tppabs="http://xfjining.com/runtime/_systemjs/jquery/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/form/form.js" tppabs="http://xfjining.com/runtime/_systemjs/form/form.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/autovalidate/validate.js-v=5.1.js" tppabs="http://xfjining.com/runtime/_systemjs/autovalidate/validate.js?v=5.1"></script><link rel="stylesheet" type="text/css" href="runtime/_systemjs/autovalidate/style.css" tppabs="http://xfjining.com/runtime/_systemjs/autovalidate/style.css" />
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artdialog/artDialog.js-v=4.8.js" tppabs="http://xfjining.com/runtime/_systemjs/artdialog/artDialog.js?v=4.8"></script><script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artdialog/plugins/iframeTools.js" tppabs="http://xfjining.com/runtime/_systemjs/artdialog/plugins/iframeTools.js"></script><link rel="stylesheet" type="text/css" href="runtime/_systemjs/artdialog/skins/black.css" tppabs="http://xfjining.com/runtime/_systemjs/artdialog/skins/black.css" />
+	<script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artTemplate/artTemplate.js" tppabs="http://xfjining.com/runtime/_systemjs/artTemplate/artTemplate.js"></script><script type="text/javascript" charset="UTF-8" src="runtime/_systemjs/artTemplate/artTemplate-plugin.js" tppabs="http://xfjining.com/runtime/_systemjs/artTemplate/artTemplate-plugin.js"></script>
+	<!--[if IE]><script src="views/huawei/javascript/html5.js" tppabs="http://xfjining.com/views/huawei/javascript/html5.js"></script><![endif]-->
+	<script src="views/huawei/javascript/site.js" tppabs="http://xfjining.com/views/huawei/javascript/site.js"></script>
+	<script type='text/javascript' src="public/javascript/public.js" tppabs="http://xfjining.com/public/javascript/public.js"></script>
+	<link rel="stylesheet" href="views/huawei/skin/default/style/style.css" tppabs="http://xfjining.com/views/huawei/skin/default/style/style.css">
+</head>
+<body>
+<!--
+
+模版使用字体图标为优化过的 awesome 3.0 图标字体库
+
+使用帮助见:http://www.bootcss.com/p/font-awesome/
+
+ -->
+<!-- 顶部工具栏 -->
+<div class="header_top">
+	<div class="web">
+		<div class="welcome">
+			欢迎您来到 乌兰察布市慧联信息技术有限公司！
+		</div>
+		<ul class="top_tool">
+			<li></li>
+			<li><a href="index.php-controller=simple&action=login.htm" tppabs="http://xfjining.com/index.php?controller=ucenter&action=index">个人中心</a></li>
+			<li><a href="index.php-controller=simple&action=seller.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=seller">申请开店</a></li>
+            <li><a href="index.php-controller=site&action=seller.htm" tppabs="http://xfjining.com/index.php?controller=site&action=seller">商家列表</a></li>
+			<!--<li><a href="/index.php?controller=seller&action=index">商家管理</a></li>-->
+			<li><a href="index.php-controller=site&action=help_list.htm" tppabs="http://xfjining.com/index.php?controller=site&action=help_list">使用帮助</a></li>
+		</ul>
+	</div>
+</div>
+<!-- 顶部工具栏 -->
+<header class="header">
+	<!-- logo与搜索 -->
+	<div class="body_wrapper">
+		<div class="web">
+			<!-- logo -->
+			<div class="logo_layer">
+				<a title="乌兰察布市慧联信息技术有限公司" href="index.htm" tppabs="http://xfjining.com/" class="logo">
+					<img src="upload/logo/20200723052427260.png" tppabs="http://xfjining.com/upload/logo/20200723052427260.png">
+				</a>
+			</div>
+			<!-- 注册与登录 -->
+			<div class="body_toolbar">
+									<div class="body_toolbar_btn login_reg">
+						<a href="index.php-controller=simple&action=login.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=login">登录</a>
+						<em> | </em>
+						<a class="reg" href="index.php-controller=simple&action=reg.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=reg">注册</a>
+					</div>
+							</div>
+			<!-- 注册与登录 -->
+			<!--购物车模板 开始-->
+			<div class="header_cart" name="mycart">
+				<a href="index.php-controller=simple&action=cart.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=cart" class="go_cart">
+					<i class="fa fa-shopping-cart"></i>
+					<em class="sign_total" name="mycart_count"]>0</em>
+				</a>
+				<div class="cart_simple" id="div_mycart"></div>
+			</div>
+			<script type='text/html' id='cartTemplete'>
+			<div class='cart_panel'>
+				<%if(goodsCount){%>
+					<!-- 购物车物品列表 -->
+					<ul class='cart_list'>
+						<%for(var item in goodsData){%>
+						<%var data = goodsData[item]%>
+						<li id="site_cart_dd_<%=item%>">
+							<em><%=(window().parseInt(item)+1)%></em>
+							<a target="_blank" href="/index.php?controller=site&action=products&id=<%=data['goods_id']%>">
+								<img src="<%=webroot(data['img'])%>">
+							</a>
+							<a class="shop_name" target="_blank" href="/index.php?controller=site&action=products&id=<%=data['goods_id']%>"><%=data['name']%></a>
+							<!-- <p class="shop_class"></p> -->
+							<div class="shop_price"><p>￥ <%=data['sell_price']%> <span>x <%=data['count']%></span></p></div>
+							<i class="fa fa-remove" onclick="removeCart('<%=data['id']%>','<%=data['type']%>');$('#site_cart_dd_<%=item%>').hide('slow');"></i>
+						</li>
+						<%}%>
+					</ul>
+					<!-- 购物车物品列表 -->
+					<!-- 购物车物品统计 -->
+					<div class="cart_total">
+						<p>
+							共<span name="mycart_count"><%=goodsCount%></span>件
+							总额：<em name="mycart_sum">￥<%=goodsSum%></em>
+						</p>
+						<a href="index.php-controller=simple&action=cart.htm"/*tpa=http://xfjining.com/index.php?controller=simple&action=cart*/>结算</a>
+					</div>
+					<!-- 购物车物品统计 -->
+				<%}else{%>
+					<!-- 购物车无内容 -->
+					<div class='cart_no'>购物车空空如也~</div>
+				<%}%>
+			</div>
+			</script>
+			<!--购物车模板 结束-->
+			<!-- 搜索框 -->
+			<div class="search_box">
+					<!-- 搜索内容 -->
+				<form method='get' action="http://xfjining.com/index.php">
+					<input type='hidden' name='controller' value='site'>
+					<input type='hidden' name='action' value='search_list'>
+					<div class="search">
+						<input type="text" name='word' class="search_keyword" autocomplete="off">
+						<button class="search_submit" type="submit">
+							<i class="fa fa-search"></i>
+						</button>
+					</div>
+				</form>
+				<!-- 热门搜索 -->
+				<div class="search_hotwords">
+									</div>
+			</div>
+		</div>
+	</div>
+		<!-- logo与搜索 -->
+
+	<div class="nav_bar">
+		<div class="home_nav_bar user_center">
+		<!-- 导航栏 -->
+		<div class="web">
+			<!-- 分类列表 -->
+			<div class="category_list">
+				<!-- 全部商品 -->
+				<a class="all_goods_sort" href="" target="_blank">
+					<h3 class="all">全部商品</h3>
+				</a>
+				<!-- 全部商品 -->
+				<!-- 分类列表-详情 -->
+				<ul class="cat_list none">
+										<li>
+						<!-- 分类列表-导航模块 -->
+						<div class="cat_nav">
+							<h3><a href="index.php-controller=site&action=pro_list&cat=1.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=1">家用电器</a></h3>
+														<a href="index.php-controller=site&action=pro_list&cat=2.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=2">大家电</a>
+														<a href="index.php-controller=site&action=pro_list&cat=13.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=13">生活电器</a>
+														<a href="index.php-controller=site&action=pro_list&cat=14.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=14">厨房电器</a>
+														<i class="fa fa-angle-right"></i>
+						</div>
+						<!-- 分类列表-导航模块 -->
+						<!-- 分类列表-导航内容模块 -->
+						<div class="cat_more">
+							<h3>
+								<a href="index.php-controller=site&action=pro_list&cat=1.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=1">
+									<span>家用电器</span>
+									<i class="fa fa-angle-right"></i>
+								</a>
+							</h3>
+							<ul class="cat_nav_list">
+																<li><a href="index.php-controller=site&action=pro_list&cat=2.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=2">大家电</a></li>
+																<li><a href="index.php-controller=site&action=pro_list&cat=13.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=13">生活电器</a></li>
+																<li><a href="index.php-controller=site&action=pro_list&cat=14.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=14">厨房电器</a></li>
+															</ul>
+							<ul class="cat_content_list">
+																<li>
+									<a href="index.php-controller=site&action=products&id=281.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=281" target="_blank" title="电饭煲饭锅家用1小型2老式3迷你4单人多功能半球普通一三角蒸米饭">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2If5eL2z7I2waM3T2k1x1MdD0I650MTExMTA2NzY4LnBuZy93LzExOC9oLzExOAO0O0OO0O0O.png" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2If5eL2z7I2waM3T2k1x1MdD0I650MTExMTA2NzY4LnBuZy93LzExOC9oLzExOAO0O0OO0O0O" alt="电饭煲饭锅家用1小型2老式3迷你4单人多功能半球普通一三角蒸米饭">
+										<h3>电饭煲饭锅家用1小型2老式3迷你4单人多功能半球普通一三角蒸米饭</h3>
+										<p class="price">￥ 59.00</p>
+									</a>
+								</li>
+																<li>
+									<a href="index.php-controller=site&action=products&id=272.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=272" target="_blank" title="乐视TV（Letv） S50 Air FL2041全配版 50英寸 2D智能LED液晶 超级电视（红">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2If4eL2z7I2waM3T2k1x1MdD0I640MDczNjQ5MjM1LnBuZy93LzExOC9oLzExOAO0O0OO0O0O.png" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2If4eL2z7I2waM3T2k1x1MdD0I640MDczNjQ5MjM1LnBuZy93LzExOC9oLzExOAO0O0OO0O0O" alt="乐视TV（Letv） S50 Air FL2041全配版 50英寸 2D智能LED液晶 超级电视（红">
+										<h3>乐视TV（Letv） S50 Air FL2041全配版 50英寸 2D智能LED液晶 超级电视（红</h3>
+										<p class="price">￥ 3852.00</p>
+									</a>
+								</li>
+																<li>
+									<a href="index.php-controller=site&action=products&id=273.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=273" target="_blank" title="索尼（SONY） KDL-55W800B 55英寸全高清3D LED液晶电视（黑色）">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2If4eL2z7I2waM3T2k1x1MdD0I640MDczOTI5NDk2LnBuZy93LzExOC9oLzExOAO0O0OO0O0O.png" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2If4eL2z7I2waM3T2k1x1MdD0I640MDczOTI5NDk2LnBuZy93LzExOC9oLzExOAO0O0OO0O0O" alt="索尼（SONY） KDL-55W800B 55英寸全高清3D LED液晶电视（黑色）">
+										<h3>索尼（SONY） KDL-55W800B 55英寸全高清3D LED液晶电视（黑色）</h3>
+										<p class="price">￥ 3200.00</p>
+									</a>
+								</li>
+																<li>
+									<a href="index.php-controller=site&action=products&id=271.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=271" target="_blank" title="飞利浦（PHILIPS）32PHF3056/T3 32英寸 高清LED液晶电视（黑色）">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2If4eL2z7I2waM3T2k1x1MdD0I640MDczMzE5OTIxLnBuZy93LzExOC9oLzExOAO0O0OO0O0O.png" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2If4eL2z7I2waM3T2k1x1MdD0I640MDczMzE5OTIxLnBuZy93LzExOC9oLzExOAO0O0OO0O0O" alt="飞利浦（PHILIPS）32PHF3056/T3 32英寸 高清LED液晶电视（黑色）">
+										<h3>飞利浦（PHILIPS）32PHF3056/T3 32英寸 高清LED液晶电视（黑色）</h3>
+										<p class="price">￥ 2999.00</p>
+									</a>
+								</li>
+															</ul>
+						</div>
+						<!-- 分类列表-导航内容模块 -->
+					</li>
+										<li>
+						<!-- 分类列表-导航模块 -->
+						<div class="cat_nav">
+							<h3><a href="index.php-controller=site&action=pro_list&cat=4.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=4">食品饮料</a></h3>
+														<a href="index.php-controller=site&action=pro_list&cat=33.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=33">酒品</a>
+														<a href="index.php-controller=site&action=pro_list&cat=43.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=43">零食</a>
+														<a href="index.php-controller=site&action=pro_list&cat=45.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=45">牛奶</a>
+														<i class="fa fa-angle-right"></i>
+						</div>
+						<!-- 分类列表-导航模块 -->
+						<!-- 分类列表-导航内容模块 -->
+						<div class="cat_more">
+							<h3>
+								<a href="index.php-controller=site&action=pro_list&cat=4.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=4">
+									<span>食品饮料</span>
+									<i class="fa fa-angle-right"></i>
+								</a>
+							</h3>
+							<ul class="cat_nav_list">
+																<li><a href="index.php-controller=site&action=pro_list&cat=33.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=33">酒品</a></li>
+																<li><a href="index.php-controller=site&action=pro_list&cat=43.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=43">零食</a></li>
+																<li><a href="index.php-controller=site&action=pro_list&cat=45.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=45">牛奶</a></li>
+															</ul>
+							<ul class="cat_content_list">
+																<li>
+									<a href="index.php-controller=site&action=products&id=252.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=252" target="_blank" title="卤味鸭翅麻辣小吃特产熟食即食鸭肉小包装辣味零食香辣 整箱 鸭货">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2If4eL2z7I2waM3T2k1x1MdD0I640MDQxMDMyNTcwLnBuZy93LzExOC9oLzExOAO0O0OO0O0O.png" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2If4eL2z7I2waM3T2k1x1MdD0I640MDQxMDMyNTcwLnBuZy93LzExOC9oLzExOAO0O0OO0O0O" alt="卤味鸭翅麻辣小吃特产熟食即食鸭肉小包装辣味零食香辣 整箱 鸭货">
+										<h3>卤味鸭翅麻辣小吃特产熟食即食鸭肉小包装辣味零食香辣 整箱 鸭货</h3>
+										<p class="price">￥ 14.20</p>
+									</a>
+								</li>
+																<li>
+									<a href="index.php-controller=site&action=products&id=289.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=289" target="_blank" title="青海纯牛奶儿童孕妇补钙营养新鲜牛奶高原奶整箱243mlx12">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2If5eL2z7I2waM3T2k1x1MdD0I650MTE1NDIxMjAxLnBuZy93LzExOC9oLzExOAO0O0OO0O0O.png" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2If5eL2z7I2waM3T2k1x1MdD0I650MTE1NDIxMjAxLnBuZy93LzExOC9oLzExOAO0O0OO0O0O" alt="青海纯牛奶儿童孕妇补钙营养新鲜牛奶高原奶整箱243mlx12">
+										<h3>青海纯牛奶儿童孕妇补钙营养新鲜牛奶高原奶整箱243mlx12</h3>
+										<p class="price">￥ 60.00</p>
+									</a>
+								</li>
+																<li>
+									<a href="index.php-controller=site&action=products&id=216.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=216" target="_blank" title="张裕特选级解百纳干红葡萄酒750ml*6">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5Y0vbM4D2EfveM2j7I2vaN3T2U101OdW0U6z0N2JOOGJhMTkxOGIuanBnL3cvMTE4L2gvMTE4.jpg" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5Y0vbM4D2EfveM2j7I2vaN3T2U101OdW0U6z0N2JOOGJhMTkxOGIuanBnL3cvMTE4L2gvMTE4" alt="张裕特选级解百纳干红葡萄酒750ml*6">
+										<h3>张裕特选级解百纳干红葡萄酒750ml*6</h3>
+										<p class="price">￥ 558.00</p>
+									</a>
+								</li>
+																<li>
+									<a href="index.php-controller=site&action=products&id=251.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=251" target="_blank" title="湖南特产网红辣条豆皮纯手工自制8090怀旧大辣片休闲零食小吃豆干">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2If4eL2z7I2waM3T2k1x1MdD0I640MDQwMzMyNzMyLnBuZy93LzExOC9oLzExOAO0O0OO0O0O.png" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2If4eL2z7I2waM3T2k1x1MdD0I640MDQwMzMyNzMyLnBuZy93LzExOC9oLzExOAO0O0OO0O0O" alt="湖南特产网红辣条豆皮纯手工自制8090怀旧大辣片休闲零食小吃豆干">
+										<h3>湖南特产网红辣条豆皮纯手工自制8090怀旧大辣片休闲零食小吃豆干</h3>
+										<p class="price">￥ 11.35</p>
+									</a>
+								</li>
+															</ul>
+						</div>
+						<!-- 分类列表-导航内容模块 -->
+					</li>
+										<li>
+						<!-- 分类列表-导航模块 -->
+						<div class="cat_nav">
+							<h3><a href="index.php-controller=site&action=pro_list&cat=7.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=7">家具</a></h3>
+														<a href="index.php-controller=site&action=pro_list&cat=8.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=8">家装建材</a>
+														<a href="index.php-controller=site&action=pro_list&cat=31.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=31">卧室家具</a>
+														<i class="fa fa-angle-right"></i>
+						</div>
+						<!-- 分类列表-导航模块 -->
+						<!-- 分类列表-导航内容模块 -->
+						<div class="cat_more">
+							<h3>
+								<a href="index.php-controller=site&action=pro_list&cat=7.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=7">
+									<span>家具</span>
+									<i class="fa fa-angle-right"></i>
+								</a>
+							</h3>
+							<ul class="cat_nav_list">
+																<li><a href="index.php-controller=site&action=pro_list&cat=8.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=8">家装建材</a></li>
+																<li><a href="index.php-controller=site&action=pro_list&cat=31.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=31">卧室家具</a></li>
+															</ul>
+							<ul class="cat_content_list">
+																<li>
+									<a href="index.php-controller=site&action=products&id=204.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=204" target="_blank" title="红苹果床垫（red apple）M603软硬两用 可内视的弹簧护脊席梦思床垫 1800×2000×2">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5Y0vbM4D2EfveM2j7I2vaN3T2Y1x1OdG0R6k0M2JOZmZmYjE1MDQuanBnL3cvMTE4L2gvMTE4.jpg" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5Y0vbM4D2EfveM2j7I2vaN3T2Y1x1OdG0R6k0M2JOZmZmYjE1MDQuanBnL3cvMTE4L2gvMTE4" alt="红苹果床垫（red apple）M603软硬两用 可内视的弹簧护脊席梦思床垫 1800×2000×2">
+										<h3>红苹果床垫（red apple）M603软硬两用 可内视的弹簧护脊席梦思床垫 1800×2000×2</h3>
+										<p class="price">￥ 999.00</p>
+									</a>
+								</li>
+																<li>
+									<a href="index.php-controller=site&action=products&id=203.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=203" target="_blank" title="8H乳胶床垫T1 进口天然乳胶物理防螨 健康环保单人 双人成人儿童 七区弹簧席梦思床垫 咖啡金 18">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5Y0vbM4D2EfveM2j7I2vaN3T2Y131Ndz0R6j0ZmROYWRiMzY3Y2MuanBnL3cvMTE4L2gvMTE4.jpg" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5Y0vbM4D2EfveM2j7I2vaN3T2Y131Ndz0R6j0ZmROYWRiMzY3Y2MuanBnL3cvMTE4L2gvMTE4" alt="8H乳胶床垫T1 进口天然乳胶物理防螨 健康环保单人 双人成人儿童 七区弹簧席梦思床垫 咖啡金 18">
+										<h3>8H乳胶床垫T1 进口天然乳胶物理防螨 健康环保单人 双人成人儿童 七区弹簧席梦思床垫 咖啡金 18</h3>
+										<p class="price">￥ 2299.00</p>
+									</a>
+								</li>
+																<li>
+									<a href="index.php-controller=site&action=products&id=202.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=202" target="_blank" title="美国金可儿(kingkoil)乳胶床垫 席梦思弹簧床垫加厚版 五星级酒店床垫软硬适中 碧玺 高端定制">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5Y0vbM4D2EfveM2j7I2vaN3T2N1i1NdG0Z6i0MjZOYzZkNTM3ZTUuanBnL3cvMTE4L2gvMTE4.jpg" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5Y0vbM4D2EfveM2j7I2vaN3T2N1i1NdG0Z6i0MjZOYzZkNTM3ZTUuanBnL3cvMTE4L2gvMTE4" alt="美国金可儿(kingkoil)乳胶床垫 席梦思弹簧床垫加厚版 五星级酒店床垫软硬适中 碧玺 高端定制">
+										<h3>美国金可儿(kingkoil)乳胶床垫 席梦思弹簧床垫加厚版 五星级酒店床垫软硬适中 碧玺 高端定制</h3>
+										<p class="price">￥ 8199.00</p>
+									</a>
+								</li>
+																<li>
+									<a href="index.php-controller=site&action=products&id=201.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=201" target="_blank" title="美国金可儿(kingkoil)进口乳胶床垫 席梦思弹簧床垫 五星级酒店床垫适中偏硬 托珀 白色 18">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5Y0vbM4D2EfveM2j7I2vaN3T2Q111MdW0Y6z0N2ROYjgxMDdlOGYuanBnL3cvMTE4L2gvMTE4.jpg" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5Y0vbM4D2EfveM2j7I2vaN3T2Q111MdW0Y6z0N2ROYjgxMDdlOGYuanBnL3cvMTE4L2gvMTE4" alt="美国金可儿(kingkoil)进口乳胶床垫 席梦思弹簧床垫 五星级酒店床垫适中偏硬 托珀 白色 18">
+										<h3>美国金可儿(kingkoil)进口乳胶床垫 席梦思弹簧床垫 五星级酒店床垫适中偏硬 托珀 白色 18</h3>
+										<p class="price">￥ 8399.00</p>
+									</a>
+								</li>
+															</ul>
+						</div>
+						<!-- 分类列表-导航内容模块 -->
+					</li>
+										<li>
+						<!-- 分类列表-导航模块 -->
+						<div class="cat_nav">
+							<h3><a href="index.php-controller=site&action=pro_list&cat=10.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=10">箱包</a></h3>
+														<a href="index.php-controller=site&action=pro_list&cat=20.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=20">女包</a>
+														<i class="fa fa-angle-right"></i>
+						</div>
+						<!-- 分类列表-导航模块 -->
+						<!-- 分类列表-导航内容模块 -->
+						<div class="cat_more">
+							<h3>
+								<a href="index.php-controller=site&action=pro_list&cat=10.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=10">
+									<span>箱包</span>
+									<i class="fa fa-angle-right"></i>
+								</a>
+							</h3>
+							<ul class="cat_nav_list">
+																<li><a href="index.php-controller=site&action=pro_list&cat=20.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=20">女包</a></li>
+															</ul>
+							<ul class="cat_content_list">
+																<li>
+									<a href="index.php-controller=site&action=products&id=52.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=52" target="_blank" title="最新欧美时尚大牌真皮女士铂金真皮包包  厂家直销下单备注颜色下单备注颜色">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5U0vbM4D2YfveM2T7Y2vaM3j2A1x1NdT0A620MTYyMzMzMDkxMzYuanBnL3cvMTE4L2gvMTE4.jpg" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5U0vbM4D2YfveM2T7Y2vaM3j2A1x1NdT0A620MTYyMzMzMDkxMzYuanBnL3cvMTE4L2gvMTE4" alt="最新欧美时尚大牌真皮女士铂金真皮包包  厂家直销下单备注颜色下单备注颜色">
+										<h3>最新欧美时尚大牌真皮女士铂金真皮包包  厂家直销下单备注颜色下单备注颜色</h3>
+										<p class="price">￥ 290.00</p>
+									</a>
+								</li>
+																<li>
+									<a href="index.php-controller=site&action=products&id=53.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=53" target="_blank" title="最新欧美时尚大牌专柜同步原版真皮P加编织包包  CF明星专用下单备注颜色">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5U0vbM4D2YfveM2T7Y2vaM3j2A1x1NdT0A620MTYyMzMzMDk2MDIuanBnL3cvMTE4L2gvMTE4.jpg" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5U0vbM4D2YfveM2T7Y2vaM3j2A1x1NdT0A620MTYyMzMzMDk2MDIuanBnL3cvMTE4L2gvMTE4" alt="最新欧美时尚大牌专柜同步原版真皮P加编织包包  CF明星专用下单备注颜色">
+										<h3>最新欧美时尚大牌专柜同步原版真皮P加编织包包  CF明星专用下单备注颜色</h3>
+										<p class="price">￥ 885.00</p>
+									</a>
+								</li>
+																<li>
+									<a href="index.php-controller=site&action=products&id=46.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=46" target="_blank" title="热卖韩版钱包 女士时尚真皮钱包 秋季长款手拿包下单备注颜色">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5U0vbM4D2YfveM2T7Y2vaM3j2A1x1NdT0A620MTYyMzMzMDUzMTAuanBnL3cvMTE4L2gvMTE4.jpg" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5U0vbM4D2YfveM2T7Y2vaM3j2A1x1NdT0A620MTYyMzMzMDUzMTAuanBnL3cvMTE4L2gvMTE4" alt="热卖韩版钱包 女士时尚真皮钱包 秋季长款手拿包下单备注颜色">
+										<h3>热卖韩版钱包 女士时尚真皮钱包 秋季长款手拿包下单备注颜色</h3>
+										<p class="price">￥ 149.00</p>
+									</a>
+								</li>
+																<li>
+									<a href="index.php-controller=site&action=products&id=45.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=45" target="_blank" title="独家专供 大牌原版 莲花纹铂金包35cm头层皮手提包下单备注颜色">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5U0vbM4D2YfveM2T7Y2vaM3j2A1x1NdT0A620MTYyMzMzMDUzNTMuanBnL3cvMTE4L2gvMTE4.jpg" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5U0vbM4D2YfveM2T7Y2vaM3j2A1x1NdT0A620MTYyMzMzMDUzNTMuanBnL3cvMTE4L2gvMTE4" alt="独家专供 大牌原版 莲花纹铂金包35cm头层皮手提包下单备注颜色">
+										<h3>独家专供 大牌原版 莲花纹铂金包35cm头层皮手提包下单备注颜色</h3>
+										<p class="price">￥ 615.00</p>
+									</a>
+								</li>
+															</ul>
+						</div>
+						<!-- 分类列表-导航内容模块 -->
+					</li>
+										<li>
+						<!-- 分类列表-导航模块 -->
+						<div class="cat_nav">
+							<h3><a href="index.php-controller=site&action=pro_list&cat=37.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=37">茶具</a></h3>
+														<a href="index.php-controller=site&action=pro_list&cat=38.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=38">茶具套装</a>
+														<i class="fa fa-angle-right"></i>
+						</div>
+						<!-- 分类列表-导航模块 -->
+						<!-- 分类列表-导航内容模块 -->
+						<div class="cat_more">
+							<h3>
+								<a href="index.php-controller=site&action=pro_list&cat=37.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=37">
+									<span>茶具</span>
+									<i class="fa fa-angle-right"></i>
+								</a>
+							</h3>
+							<ul class="cat_nav_list">
+																<li><a href="index.php-controller=site&action=pro_list&cat=38.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=38">茶具套装</a></li>
+															</ul>
+							<ul class="cat_content_list">
+																<li>
+									<a href="index.php-controller=site&action=products&id=229.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=229" target="_blank" title="日式玻璃茶具套装家用简约整套功夫茶具办公茶杯透明过滤包茶壶小">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2If5eL2z7I2waM3T2k1x1MdD0I650MDI0ODQ3NTE0LnBuZy93LzExOC9oLzExOAO0O0OO0O0O.png" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2If5eL2z7I2waM3T2k1x1MdD0I650MDI0ODQ3NTE0LnBuZy93LzExOC9oLzExOAO0O0OO0O0O" alt="日式玻璃茶具套装家用简约整套功夫茶具办公茶杯透明过滤包茶壶小">
+										<h3>日式玻璃茶具套装家用简约整套功夫茶具办公茶杯透明过滤包茶壶小</h3>
+										<p class="price">￥ 188.00</p>
+									</a>
+								</li>
+																<li>
+									<a href="index.php-controller=site&action=products&id=230.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=230" target="_blank" title="日式茶具套装家用简约办公现代陶瓷功夫茶壶茶杯盖碗茶盘整套白瓷">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2If5eL2z7I2waM3T2k1x1MdD0I650MDI1NDM1OTg4LnBuZy93LzExOC9oLzExOAO0O0OO0O0O.png" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2If5eL2z7I2waM3T2k1x1MdD0I650MDI1NDM1OTg4LnBuZy93LzExOC9oLzExOAO0O0OO0O0O" alt="日式茶具套装家用简约办公现代陶瓷功夫茶壶茶杯盖碗茶盘整套白瓷">
+										<h3>日式茶具套装家用简约办公现代陶瓷功夫茶壶茶杯盖碗茶盘整套白瓷</h3>
+										<p class="price">￥ 318.00</p>
+									</a>
+								</li>
+																<li>
+									<a href="index.php-controller=site&action=products&id=231.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=231" target="_blank" title="石磨 懒人冲茶器功夫茶具套装 家用全自动简约日式陶瓷创意泡茶壶">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2If5eL2z7I2waM3T2k1x1MdD0I650MDI1NjA5MzA4LnBuZy93LzExOC9oLzExOAO0O0OO0O0O.png" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2If5eL2z7I2waM3T2k1x1MdD0I650MDI1NjA5MzA4LnBuZy93LzExOC9oLzExOAO0O0OO0O0O" alt="石磨 懒人冲茶器功夫茶具套装 家用全自动简约日式陶瓷创意泡茶壶">
+										<h3>石磨 懒人冲茶器功夫茶具套装 家用全自动简约日式陶瓷创意泡茶壶</h3>
+										<p class="price">￥ 98.00</p>
+									</a>
+								</li>
+																<li>
+									<a href="index.php-controller=site&action=products&id=233.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=233" target="_blank" title="华墘家用茶具套装整套哥窑汝窑开片功夫茶具龙泉青瓷茶杯茶洗盖碗">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2If5eL2z7I2waM3T2k1x1MdD0I650MDMwMDExOTM4LnBuZy93LzExOC9oLzExOAO0O0OO0O0O.png" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2If5eL2z7I2waM3T2k1x1MdD0I650MDMwMDExOTM4LnBuZy93LzExOC9oLzExOAO0O0OO0O0O" alt="华墘家用茶具套装整套哥窑汝窑开片功夫茶具龙泉青瓷茶杯茶洗盖碗">
+										<h3>华墘家用茶具套装整套哥窑汝窑开片功夫茶具龙泉青瓷茶杯茶洗盖碗</h3>
+										<p class="price">￥ 598.00</p>
+									</a>
+								</li>
+															</ul>
+						</div>
+						<!-- 分类列表-导航内容模块 -->
+					</li>
+										<li>
+						<!-- 分类列表-导航模块 -->
+						<div class="cat_nav">
+							<h3><a href="index.php-controller=site&action=pro_list&cat=39.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=39">办公用品</a></h3>
+														<a href="index.php-controller=site&action=pro_list&cat=40.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=40">文具</a>
+														<i class="fa fa-angle-right"></i>
+						</div>
+						<!-- 分类列表-导航模块 -->
+						<!-- 分类列表-导航内容模块 -->
+						<div class="cat_more">
+							<h3>
+								<a href="index.php-controller=site&action=pro_list&cat=39.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=39">
+									<span>办公用品</span>
+									<i class="fa fa-angle-right"></i>
+								</a>
+							</h3>
+							<ul class="cat_nav_list">
+																<li><a href="index.php-controller=site&action=pro_list&cat=40.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=40">文具</a></li>
+															</ul>
+							<ul class="cat_content_list">
+																<li>
+									<a href="index.php-controller=site&action=products&id=241.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=241" target="_blank" title="pilot日本百乐水笔中性笔P500考试学生用女针管彩色签字男绿紫红蓝黑色0.5mm文具水性进口高考笔买6支送礼品">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0wbO4D2Ef2eL2z7I2waM3T2k1w1OdD0E620MDYzMDU5OTUzLnBuZy93LzExOC9oLzExOAO0O0OO0O0O.png" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0wbO4D2Ef2eL2z7I2waM3T2k1w1OdD0E620MDYzMDU5OTUzLnBuZy93LzExOC9oLzExOAO0O0OO0O0O" alt="pilot日本百乐水笔中性笔P500考试学生用女针管彩色签字男绿紫红蓝黑色0.5mm文具水性进口高考笔买6支送礼品">
+										<h3>pilot日本百乐水笔中性笔P500考试学生用女针管彩色签字男绿紫红蓝黑色0.5mm文具水性进口高考笔买6支送礼品</h3>
+										<p class="price">￥ 12.98</p>
+									</a>
+								</li>
+																<li>
+									<a href="index.php-controller=site&action=products&id=239.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=239" target="_blank" title="可印刷广告中性笔定制logo二维码刻字签字笔多色碳素水笔批发促销礼品用品医药广告笔">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0wbO4D2Ef2eL2z7I2waM3T2k1w1OdD0E620MDYwNzA1ODU1LnBuZy93LzExOC9oLzExOAO0O0OO0O0O.png" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0wbO4D2Ef2eL2z7I2waM3T2k1w1OdD0E620MDYwNzA1ODU1LnBuZy93LzExOC9oLzExOAO0O0OO0O0O" alt="可印刷广告中性笔定制logo二维码刻字签字笔多色碳素水笔批发促销礼品用品医药广告笔">
+										<h3>可印刷广告中性笔定制logo二维码刻字签字笔多色碳素水笔批发促销礼品用品医药广告笔</h3>
+										<p class="price">￥ 70.00</p>
+									</a>
+								</li>
+																<li>
+									<a href="index.php-controller=site&action=products&id=240.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=240" target="_blank" title="包邮中性笔签字笔笔芯黑笔0.5mm办公用品批发学生文具水性笔">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0wbO4D2Ef2eL2z7I2waM3T2k1w1OdD0E620MDYyMTAwMTY0LnBuZy93LzExOC9oLzExOAO0O0OO0O0O.png" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0wbO4D2Ef2eL2z7I2waM3T2k1w1OdD0E620MDYyMTAwMTY0LnBuZy93LzExOC9oLzExOAO0O0OO0O0O" alt="包邮中性笔签字笔笔芯黑笔0.5mm办公用品批发学生文具水性笔">
+										<h3>包邮中性笔签字笔笔芯黑笔0.5mm办公用品批发学生文具水性笔</h3>
+										<p class="price">￥ 28.60</p>
+									</a>
+								</li>
+																<li>
+									<a href="index.php-controller=site&action=products&id=238.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=238" target="_blank" title="文正中性笔 笔学生用办公水性笔黑笔芯女孩女生学生考试用笔文具可爱创意黑色中性笔 碳素笔水笔 商务签字笔">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2MfweL2z7I2waM3T2k1x1MdD0M6w0MDk0OTEyMjcwLnBuZy93LzExOC9oLzExOAO0O0OO0O0O.png" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2MfweL2z7I2waM3T2k1x1MdD0M6w0MDk0OTEyMjcwLnBuZy93LzExOC9oLzExOAO0O0OO0O0O" alt="文正中性笔 笔学生用办公水性笔黑笔芯女孩女生学生考试用笔文具可爱创意黑色中性笔 碳素笔水笔 商务签字笔">
+										<h3>文正中性笔 笔学生用办公水性笔黑笔芯女孩女生学生考试用笔文具可爱创意黑色中性笔 碳素笔水笔 商务签字笔</h3>
+										<p class="price">￥ 14.86</p>
+									</a>
+								</li>
+															</ul>
+						</div>
+						<!-- 分类列表-导航内容模块 -->
+					</li>
+										<li>
+						<!-- 分类列表-导航模块 -->
+						<div class="cat_nav">
+							<h3><a href="index.php-controller=site&action=pro_list&cat=46.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=46">服装配饰</a></h3>
+														<a href="index.php-controller=site&action=pro_list&cat=47.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=47">手套</a>
+														<a href="index.php-controller=site&action=pro_list&cat=48.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=48">袜子</a>
+														<a href="index.php-controller=site&action=pro_list&cat=50.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=50">帽子</a>
+														<i class="fa fa-angle-right"></i>
+						</div>
+						<!-- 分类列表-导航模块 -->
+						<!-- 分类列表-导航内容模块 -->
+						<div class="cat_more">
+							<h3>
+								<a href="index.php-controller=site&action=pro_list&cat=46.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=46">
+									<span>服装配饰</span>
+									<i class="fa fa-angle-right"></i>
+								</a>
+							</h3>
+							<ul class="cat_nav_list">
+																<li><a href="index.php-controller=site&action=pro_list&cat=47.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=47">手套</a></li>
+																<li><a href="index.php-controller=site&action=pro_list&cat=48.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=48">袜子</a></li>
+																<li><a href="index.php-controller=site&action=pro_list&cat=50.htm" tppabs="http://xfjining.com/index.php?controller=site&action=pro_list&cat=50">帽子</a></li>
+															</ul>
+							<ul class="cat_content_list">
+																<li>
+									<a href="index.php-controller=site&action=products&id=303.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=303" target="_blank" title="帽子女秋冬季韩版甜美可爱冬天毛绒围巾一体护耳保暖帽加绒三件套">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2MfweL2z7I2waM3T2k1x1MdD0M6w0MTAzNDM3OTcyLnBuZy93LzExOC9oLzExOAO0O0OO0O0O.png" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2MfweL2z7I2waM3T2k1x1MdD0M6w0MTAzNDM3OTcyLnBuZy93LzExOC9oLzExOAO0O0OO0O0O" alt="帽子女秋冬季韩版甜美可爱冬天毛绒围巾一体护耳保暖帽加绒三件套">
+										<h3>帽子女秋冬季韩版甜美可爱冬天毛绒围巾一体护耳保暖帽加绒三件套</h3>
+										<p class="price">￥ 32.50</p>
+									</a>
+								</li>
+																<li>
+									<a href="index.php-controller=site&action=products&id=307.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=307" target="_blank" title="带羊绒衬里皮革手套黑色2019秋季新品">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2MfweL2z7I2waM3T2k1x1MdD0M6w0MTEwMTI2NjQ2LnBuZy93LzExOC9oLzExOAO0O0OO0O0O.png" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2MfweL2z7I2waM3T2k1x1MdD0M6w0MTEwMTI2NjQ2LnBuZy93LzExOC9oLzExOAO0O0OO0O0O" alt="带羊绒衬里皮革手套黑色2019秋季新品">
+										<h3>带羊绒衬里皮革手套黑色2019秋季新品</h3>
+										<p class="price">￥ 380.00</p>
+									</a>
+								</li>
+																<li>
+									<a href="index.php-controller=site&action=products&id=297.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=297" target="_blank" title="春夏袜子女浅口隐形船袜加厚硅胶防滑棉袜纯色韩版日系五双装颜色随机">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2MfweL2z7I2waM3T2k1x1MdD0M6w0MTAwODE4MjcyLnBuZy93LzExOC9oLzExOAO0O0OO0O0O.png" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2MfweL2z7I2waM3T2k1x1MdD0M6w0MTAwODE4MjcyLnBuZy93LzExOC9oLzExOAO0O0OO0O0O" alt="春夏袜子女浅口隐形船袜加厚硅胶防滑棉袜纯色韩版日系五双装颜色随机">
+										<h3>春夏袜子女浅口隐形船袜加厚硅胶防滑棉袜纯色韩版日系五双装颜色随机</h3>
+										<p class="price">￥ 12.50</p>
+									</a>
+								</li>
+																<li>
+									<a href="index.php-controller=site&action=products&id=304.htm" tppabs="http://xfjining.com/index.php?controller=site&action=products&id=304" target="_blank" title="护耳帽女韩国冬天骑车保暖加绒防风可调节雷锋帽可爱滑雪鸭舌帽子">
+										<img class="img-lazyload" src="index.php-controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2MfweL2z7I2waM3T2k1x1MdD0M6w0MTAzNjUxNDU0LnBuZy93LzExOC9oLzExOAO0O0OO0O0O.png" tppabs="http://xfjining.com/index.php?controller=pic&action=thumb&img=dcXeB6s4be20F3k7L6z8I2wfM4T5k0xbM4D2MfweL2z7I2waM3T2k1x1MdD0M6w0MTAzNjUxNDU0LnBuZy93LzExOC9oLzExOAO0O0OO0O0O" alt="护耳帽女韩国冬天骑车保暖加绒防风可调节雷锋帽可爱滑雪鸭舌帽子">
+										<h3>护耳帽女韩国冬天骑车保暖加绒防风可调节雷锋帽可爱滑雪鸭舌帽子</h3>
+										<p class="price">￥ 22.60</p>
+									</a>
+								</li>
+															</ul>
+						</div>
+						<!-- 分类列表-导航内容模块 -->
+					</li>
+									</ul>
+				<!-- 分类列表-详情 -->
+			</div>
+			<!-- 分类列表 -->
+			<!-- 导航索引 -->
+			<div class="nav_index">
+				<ul class="nav">
+					<li class="user_nav_index home_nav_index"><a href="index.php-controller=site&action=index.htm" tppabs="http://xfjining.com/index.php?controller=site&action=index"><span>首 页</span></a></li>
+										<li class="user_nav_index home_nav_index"><a href="index.php-controller=index.php&controller=site&action=article.htm" tppabs="http://xfjining.com/index.php?controller=index.php&controller=site&action=article"><span>有偿信息</span></a></li>
+									</ul>
+			</div>
+		</div>
+		</div>
+	</div>
+</header>
+
+<!--主要模板内容 开始-->
+<div class="home_content">
+<div class="bigweb">
+<section class="breadcrumb">
+	<span>您当前的位置：</span> <a href="index.htm" tppabs="http://xfjining.com/">首页</a> > <a href="index.php-controller=site&action=article.htm" tppabs="http://xfjining.com/index.php?controller=site&action=article">资讯列表</a> > 茅台电商开卖，黄牛降价甩货，买茅台的抢购潮可以终结了吗？</section>
+
+
+<section class="web">
+	<section class="article_main">
+		<section class="article article_infor">
+			<header>
+				<h1 class="article_title">茅台电商开卖，黄牛降价甩货，买茅台的抢购潮可以终结了吗？</h1>
+				<time class="article_date">发布日期：2020-07-22 18:55:25</time>
+			</header>
+			<article id="article_content" style="line-height:40px; font-size:14px;">  在中国如果问有没有一种酒可以引发所有人的抢购狂潮，相信茅台一定会是异口同声的答案，作为一款白酒消费品，茅台酒已经超越了其本身的价值，成为了国人抢购的焦点，如今茅台要登陆电商了，如果电商茅台开卖，茅台排队抢购的狂潮可以终结了吗？<br />
+  <br />
+  一、天猫开始卖茅台了<br />
+  <br />
+  9月20日，贵州省招标投标公共服务平台公示了贵州茅台酒全国综合类电商公开招商公示结果，天猫超市成为茅台电商渠道服务商。天猫超市宣布将以每瓶1499元的价格销售500ml装53度飞天茅台。据了解，目前超过99%的疑似黄牛订单，都会被拦截。<br />
+  <br />
+  近年来，正品飞天茅台酒可谓“一瓶难求”，市场上的价格也是高速上涨。今年以来，500ml装53度飞天茅台的市场流通价格从4月份的1900元/瓶，上涨到8月的2200元/瓶以上，有的地方价格甚至比1499元的市场指导价高出50% 以上。<br />
+  <br />
+  不久前，贵州茅台以1499元指导价向Costco超市上海店和物美、大润发、华润万家等全国商超投放，顿时遭遇疯狂抢购。<br />
+  <br />
+  在这样的情况下，我们看到9月13日，茅台集团董事长李保芳在六盘水进行调研时，与来店买酒的市民交流时强调：“茅台酒是拿来喝的，不是拿来炒的，请不要做‘黄牛’，不要非法倒卖茅台酒。”<br />
+  <br />
+  阿里巴巴则表示，“无论是利用软件大规模扫货，还是依靠‘人肉’下订单，疑似黄牛的交易都会被识别并阻止在阿里平台之外。”阿里安全的负责人介绍，为解决黄牛问题，阿里巴巴专门为商家打造了恶意行为防控工具，在阿里平台上进入系统的每一笔订单，0.01秒以内就会经过100余项安全检测和技术防护，一旦发现问题，都会进行识别预警和事先拦截，保障每一瓶茅台酒都被卖到真正的消费者手中。<br />
+  <br />
+  也正是如此，电商平台即将开售1499元飞天茅台，让很多囤货惜售的黄牛感受到了压力。在茅台确定天猫苏宁为电商渠道供应商之后，多地的茅台市场报价应声回落，很多黄牛最近两天更是开始降价抛售。不久前还曾涨到2600元的53度飞天茅台，在部分黄牛交流群中甚至以2000元左右的价格被“甩卖”。<br />
+  <br />
+  很多人都会问，如果天猫开始卖茅台了，普通人真的能够不用排队就买到平价的茅台酒吗？<br />
+  <br />
+  二、终于可以不用排队就买到平价茅台酒吗？<br />
+  <br />
+  说实在，这个问题可能对于所有人来说答案都是否定的，为什么这么说呢？这和茅台的很多特殊属性有着密切的关系，天眼查的数据显示，贵州茅台已经成为了中国最核心的一支股票。<br />
+  <br />
+  天眼查的数据显示，贵州茅台已经成为了中国最核心的一支股票。<br />
+  <br />
+  但茅台此次事件我们不妨来一一讨论一下：<br />
+  <br />
+  首先，茅台的产能真的很有限。之前我们曾经专门撰文解释过茅台虽然也是酿造白酒的一种，但是茅台酒却是很特殊的一种白酒，根据公开市场的资料显示，茅台采用的是非常特殊的坤沙工艺，整个生产周期为一年，端午踩曲，重阳投料，酿造期间九次蒸煮，八次发酵，七次取酒，经分型贮放，勾兑贮放，五年后包装出厂。茅台酒的酿制有两次投料、固态发酵、高温制曲、高温堆积、高温摘酒等特点，也正是因为这个特点茅台酒的产能一直处于非常有限的状态之中，据茅台股份最近三年年度报告，茅台基酒产量2016年为3.93万吨，2017年为4.28万吨，2018年为4.97万吨，由于茅台酒的产量很小，而市场需求量却很大，在供需严重矛盾的情况下，其实无论你采用什么样的渠道来销售茅台酒，在需求远大于供给的情况下，茅台酒想要不被抢购还是非常困难的。<br />
+  <br />
+  那么，我们就要问一个问题了，为啥茅台的需求量那么大？难不成现在大家都是那么有钱了，都在喝茅台了？就连茅台的掌门人都说茅台酒是“酒喝不炒”，可见真正饮用茅台的人其实真不太多。那么，大家买茅台的心理到底是什么呢？<br />
+  <br />
+  一是茅台是最上的了台面的礼物。中国是自古的文明之邦，我们一直讲究一个礼尚往来，如果出去看亲朋好友或者托人办事不送点礼物的话，总会让人觉得有些问题，那么到底送什么礼物呢？有没有什么体积不大，但是绝对所有人都认同价值的礼品就会显得非常重要，而茅台无疑就成为了这样的东西，我们看到茅台这么多年都采用非常简单的极简主义包装，其包装在高档白酒当中是最小的，完全不显山不露水。与此同时，茅台又是所有白酒当中价值最高的，就算我们不用黑市价格来计算，茅台的零售价53度500ML的茅台都需要1499元，这样的礼品无疑是最能彰显价值的，因此茅台成为了礼品市场上最受欢迎的产品。<br />
+  <br />
+  二是茅台的收藏市场价值激增。本身白酒由于其具备最特殊的理化性质，我们一直都会有一种说法就是酒越陈越香，的确一般情况下白酒当中的醛类物质会在时间的作用下缓慢氧化成为类似于乙酸乙酯的酯类物质，这种酯类物质具有独特的芳香气味，也正是如此，只要是粮食酿造的白酒都会有一定的收藏价值。而茅台酒的收藏市场更是恐怖，1957年生产的茅台酒在2017年荣宝斋春拍创下了253万元一瓶的天价记录，而在红酒市场上大家经常调侃的1982年的拉菲，而1982年的茅台价格也在三万元以上一瓶，正是因为茅台酒老酒的天价，让所有人都有一种买了茅台就是收藏也有价值的感觉，更何况每一年的酒产量都是有限的，一定会越来越少，茅台的价值随着收藏也一定会越来越高。<br />
+  <br />
+  三是茅台的炒作越来越金融化。如果说礼品和收藏品还是比较普通的话，茅台的炒作已经越来越有了金融化的特征，之前中国大名鼎鼎的玻璃大王曹德旺的一段视频让大家非常震惊，曹德旺说自己这些年其实没做啥，之前为了招待客户买了一面墙的茅台酒，而现在这一面墙的茅台酒已经成为了他最赚钱的资产。而茅台其实在某种程度上也成为了一种金融商品，大家炒作茅台因为茅台是中国最受公认的奢侈品，而且买了茅台就是买了金融投资品，很多人都会觉得从投资茅台的角度来说，我们完全可以好好地把茅台投资起来。由于茅台已经被金融化，所以茅台的需求反而更加旺盛。<br />
+  <br />
+  但是，正如茅台掌门人李保芳说的，茅台只是一种酒，如果他超过了自己原先价值过多的话，必然会产生泡沫，希望的是天猫、Costco、物美等茅台经销渠道可以真正将茅台的泡沫给挤出去，只有这样才能还茅台酒一个合理的市场。<br /></article>……
+		</section>
+      <section id="demoBtn" style="text-align:center; line-height:60px;">单篇阅读<span style="color:#ec1717">3元/条</span>，请点击<a href="index.php-controller=site&action=notice_detail&id=1.htm" tppabs="http://xfjining.com/index.php?controller=site&action=notice_detail&id=1" target="_blank" style="color:#ec1717">付款</a>后查看（开通年费会员600/年）</section>
+<script>
+    var oP = document.getElementById('article_content');
+    var oBtn = document.getElementById('demoBtn');
+    var allContent = oP.innerHTML;                   //存放所有内容
+    oP.innerHTML = oP.innerHTML.substr(0,240);        //截取前100个字符
+    oBtn.onclick=function(){
+    //    oP.innerHTML = allContent;                    //显示所有内容
+    }
+</script>
+        
+			</section>
+	<!-- 文章详情侧边 -->
+	<aside class="article_bar">
+		<!-- 资讯分类 -->
+		<nav class="news_article_box">
+			<h3 class="news_article_box_head">资讯分类</h3>
+			<ul class="news_article_infor">
+							</ul>
+		</nav>
+		<!-- 资讯分类 -->
+	</aside>
+	<!-- 文章详情侧边 -->
+</section>
+</div>
+
+</div>
+<!--主要模板内容 结束-->
+
+<footer class="foot">
+	<!--<section class="service">
+		<ul>
+			<li class="item1">
+				<i class="fa fa-star"></i>
+				<strong>正品优选</strong>
+			</li>
+			<li class="item2">
+				<i class="fa fa-globe"></i>
+				<strong>上市公司</strong>
+			</li>
+			<li class="item3">
+				<i class="fa fa-inbox"></i>
+				<strong>300家连锁门店</strong>
+			</li>
+			<li class="item4">
+				<i class="fa fa-map-marker"></i>
+				<strong>上百家维修网点 全国联保</strong>
+			</li>
+		</ul>
+	</section>-->
+	<section class="help">
+		<div class="prompt_link">
+									<dl class="help_1">
+				<dt>
+					<p class="line"></p>
+					<p class="title"><a href="index.php-controller=site&action=help_list&id=3.htm" tppabs="http://xfjining.com/index.php?controller=site&action=help_list&id=3">购物指南</a></p>
+				</dt>
+								<dd><a href="index.php-controller=site&action=help&id=4.htm" tppabs="http://xfjining.com/index.php?controller=site&action=help&id=4">购物流程</a></dd>
+								<dd><a href="index.php-controller=site&action=help&id=26.htm" tppabs="http://xfjining.com/index.php?controller=site&action=help&id=26">会员制度</a></dd>
+								<dd><a href="index.php-controller=site&action=help&id=28.htm" tppabs="http://xfjining.com/index.php?controller=site&action=help&id=28">交易条款</a></dd>
+							</dl>
+						<dl class="help_2">
+				<dt>
+					<p class="line"></p>
+					<p class="title"><a href="index.php-controller=site&action=help_list&id=4.htm" tppabs="http://xfjining.com/index.php?controller=site&action=help_list&id=4">支付帮助</a></p>
+				</dt>
+								<dd><a href="index.php-controller=site&action=help&id=30.htm" tppabs="http://xfjining.com/index.php?controller=site&action=help&id=30">货到付款</a></dd>
+								<dd><a href="index.php-controller=site&action=help&id=31.htm" tppabs="http://xfjining.com/index.php?controller=site&action=help&id=31">在线支付</a></dd>
+							</dl>
+						<dl class="help_3">
+				<dt>
+					<p class="line"></p>
+					<p class="title"><a href="index.php-controller=site&action=help_list&id=6.htm" tppabs="http://xfjining.com/index.php?controller=site&action=help_list&id=6">配送帮助</a></p>
+				</dt>
+								<dd><a href="index.php-controller=site&action=help&id=34.htm" tppabs="http://xfjining.com/index.php?controller=site&action=help&id=34">配送范围及运费</a></dd>
+								<dd><a href="index.php-controller=site&action=help&id=36.htm" tppabs="http://xfjining.com/index.php?controller=site&action=help&id=36">加急快递</a></dd>
+								<dd><a href="index.php-controller=site&action=help&id=37.htm" tppabs="http://xfjining.com/index.php?controller=site&action=help&id=37">商品验货与签收</a></dd>
+							</dl>
+						<dl class="help_4">
+				<dt>
+					<p class="line"></p>
+					<p class="title"><a href="index.php-controller=site&action=help_list&id=5.htm" tppabs="http://xfjining.com/index.php?controller=site&action=help_list&id=5">售后服务</a></p>
+				</dt>
+								<dd><a href="index.php-controller=site&action=help&id=39.htm" tppabs="http://xfjining.com/index.php?controller=site&action=help&id=39">换货说明</a></dd>
+								<dd><a href="index.php-controller=site&action=help&id=40.htm" tppabs="http://xfjining.com/index.php?controller=site&action=help&id=40">退货说明</a></dd>
+								<dd><a href="index.php-controller=site&action=help&id=41.htm" tppabs="http://xfjining.com/index.php?controller=site&action=help&id=41">退/换货注意事项</a></dd>
+								<dd><a href="index.php-controller=site&action=help&id=52.htm" tppabs="http://xfjining.com/index.php?controller=site&action=help&id=52">售后服务</a></dd>
+								<dd><a href="index.php-controller=site&action=help&id=54.htm" tppabs="http://xfjining.com/index.php?controller=site&action=help&id=54">商家入驻协议</a></dd>
+							</dl>
+					</div>
+		<!--<div class="contact">
+			<p class="line"></p>
+			<em>400-888-8888</em>
+			<span>24小时在线客服(仅收市话费)</span>
+			<a href="#"><i class="fa fa-comments"></i> 在线客服</a>
+		</div>-->
+	</section>
+	<section class="copy">
+		<div class="footer" style="text-align:center;">	<p class="copyright">		Powered by <span style="font-family:'微软雅黑';"><span style="background-color:#FFEDC4;">乌兰察布市慧联信息技术有限公司</span></span><span style="background-color:#FFEDC4;font-family:'微软雅黑';"></span> 	</p>Copyright © 2020 <a href="javascript:if(confirm(%27https://beian.miit.gov.cn/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed using an unsupported protocol (e.g., gopher).  \n\nDo you want to open it from the server?%27))window.location=%27https://beian.miit.gov.cn/%27" tppabs="https://beian.miit.gov.cn/" target="_blank">蒙ICP备19005096号-1</a> </div>	</section>
+</footer>
+
+</body>
+</html>
+<script>
+//当首页时显示分类
+
+$(function(){
+	$('input:text[name="word"]').val("");
+});
+</script>
+<script type="text/javascript">
+_webUrl = "index.php-controller=errors&action=error&message=.htm"/*tpa=http://xfjining.com/index.php?controller=errors&action=error&message=*/;_themePath = "/views/huawei/";_skinPath = "/views/huawei/skin/default/";_webRoot = "/";
+</script>
