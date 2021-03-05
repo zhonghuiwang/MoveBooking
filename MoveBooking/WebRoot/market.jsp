@@ -7,6 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="<%=basePath%>">
     <meta charset="UTF-8">
     <title>商城</title>
     <link rel="stylesheet" href="css/index.css">
@@ -15,8 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript" src="js/script3.js"></script>
     <!--轮播图js end-->
 </head>
-<body>
-
+<body background="img/bg7.jpg">
 <!--header-->
 <div class="header2">
 <div class="header-box">
@@ -28,10 +28,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <ul>
         <li><a href="">欢迎您!</a></li>
         <s:if test="#session.user == null">
-        	<li><a href="index.php-controller=simple&action=login.htm">点击登录</a></li>
+        	<li><a href="login.jsp">点击登录</a></li>
         </s:if>
         <s:else>
-        	<li><a href=""><s:property value="#session.user.name" /></a></li>
+        	<li><a href="users_doWebLogout"><s:property value="#session.user.name" /> &nbsp;<font-style="italic">退出</font-style></a></li>
         </s:else>
     </ul>
 </div>
@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="header-nav-box">
 <div class="nav">
 <div class="nav-logo">
-    <a href="index.jsp" class="logo"><img src="images/logo.jpg" alt=""></a>
+    <a href="market.jsp"><img src="images/logo.png" alt=""></a>
 </div>
 <div class="nav-search-box">
     <form action="" name="fomr1">
@@ -103,8 +103,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <div class="menu-panel-hd">
                                 <h4>热门分类</h4>
                                 <div class="sub-group">
-                                    <a href="subpages/fenlei_shuiguo.html">水果</a>
-                                    <a href="subpages/fenlei_shucai.html">蔬菜</a>
+                                    <a href="subpages/fenlei_shuiguo.jsp">水果</a>
+                                    <a href="subpages/fenlei_shucai.jsp">蔬菜</a>
                                 </div>
                             </div>
                         </div>
@@ -116,8 +116,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <div class="menu-panel-hd">
                                 <h4>热门分类</h4>
                                 <div class="sub-group">
-                                    <a href="subpages/fenlei_fuzhuang.html">服装</a>
-                                    <a href="subpages/fenlei_xiemao.html">鞋帽</a>
+                                    <a href="subpages/fenlei_fuzhuang.jsp">服装</a>
+                                    <a href="subpages/fenlei_xiemao.jsp">鞋帽</a>
                                 </div>
                             </div>
                         </div>
@@ -130,8 +130,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <div class="menu-panel-hd">
                                 <h4>热门分类</h4>
                                 <div class="sub-group">
-                                    <a href="subpages/fenlei_jiaju.html">家居</a>
-                                    <a href="subpages/fenlei_chufang.html">厨房</a>
+                                    <a href="subpages/fenlei_jiaju.jsp">家居</a>
+                                    <a href="subpages/fenlei_chufang.jsp">厨房</a>
 
                                 </div>
                             </div>
@@ -145,8 +145,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <div class="menu-panel-hd">
                                 <h4>热门分类</h4>
                                 <div class="sub-group">
-                                    <a href="subpages/fenlei_baojianpin.html">保健品</a>
-                                    <a href="subpages/fenlei_huwaiyundong.html">户外运动</a>
+                                    <a href="subpages/fenlei_baojianpin.jsp">保健品</a>
+                                    <a href="subpages/fenlei_huwaiyundong.jsp">户外运动</a>
                                 </div>
                             </div>
                         </div>
@@ -159,8 +159,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <div class="menu-panel-hd">
                                 <h4>热门分类</h4>
                                 <div class="sub-group">
-                                    <a href="subpages/fenlei_caizhuang.html">彩妆</a>
-                                    <a href="subpages/fenlei_hufu.html">护肤</a>
+                                    <a href="subpages/fenlei_caizhuang.jsp">彩妆</a>
+                                    <a href="subpages/fenlei_hufu.jsp">护肤</a>
 
                                 </div>
                             </div>
@@ -174,8 +174,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <div class="menu-panel-hd">
                                 <h4>热门分类</h4>
                                 <div class="sub-group">
-                                    <a href="subpages/fenlei_benzi.html">本子</a>
-                                    <a href="subpages/fenlei_bi.html">笔</a>
+                                    <a href="subpages/fenlei_benzi.jsp">本子</a>
+                                    <a href="subpages/fenlei_bi.jsp">笔</a>
                                 </div>
                             </div>
                         </div>
@@ -211,9 +211,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <!--轮播图end-->
             <div class="main-bottom">
 <ul>
-    <li><a href="subpages/xiezi.html"><img src="images/xiezi.jpg" title="健康防护"></a></li>
-    <li><a href="subpages/shuiguo_mangguo.html"><img src="images/mangguo.jpg" title="趣味家居"></a></li>
-    <li><a href="subpages/shucai_xilanhua.html"><img src="images/xilanhua.jpg" title="美味生活"></a></li>
+    <li><a href="subpages/xiezi.jsp"><img src="images/xiezi.jpg" title="健康防护"></a></li>
+    <li><a href="subpages/shuiguo_mangguo.jsp"><img src="images/mangguo.jpg" title="趣味家居"></a></li>
+    <li><a href="subpages/shucai_xilanhua.jsp"><img src="images/xilanhua.jpg" title="美味生活"></a></li>
 
 </ul>
 
@@ -233,11 +233,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!--循环products-->
         <div class="products">
    <div class="products-img">
-    <a href="subpages/products_shuibei.html" title="精品水杯"><img src="images/shuibei.jpg" alt=""></a>
+    <a href="subpages/products_shuibei.jsp" title="精品水杯"><img src="images/shuibei.jpg" alt=""></a>
     <span class="hot-label"><img src="images/hot.png" alt=""></span>
     </div>
             <div class="products-title2">
-                <a href="subpages/products_shuibei.html">精品水杯</a>
+                <a href="subpages/products_shuibei.jsp">精品水杯</a>
             </div>
             <div class="products-title3">
                 <ul>
@@ -258,11 +258,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!--循环products-->          
         <div class="products">
             <div class="products-img">
-                <a href="subpages/products_yujin.html" title="纯棉浴巾"><img src="images/maojin.jpg" alt=""></a>
+                <a href="subpages/products_yujin.jsp" title="纯棉浴巾"><img src="images/maojin.jpg" alt=""></a>
                 <span class="hot-label"><img src="images/hot.png" alt=""></span>
             </div>
             <div class="products-title2">
-                <a href="subpages/products_yujin.html">纯棉浴巾</a>
+                <a href="subpages/products_yujin.jsp">纯棉浴巾</a>
             </div>
             <div class="products-title3">
                 <ul>
@@ -283,11 +283,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!--循环products-->
         <div class="products">
             <div class="products-img">
-                <a href="subpages/weishengzhi.html" title="卫生纸大甩卖"><img src="images/weishengzhi.jpg" alt=""></a>
+                <a href="subpages/weishengzhi.jsp" title="卫生纸大甩卖"><img src="images/weishengzhi.jpg" alt=""></a>
                 <span class="hot-label"><img src="images/hot.png" alt=""></span>
             </div>
             <div class="products-title2">
-                <a href="subpages/weishengzhi.html">卫生纸大甩卖</a>
+                <a href="subpages/weishengzhi.jsp">卫生纸大甩卖</a>
             </div>
             <div class="products-title3">
                 <ul>
@@ -298,7 +298,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             <div class="products-piece">
                 <span class="piece" title="￥1499.00">￥9.99</span>
-                <span class="count" title="已售99件">已售199999件</span>
+                <span class="count" title="已售99件">已售19999件</span>
             </div>
 
 
@@ -308,11 +308,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!--循环products-->
         <div class="products">
             <div class="products-img">
-                <a href="subpages/tuobu.html" title="拖布"><img src="images/tuobu.jpg" alt=""></a>
+                <a href="subpages/tuobu.jsp" title="拖布"><img src="images/tuobu.jpg" alt=""></a>
                 <span class="hot-label"><img src="images/hot.png" alt=""></span>
             </div>
             <div class="products-title2">
-                <a href="subpages/tuobu.html">拖布</a>
+                <a href="subpages/tuobu.jsp">拖布</a>
             </div>
             <div class="products-title3">
                 <ul>
@@ -333,11 +333,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!--循环products-->
         <div class="products">
             <div class="products-img">
-                <a href="subpages/maozi.html" title="帽子"><img src="images/maozi.jpg" alt=""></a>
+                <a href="subpages/maozi.jsp" title="帽子"><img src="images/maozi.jpg" alt=""></a>
                 <span class="hot-label"><img src="images/hot.png" alt=""></span>
             </div>
             <div class="products-title2">
-                <a href="subpages/maozi.html">帽子</a>
+                <a href="subpages/maozi.jsp">帽子</a>
             </div>
             <div class="products-title3">
                 <ul>
@@ -379,11 +379,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!--循环products-->
     <div class="products">
         <div class="products-img">
-            <a href="subpages/zhazhiji.html" title="榨汁机"><img src="images/zhazhiji.jpg" alt=""></a>
+            <a href="subpages/zhazhiji.jsp" title="榨汁机"><img src="images/zhazhiji.jpg" alt=""></a>
             <span class="hot-label"><img src="images/hot.png" alt=""></span>
         </div>
         <div class="products-title2">
-            <a href="subpages/zhazhiji.html">榨汁机</a>
+            <a href="subpages/zhazhiji.jsp">榨汁机</a>
         </div>
         <div class="products-title3">
             <ul>
@@ -404,11 +404,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!--循环products-->
         <div class="products">
                 <div class="products-img">
-                    <a href="subpages/dianbingxiang.html" title="电冰箱"><img src="images/dianbingxiang.jpg" alt=""></a>
+                    <a href="subpages/dianbingxiang.jsp" title="电冰箱"><img src="images/dianbingxiang.jpg" alt=""></a>
                     <span class="hot-label"><img src="images/hot.png" alt=""></span>
                 </div>
                 <div class="products-title2">
-                    <a href="subpages/dianbingxiang.html">电冰箱</a>
+                    <a href="subpages/dianbingxiang.jsp">电冰箱</a>
                 </div>
                 <div class="products-title3">
                     <ul>
@@ -429,11 +429,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!--循环products-->
         <div class="products">
             <div class="products-img">
-                <a href="subpages/yinshuiji.html" title="饮水机"><img src="images/yinshuiji.jpg" alt=""></a>
+                <a href="subpages/yinshuiji.jsp" title="饮水机"><img src="images/yinshuiji.jpg" alt=""></a>
                 <span class="hot-label"><img src="images/hot.png" alt=""></span>
             </div>
             <div class="products-title2">
-                <a href="subpages/yinshuiji.html">饮水机</a>
+                <a href="subpages/yinshuiji.jsp">饮水机</a>
             </div>
             <div class="products-title3">
                 <ul>
@@ -454,11 +454,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!--循环products-->
         <div class="products">
             <div class="products-img">
-                <a href="subpages/dianfanbao.html" title="电饭煲"><img src="images/dianfanbao.jpg" alt=""></a>
+                <a href="subpages/dianfanbao.jsp" title="电饭煲"><img src="images/dianfanbao.jpg" alt=""></a>
                 <span class="hot-label"><img src="images/hot.png" alt=""></span>
             </div>
             <div class="products-title2">
-                <a href="subpages/dianfanbao.html">电饭煲</a>
+                <a href="subpages/dianfanbao.jsp">电饭煲</a>
             </div>
             <div class="products-title3">
                 <ul>
@@ -479,11 +479,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!--循环products-->
         <div class="products">
             <div class="products-img">
-                <a href="subpages/doujiangji.html" title="豆浆机"><img src="images/doujiangji.jpg" alt=""></a>
+                <a href="subpages/doujiangji.jsp" title="豆浆机"><img src="images/doujiangji.jpg" alt=""></a>
                 <span class="hot-label"><img src="images/hot.png" alt=""></span>
             </div>
             <div class="products-title2">
-                <a href="subpages/doujiangji.html">豆浆机</a>
+                <a href="subpages/doujiangji.jsp">豆浆机</a>
             </div>
             <div class="products-title3">
                 <ul>
@@ -504,11 +504,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!--循环products-->
         <div class="products">
             <div class="products-img">
-                <a href="subpages/kuansongduanxiu.html" title="宽松短袖 女"><img src="images/kuansongduanxiu.jpg" alt=""></a>
+                <a href="subpages/kuansongduanxiu.jsp" title="宽松短袖 女"><img src="images/kuansongduanxiu.jpg" alt=""></a>
                 <span class="hot-label"><img src="images/hot.png" alt=""></span>
             </div>
             <div class="products-title2">
-                <a href="subpages/kuansongduanxiu.html">宽松短袖 女</a>
+                <a href="subpages/kuansongduanxiu.jsp">宽松短袖 女</a>
             </div>
             <div class="products-title3">
                 <ul>
@@ -529,11 +529,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!--循环products-->
         <div class="products">
                 <div class="products-img">
-                    <a href="subpages/jingpinhanfu.html" title="精品汉服"><img src="images/hanfu.jpg" alt=""></a>
+                    <a href="subpages/jingpinhanfu.jsp" title="精品汉服"><img src="images/hanfu.jpg" alt=""></a>
                     <span class="hot-label"><img src="images/hot.png" alt=""></span>
                 </div>
                 <div class="products-title2">
-                    <a href="subpages/jingpinhanfu.html">精品汉服</a>
+                    <a href="subpages/jingpinhanfu.jsp">精品汉服</a>
                 </div>
                 <div class="products-title3">
                     <ul>
@@ -554,11 +554,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!--循环products-->
         <div class="products">
             <div class="products-img">
-                <a href="subpages/nanshiduanxiu.html" title="男士短袖"><img src="images/nanshishangyi.jpg" alt=""></a>
+                <a href="subpages/nanshiduanxiu.jsp" title="男士短袖"><img src="images/nanshishangyi.jpg" alt=""></a>
                 <span class="hot-label"><img src="images/hot.png" alt=""></span>
             </div>
             <div class="products-title2">
-                <a href="subpages/nanshiduanxiu.html">男士短袖</a>
+                <a href="subpages/nanshiduanxiu.jsp">男士短袖</a>
             </div>
             <div class="products-title3">
                 <ul>
@@ -579,11 +579,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!--循环products-->
         <div class="products">
             <div class="products-img">
-                <a href="subpages/minzufuzhuang.html" title="民族服装"><img src="images/minzufuzhuang.jpg" alt=""></a>
+                <a href="subpages/minzufuzhuang.jsp" title="民族服装"><img src="images/minzufuzhuang.jpg" alt=""></a>
                 <span class="hot-label"><img src="images/hot.png" alt=""></span>
             </div>
             <div class="products-title2">
-                <a href="subpages/minzufuzhuang.html">民族服装</a>
+                <a href="subpages/minzufuzhuang.jsp">民族服装</a>
             </div>
             <div class="products-title3">
                 <ul>
@@ -604,11 +604,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!--循环products-->
         <div class="products">
             <div class="products-img">
-                <a href="subpages/ertongfuzhuang.html" title="儿童服装"><img src="images/ertongfuzhuang.jpg" alt=""></a>
+                <a href="subpages/ertongfuzhuang.jsp" title="儿童服装"><img src="images/ertongfuzhuang.jpg" alt=""></a>
                 <span class="hot-label"><img src="images/hot.png" alt=""></span>
             </div>
             <div class="products-title2">
-                <a href="subpages/ertongfuzhuang.html">儿童服装</a>
+                <a href="subpages/ertongfuzhuang.jsp">儿童服装</a>
             </div>
             <div class="products-title3">
                 <ul>

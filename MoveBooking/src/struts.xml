@@ -32,12 +32,11 @@
 		<action name="users_*"
 			class="com.leonyip.movebooking.struts.action.UsersAction" method="{1}">
 			<result name="success">/market.jsp</result>
-			<result name="goMarkert">/market.jsp</result>
+			<result name="opfailed">/failed.jsp</result>
 			<result name="backmanage">/WEB-INF/jsp/login.jsp</result>
 			<result name="allusers">/WEB-INF/jsp/userlist.jsp</result>
 			<result name="backlogin">/backlogin.jsp</result>
-			<result name="register">/registration.jsp</result>
-			<result name="gotologin">/weblogin.jsp</result>
+			<result name="gotologin">/login.jsp</result>
 			<result name="gotoorders">/cart2.jsp</result>
 			<param name="pageNum">1</param>
 			<param name="pageSize">15</param>

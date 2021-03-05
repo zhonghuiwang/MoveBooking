@@ -1,4 +1,4 @@
-*{margin: 0;padding: 0; font-family: "Microsoft YaHei", "微软雅黑", "黑体";}
+*{margin: 0;padding: 0; font-family: "Microsoft YaHei", "寰蒋闆呴粦", "榛戜綋";}
 ul li{list-style: none;}
 a{text-decoration: none;}
 img {
@@ -64,7 +64,7 @@ body{font-size: 12px;
 
 /*index.html-main*/
 .main-box{width: 100%; height: auto;margin-top: 20px;float: left;}
-.main{width: 1350px; height: 700px;margin: 0 auto;}
+.main{width: 1350px; height: 700px;margin: 0 auto; background-color: #ffffff;}
 .main-left{ width: 211px; height: auto ;}
 .main-center {width: 1100px; height: 400px;float: left;margin-left: -80px;}
 .main-bottom {width: 1100px; height: 300px;float: left;margin-left: 20px;}
@@ -184,7 +184,7 @@ border: 1px solid #eeeeee;
 
 /*index.html---footer end*/
 
-/**左侧菜单index.html-**/
+/**宸︿晶鑿滃崟index.html-**/
 .sec-mainL {
  width: 211px;
  box-shadow: 2px 0 4px #D5D5D5;
@@ -216,7 +216,7 @@ border: 1px solid #eeeeee;
  display: inline-block;
  background: url(../images/iconsB.png) no-repeat -73px 0;
 }
-/**菜单列表**/
+/**鑿滃崟鍒楄〃**/
 
 .sec-mainNav>li {
  padding: 10px 19px 36px;
@@ -264,7 +264,7 @@ border: 1px solid #eeeeee;
  overflow: hidden;
  background: url(../images/index.png) no-repeat 0 -6px;
 }
-/**二级菜单**/
+/**浜岀骇鑿滃崟**/
 
 .menu-panel {
  position: absolute;
@@ -280,7 +280,7 @@ border: 1px solid #eeeeee;
 }
 
 .menu-panel h4 {
- font-family: "Microsoft YaHei", "微软雅黑", "黑体";
+ font-family: "Microsoft YaHei", "寰蒋闆呴粦", "榛戜綋";
  font-size: 14px;
  color: #f5a700;
  margin-bottom: 9px;
@@ -345,7 +345,7 @@ border: 1px solid #eeeeee;
  border-color: transparent transparent transparent #FFF;
  border-style: dashed dashed dashed solid;
 }
-/**中间部分**/
+/**涓棿閮ㄥ垎**/
 
 .sec-mainM {
  width: 666px;
@@ -360,7 +360,7 @@ border: 1px solid #eeeeee;
  float: right;
 }
 
-/*轮播图 index.html-*/
+/*杞挱鍥�index.html-*/
 #flash{width:900px;height: 400px;margin: 0 auto;position:relative;}
 #flash #play{width:900px;height: 400px;list-style: none;position:absolute;top:0;left:0;}
 #flash #play li{display: none;position:absolute;top:0;left:0;}
@@ -371,9 +371,9 @@ border: 1px solid #eeeeee;
 #prev{}
 #next{}
 
-/*轮播图 index.html-*/
+/*杞挱鍥�index.html-*/
 
-/*选项卡 index.html-*/
+/*閫夐」鍗�index.html-*/
 #tab {
  width: 200px;
  padding-top: 5px;
@@ -410,7 +410,7 @@ border: 1px solid #eeeeee;
 #tab div ul li {padding-top: 6px;}
 #tab div ul li a:hover{color: #f5a700;text-decoration: underline;}
 #tab div a{display: block;color: #666666;}
-/*选项卡 index.html-*/
+/*閫夐」鍗�index.html-*/
 
 
 /*login.html*/
@@ -579,7 +579,7 @@ position: relative;}
 
 /*goods.html*/
 
-/*products-show.html产品焦点图*/
+/*products-show.html浜у搧鐒︾偣鍥�/
 #outBox{
  width: 1002px;
  height: 540px;
@@ -659,7 +659,7 @@ position: relative;}
 #n,.m{
  display: block !important;
 }
-/*products-show产品焦点图end*/
+/*products-show浜у搧鐒︾偣鍥緀nd*/
 
 
 
@@ -797,7 +797,7 @@ position: relative;}
 .us-content-right{width: 900px;height: auto;float: left;margin-left: 18px;margin-top: 25px;border: solid 1px #d2d2d2;}
 .show-content{margin-top: 20px;margin-left: 20px;}
 
-/*收缩导航样式*/
+/*鏀剁缉瀵艰埅鏍峰紡*/
 /*------------ Main Menu ------------*/
 .mainmenu {
  margin: 0 auto;
@@ -876,7 +876,7 @@ padding-left: 10px;
  animation: flip 2000ms ease-in-out alternate;
 }
 
-/*收缩导航样式*/
+/*鏀剁缉瀵艰埅鏍峰紡*/
 /*us.html*/
 
 /*intro.html*/
@@ -1110,7 +1110,7 @@ padding-left: 10px;
 /*user-ID*/
 .user-id-box{width: 1050px;height:auto;margin-left:25px;margin-top: 10px;}
 .id-content{width:1050px;height:40px;border-bottom: solid 1px #c6c6c6;padding-bottom: 15px;}
-.id-content table{color:#666666;font-size: 14px;font-family: "Microsoft YaHei", "微软雅黑", "黑体";}
+.id-content table{color:#666666;font-size: 14px;font-family: "Microsoft YaHei", "寰蒋闆呴粦", "榛戜綋";}
 .id-content table tr:hover{background-color: #fff;}
 .id-input{width:200px;height: 40px;border:solid 1px #c6c6c6;}
 .id-input:focus{width:200px;height: 40px;border:solid 1px #f5a700;outline: none;}
@@ -1133,7 +1133,7 @@ padding-left: 10px;
 .user-info-info:hover{background-color:#eeeeee;}
 .info-text{width:300px;height: 40px;border:solid 1px #c6c6c6;color: #666666;padding-left: 5px;border-radius: 5px;}
 .info-text:focus{border:solid 1px #f5a700;outline: none;}
-.user-info-info table {color:#666666;font-size: 14px;font-family: "Microsoft YaHei", "微软雅黑", "黑体";}
+.user-info-info table {color:#666666;font-size: 14px;font-family: "Microsoft YaHei", "寰蒋闆呴粦", "榛戜綋";}
 .user-level{width: 30px;height:30px;border-radius:30px;background-color: #f5a700;color: #fff;font-size: 14px;line-height: 30px;text-align: center;position: absolute;right:5px;top:5px;}
 .user-info-info .user-system-select{width:200px;height: 40px; border:solid 1px #c6c6c6;color: #666666;padding-left: 5px;border-radius: 5px;}
 .user-info-info .user-system-select:focus{border:solid 1px #f5a700;outline: none;}

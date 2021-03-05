@@ -20,33 +20,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!--header-->
 <div class="header2">
     <div class="header-box">
-        <div class="header">
-            <div class="header-left-title">
-            </div>
-            <div class="header-center-title">
-                <ul>
-                </ul>
-            </div>
-            <div class="header_right_title">
-                <ul>
-                </ul>
-
-            </div>
-
-
+    <div class="header">
+    <div class="header-left-title">
+        <div class="welcome"><img  class="icon" src="images/icon/welcome.png" alt="">&nbsp;欢迎来到<a href="/market.jsp">未莱大数据商城</a></div>
+    </div>
+    <div class="header_right_title">
+        <ul>
+            <li><a href="">欢迎您!</a></li>
+            <s:if test="#session.user == null">
+                <li><a href="login.jsp">点击登录</a></li>
+            </s:if>
+            <s:else>
+                <li><a href="users_doWebLogout"><s:property value="#session.user.name" /> &nbsp;<font-style="italic">退出</font-style></a></li>
+            </s:else>
+        </ul>
+    </div>
+        <div class="header-center-title">
+     </div>
+        <div class="header_right_title"></div>
         </div>
+    </div>
         <div class="header-nav-box">
-            <div class="nav">
-                <div class="nav-logo">
-                    <a href="" class="logo"><img src="images/logo.jpg" alt=""></a>
-                </div>
-                <div class="nav-search-box">
-                    <form action="" name="fomr1">
-                        <div class="nav-search">
-                            <div class="bar1">
-                                <input type="text" placeholder="请输入您要搜索的内容..." class="text"><button type="submit" class="btn">搜索</button>
-                            </div>
-                            <div class="search-key">
+    <div class="nav">
+    <div class="nav-logo">
+        <a href="market.jsp" class="logo"><img src="images/logo.jpg" alt=""></a>
+    </div>
+    <div class="nav-search-box">
+        <form action="" name="fomr1">
+    <div class="nav-search">
+    <div class="bar1">
+        <input type="text" placeholder="请输入您要搜索的内容..." class="text"><button type="submit" class="btn">搜索</button>
+        </div>
+    <div class="search-key">
                                 <span class="key-title">热搜词汇:</span>
                                 <div class="key">
                                     <ul>
@@ -334,7 +339,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" charset="utf-8">
     function gocart3(){
     	var price = document.getElementById("totalPrice");
-        window.location.href = "cart3.html?price="+encodeURI(price.innerHTML);
+        window.location.href = "cart3.jsp?price="+encodeURI(price.innerHTML);
     }
 </script>
 <script type="text/javascript">
@@ -366,9 +371,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    window.onload=function(){
     var url = document.location.href;
     var lct="";
-    if(url.indexOf("&")>0){
-    	if (url.indexOf("=")>0)
-    	{
+    var location = document.getElementById("elocation");
+    location.style.display="none";
+    if (url.indexOf("=")>0){
         	lct = url.substring(url.indexOf("=")+1,url.length)
         	var familyData =lct.split("="); 
         	var name = familyData[0].split("&");
@@ -381,10 +386,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	document.getElementById("city").innerHTML = decodeURI(city[0]);
         	document.getElementById("area").innerHTML = decodeURI(area[0]);
         	document.getElementById("totalPrice").innerHTML = decodeURI(price[0]);
-    	}
-    }else{
-    	var location = document.getElementById("elocation");
-    	location.style.display="none";
+            location.style.display="inline";
     }
 }
 </script>

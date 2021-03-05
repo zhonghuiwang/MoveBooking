@@ -50,59 +50,6 @@
 					<img src="upload/logo/20200723052427260.png" tppabs="http://xfjining.com/upload/logo/20200723052427260.png">
 				</a>
 			</div>
-			<!-- 注册与登录 -->
-			<div class="body_toolbar">
-									<div class="body_toolbar_btn login_reg">
-						<a href="index.php-controller=simple&action=login.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=login">登录</a>
-						<em> | </em>
-						<a class="reg" href="index.php-controller=simple&action=reg.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=reg">注册</a>
-					</div>
-							</div>
-			<!-- 注册与登录 -->
-			<!--购物车模板 开始-->
-			<div class="header_cart" name="mycart">
-				<a href="index.php-controller=simple&action=cart.htm" tppabs="http://xfjining.com/index.php?controller=simple&action=cart" class="go_cart">
-					<i class="fa fa-shopping-cart"></i>
-					<em class="sign_total" name="mycart_count"]>0</em>
-				</a>
-				<div class="cart_simple" id="div_mycart"></div>
-			</div>
-			<script type='text/html' id='cartTemplete'>
-			<div class='cart_panel'>
-				<%if(goodsCount){%>
-					<!-- 购物车物品列表 -->
-					<ul class='cart_list'>
-						<%for(var item in goodsData){%>
-						<%var data = goodsData[item]%>
-						<li id="site_cart_dd_<%=item%>">
-							<em><%=(window().parseInt(item)+1)%></em>
-							<a target="_blank" href="/index.php?controller=site&action=products&id=<%=data['goods_id']%>">
-								<img src="<%=webroot(data['img'])%>">
-							</a>
-							<a class="shop_name" target="_blank" href="/index.php?controller=site&action=products&id=<%=data['goods_id']%>"><%=data['name']%></a>
-							<!-- <p class="shop_class"></p> -->
-							<div class="shop_price"><p>￥ <%=data['sell_price']%> <span>x <%=data['count']%></span></p></div>
-							<i class="fa fa-remove" onclick="removeCart('<%=data['id']%>','<%=data['type']%>');$('#site_cart_dd_<%=item%>').hide('slow');"></i>
-						</li>
-						<%}%>
-					</ul>
-					<!-- 购物车物品列表 -->
-					<!-- 购物车物品统计 -->
-					<div class="cart_total">
-						<p>
-							共<span name="mycart_count"><%=goodsCount%></span>件
-							总额：<em name="mycart_sum">￥<%=goodsSum%></em>
-						</p>
-						<a href="index.php-controller=simple&action=cart.htm"/*tpa=http://xfjining.com/index.php?controller=simple&action=cart*/>结算</a>
-					</div>
-					<!-- 购物车物品统计 -->
-				<%}else{%>
-					<!-- 购物车无内容 -->
-					<div class='cart_no'>购物车空空如也~</div>
-				<%}%>
-			</div>
-			</script>
-			<!--购物车模板 结束-->
 			<!-- 搜索框 -->
 			<div class="search_box">
 					<!-- 搜索内容 -->

@@ -372,29 +372,6 @@ public class UsersAction extends ActionSupport implements ModelDriven<Users> ,Se
 			HttpSession session=request.getSession();
 			String pwd = request.getParameter("password");   
 			String userName = request.getParameter("name");
-	        List<Users> loginedUser = usersBiz.login(userName,pwd); //数据库查询
-	        @SuppressWarnings("rawtypes")
-			Map map = (Map) ActionContext.getContext().get("request");
-			if(loginedUser.get(0).getId() != 0){
-				Users user = loginedUser.get(0);
-				ctx.getSession().put("user", user);
-				session.setAttribute("user", user);
-				map.put("ifSuccess","yes");
-				return SUCCESS;
-			}
-			map.put("ifSuccess","no");
-			return "goMarkert";
-		}
-		
-	  //购买页面登录
-	  @SuppressWarnings("unchecked")
-	public String doWebSingleLogin() throws Exception{
-		  response.setCharacterEncoding("UTF-8");
-	        response.setContentType("application/json;charset=utf-8");
-			request = ServletActionContext.getRequest();
-			HttpSession session=request.getSession();
-			String pwd = request.getParameter("password");   
-			String userName = request.getParameter("name");
 			String price = request.getParameter("price");
 	        List<Users> loginedUser = usersBiz.login(userName,pwd); //数据库查询
 	        @SuppressWarnings("rawtypes")
@@ -403,12 +380,17 @@ public class UsersAction extends ActionSupport implements ModelDriven<Users> ,Se
 				Users user = loginedUser.get(0);
 				ctx.getSession().put("user", user);
 				session.setAttribute("user", user);
-				map.put("price",price);
-				return "gotoorders";
+				map.put("ifSuccess","yes");
+				if(price == "" || price == null ){
+					return SUCCESS;
+				}else{
+					map.put("price",price);
+					return "gotoorders";
+				}
 			}
-			map.put("price",price);
-			return "gotologin";
-	  }
+			map.put("ifSuccess","no");
+			return "opfailed";
+		}
 		
 	  //网页后端管理页面登录
 	  @SuppressWarnings("unchecked")
@@ -461,7 +443,8 @@ public class UsersAction extends ActionSupport implements ModelDriven<Users> ,Se
 			Users user = new Users();
 			String name = request.getParameter("username");
 			String pwd =request.getParameter("password"); 
-			String pwdan = request.getParameter("passwordagain");
+			String pwdan = request.getParameter("repassword");
+			System.out.println("name:"+name+" | "+"pwd:"+pwd);
 			user.setName(name);
 			user.setPassword(pwd);
 			
@@ -471,12 +454,12 @@ public class UsersAction extends ActionSupport implements ModelDriven<Users> ,Se
 					return SUCCESS;
 				}else{
 					map.put("ifrSuccess","no");
-					return "register";
+					return "opfailed";
 				}
 				
 			}else{
 				map.put("ifrSuccess","repeat");
-				return "register";
+				return "opfailed";
 			}
 		}
 		
