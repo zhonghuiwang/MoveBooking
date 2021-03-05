@@ -115,7 +115,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="foot" id="foot">
             <label class="fl select-all"><input type="checkbox" class="check-all check"/>&nbsp;全选</label>
             <a class="fl delete" id="deleteAll" href="javascript:;">删除</a>
-            <div class="fr closing"><input type="submit" value="结算" id="gopay"></input></div>
+            <div class="fr closing"><span id="gopay">结算</span></div>
             <div class="fr total">合计：￥<span id="priceTotal">0.00</span></div>
             <div class="fr selected" id="selected">已选商品<span id="selectedTotal">0</span>件<span class="arrow up">︽</span><span class="arrow down">︾</span></div>
             <div class="selected-view">
@@ -133,7 +133,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!--footer-->
 <div class="footer-box" style="position:fixed;bottom: 0;">
     <div class="footer-footer">
-        <center> <p2><span>&nbsp;&copy;&nbsp;</span><span>All Rights Reserved.&nbsp;|&nbsp;</span><a href="http://beian.miit.gov.cn/" style="color:#FFFFFF">蒙ICP备2021000771号.</a></p2></center>
+        <center> <p2><span>&nbsp;&copy;&nbsp;</span><span>All Rights Reserved.&nbsp;|&nbsp;</span><a href="http://beian.miit.gov.cn/" style="color:#FFFFFF">蒙ICP备2021000771号-1</a></p2></center>
     </div>
 </div>
 <!--footer end!-->

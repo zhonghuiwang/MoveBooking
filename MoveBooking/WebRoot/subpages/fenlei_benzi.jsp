@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="header-nav-box">
     <div class="nav">
     <div class="nav-logo">
-        <a href="market.jsp" class="logo"><img src="../images/logo.jpg" alt=""></a>
+        <a href="../market.jsp" class="logo"><img src="../images/logo.jpg" alt=""></a>
     </div>
     <div class="nav-search-box">
         <form action="" name="fomr1">
@@ -296,7 +296,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!--footer-->
 <div class="footer-box" style="position:fixed;bottom: 0;">
     <div class="footer-footer">
-        <center> <p2><span>&nbsp;&copy;&nbsp;</span><span>All Rights Reserved.&nbsp;|&nbsp;</span><a href="http://beian.miit.gov.cn/" style="color:#FFFFFF">蒙ICP备2021000771号.</a></p2></center>
+        <center> <p2><span>&nbsp;&copy;&nbsp;</span><span>All Rights Reserved.&nbsp;|&nbsp;</span><a href="http://beian.miit.gov.cn/" style="color:#FFFFFF">蒙ICP备2021000771号-1</a></p2></center>
     </div>
 </div>
 <!--footer end!-->

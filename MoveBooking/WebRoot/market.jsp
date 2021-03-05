@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script type="text/javascript" src="js/script3.js"></script>
     <!--轮播图js end-->
 </head>
-<body background="img/bg7.jpg">
+<body background="img/bg5.jpg">
 <!--header-->
 <div class="header2">
 <div class="header-box">
@@ -367,13 +367,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </div>
 <!--main end!-->
-<!--优惠活动-->
-<div class="youhui-products-box">
     <div class="youhui">
     <div class="products-title">
         <span class="rq">优惠活动<img src="images/icon/tuijian.png" alt="" width="30" height="30"></span>
         <span class="tishi">温馨提示：根据您的浏览为您推荐</span>
-        <span class="all-title"><a href="">查看全部</a></span>
+      <%--   <span class="all-title"><a href="">查看全部</a></span> --%>
     </div>
 
     <!--循环products-->
@@ -631,7 +629,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!--footer-->
 <div class="footer-box" style="position:fixed;bottom: 0;">
     <div class="footer-footer">
-        <center> <p2><span>&nbsp;&copy;&nbsp;</span><span>All Rights Reserved.&nbsp;|&nbsp;</span><a href="http://beian.miit.gov.cn/" style="color:#FFFFFF">蒙ICP备2021000771号.</a></p2></center>
+        <center> <p2><span>&nbsp;&copy;&nbsp;</span><span>All Rights Reserved.&nbsp;|&nbsp;</span><a href="http://beian.miit.gov.cn/" style="color:#FFFFFF">蒙ICP备2021000771号-1</a></p2></center>
     </div>
 </div>
 <!--footer end!-->

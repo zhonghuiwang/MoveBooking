@@ -14,7 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!--订单确认main样式及js-->
     <link rel="stylesheet" type="text/css" href="css/checkOut.css">
     <script type="text/javascript" src="js/jquery_cart.js"></script>
-    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min2.js"></script>
 </head>
 <body>
 <!--header-->
@@ -196,12 +196,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             </p>
                                         </li>
 
-                                        <li class="item">
+             <%--                            <li class="item">
                                             <input type="radio" name="" value="2">
                                             <p>
                                                货到付款<span></span>
                                             </p>
-                                        </li>
+                                        </li> --%>
                                     </ul>
                                 </div>
                             </div>
@@ -231,77 +231,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <div class="box-bd">
                                 <ul class="checkout-option-list clearfix J_optionList">
                                     <li class="item selected"><input type="radio" checked="checked" name="" value="1"><p>不限送货时间<span>周一至周日</span></p></li>
-                                    <li class="item"><input type="radio" name="" value="2"><p>工作日送货<span>周一至周五</span></p></li>
-                                    <li class="item"><input type="radio" name="" value="3"><p>双休日、假日送货<span>周六至周日</span></p></li>
+                                   <%--  <li class="item"><input type="radio" name="" value="2"><p>工作日送货<span>周一至周五</span></p></li>
+                                    <li class="item"><input type="radio" name="" value="3"><p>双休日、假日送货<span>周六至周日</span></p></li> --%>
                                 </ul>
                             </div>
                         </div>
                         <!-- 送货时间 END-->
-                        <!-- 发票信息 -->
-                        <div id="checkoutInvoice">
-                            <div class="xm-box">
-                                <div class="box-hd">
-                                    <h2 class="title">发票信息</h2>
-                                </div>
-                                <div class="box-bd">
-                                    <ul class="checkout-option-list checkout-option-invoice clearfix J_optionList J_optionInvoice">
-
-                                        <li class="item">
-                                            <!--<label><input type="radio"  class="needInvoice" value="0" name="Checkout[invoice]">不开发票</label>-->
-                                            <input type="radio" checked="checked" value="4" name="Checkout[invoice]">
-                                            <p>电子发票（非纸质）</p>
-                                        </li>
-                                        <li class="item selected">
-                                            <input type="radio" value="1" name="Checkout[invoice]">
-                                            <p>普通发票（纸质）</p>
-                                        </li>
-                                    </ul>
-                                    <p id="eInvoiceTip" class="e-invoice-tip " style="display: none;">
-                                        电子发票是税务局认可的有效凭证，可作为售后维权凭据，不随商品寄送。开票后不可更换纸质发票，如需报销请选择普通发票。<a href="http://bbs.xiaomi.cn/thread-9285999-1-1.html" target="_blank">什么是电子发票？</a>
-                                    </p>
-                                    <div class="invoice-info nvoice-info-1" id="checkoutInvoiceElectronic" style="display: none;">
-
-                                        <p class="tip">电子发票目前仅对个人用户开具，不可用于单位报销 ，不随商品寄送</p>
-                                        <p>发票内容：购买商品明细</p>
-                                        <p>发票抬头：个人</p>
-                                        <p>
-                                            <span class="hide"><input type="radio" value="4" name="Checkout[invoice_type]" checked="checked" id="electronicPersonal" class="invoiceType"></span>
-                                        </p><dl>
-                                        <dt>什么是电子发票?</dt>
-                                        <dd>· 电子发票是纸质发票的映像，是税务局认可的有效凭证，与传统纸质发票具有同等法律效力，可作为售后维权凭据。</dd>
-                                        <dd>· 开具电子服务于个人，开票后不可更换纸质发票，不可用于单位报销。</dd>
-                                        <dd>· 您在订单详情的"发票信息"栏可查看、下载您的电子发票。<a href="" target="_blank">什么是电子发票？</a></dd>
-                                    </dl>
-                                        <p></p>
-                                    </div>
-                                    <div class="invoice-info invoice-info-2" id="checkoutInvoiceDetail" style="display: block;">
-                                        <p>发票内容：购买商品明细</p>
-                                        <p>
-                                            发票抬头：请确认单位名称正确,以免因名称错误耽搁您的报销。
-                                        </p>
-                                        <ul class="type clearfix J_invoiceType">
-
-                                            <li class="selected">
-                                                <input class="invoiceType" type="radio" id="commonPersonal" name="Checkout[invoice_type]" value="1">
-                                                个人
-                                            </li>
-                                            <li class="">
-                                                <input class="invoiceType" type="radio" name="Checkout[invoice_type]" value="2">
-                                                单位
-                                            </li>
-                                        </ul>
-                                        <div id="CheckoutInvoiceTitle" class=" hide  invoice-title" style="display: none;">
-                                            <label>单位名称：</label>
-                                            <input name="" type="text" maxlength="49" value="" class="input"><span class="tip-msg J_tipMsg"></span>
-                                            <label>企业信用代码：</label>
-                                            <input name="" type="text" maxlength="49" value="" class="input"><span class="tip-msg J_tipMsg"></span>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </div>                </div>
-                        <!-- 发票信息 END-->
                     </div>
                     <div class="checkout-box-ft">
 					<p class="checkout-total">应付总额：<span><strong id="totalPrice"><s:property value="#request.price"></s:property></strong>元</span></p>
@@ -327,7 +262,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!--footer-->
 <div class="footer-box" style="position:fixed;bottom: 0;">
     <div class="footer-footer">
-        <center> <p2><span>&nbsp;&copy;&nbsp;</span><span>All Rights Reserved.&nbsp;|&nbsp;</span><a href="http://beian.miit.gov.cn/" style="color:#FFFFFF">蒙ICP备2021000771号.</a></p2></center>
+        <center> <p2><span>&nbsp;&copy;&nbsp;</span><span>All Rights Reserved.&nbsp;|&nbsp;</span><a href="http://beian.miit.gov.cn/" style="color:#FFFFFF">蒙ICP备2021000771号-1</a></p2></center>
     </div>
 </div>
 <!--footer end!-->
@@ -338,8 +273,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="js/checkout.min.js"></script>
 <script type="text/javascript" charset="utf-8">
     function gocart3(){
+        var location = document.getElementById("elocation");
+        if(location.style.display != "none"){
     	var price = document.getElementById("totalPrice");
         window.location.href = "cart3.jsp?price="+encodeURI(price.innerHTML);
+        }else{
+            alert("请填写收货地址！");
+        }
     }
 </script>
 <script type="text/javascript">
