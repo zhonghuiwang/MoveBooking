@@ -28,7 +28,7 @@ public class UsersDaoJdbcImpl implements UsersDao {
 						rs.getString("location"), rs.getString("member"));
 				
 			}else{
-				user = new Users(0, "super", "super", "super", "super", "super");
+				user = null;
 			}
 			DBHelper.free(rs);
 		} catch (SQLException e) {

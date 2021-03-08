@@ -79,6 +79,7 @@ public class UsersAction extends ActionSupport implements ModelDriven<Users> ,Se
         response.setContentType("application/json;charset=utf-8");
 		request = ServletActionContext.getRequest();
 		String phone = java.net.URLDecoder.decode(request.getParameter("phone"),"UTF-8");
+		System.out.println("phone:"+phone);
         List<Users> loginedUser = usersBiz.login(phone); //Êý¾Ý¿â²éÑ¯ 
 		map.put("status", 200);
 		map.put("msg", "SUCCEED");
