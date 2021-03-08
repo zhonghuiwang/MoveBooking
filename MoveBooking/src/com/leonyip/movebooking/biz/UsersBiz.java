@@ -13,7 +13,9 @@ import com.leonyip.movebooking.entity.ResumeSkills;
 import com.leonyip.movebooking.entity.Users;
 
 public interface UsersBiz {
-	public List<Users> login(String userName, String password);
+	public List<Users> login(String phone);
+	
+	public List<Users> weblogin(String name,String password);
 	
 	public boolean addUsers(Users user);
 	

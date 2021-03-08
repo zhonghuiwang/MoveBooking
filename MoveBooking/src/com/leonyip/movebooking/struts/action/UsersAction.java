@@ -78,9 +78,8 @@ public class UsersAction extends ActionSupport implements ModelDriven<Users> ,Se
 		response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json;charset=utf-8");
 		request = ServletActionContext.getRequest();
-		String pwd = java.net.URLDecoder.decode(request.getParameter("password"),"UTF-8");   
-		String userName = java.net.URLDecoder.decode(request.getParameter("name"),"UTF-8");
-        List<Users> loginedUser = usersBiz.login(userName,pwd); //数据库查询 
+		String phone = java.net.URLDecoder.decode(request.getParameter("phone"),"UTF-8");
+        List<Users> loginedUser = usersBiz.login(phone); //数据库查询 
 		map.put("status", 200);
 		map.put("msg", "SUCCEED");
 		map.put("data", loginedUser);
@@ -373,7 +372,7 @@ public class UsersAction extends ActionSupport implements ModelDriven<Users> ,Se
 			String pwd = request.getParameter("password");   
 			String userName = request.getParameter("name");
 			String price = request.getParameter("price");
-	        List<Users> loginedUser = usersBiz.login(userName,pwd); //数据库查询
+	        List<Users> loginedUser = usersBiz.weblogin(userName,pwd); //数据库查询
 	        @SuppressWarnings("rawtypes")
 			Map map = (Map) ActionContext.getContext().get("request");
 			if(loginedUser.get(0).getId() != 0){
@@ -401,7 +400,7 @@ public class UsersAction extends ActionSupport implements ModelDriven<Users> ,Se
 			HttpSession session=request.getSession();
 			String pwd = request.getParameter("password");   
 			String userName = request.getParameter("name");
-	        List<Users> loginedUser = usersBiz.login(userName,pwd); //数据库查询
+	        List<Users> loginedUser = usersBiz.weblogin(userName,pwd); //数据库查询
 	        @SuppressWarnings("rawtypes")
 			Map map = (Map) ActionContext.getContext().get("request");
 			if(loginedUser.get(0).getId() != 0){

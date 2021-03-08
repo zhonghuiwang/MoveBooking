@@ -24,13 +24,20 @@ public class UsersBizImpl implements UsersBiz {
 	}
 
 
-	public List<Users> login(String userName, String password) {
+	public List<Users> login(String phone) {
 		List<Users> list = new ArrayList<Users>();
-		Users user = usersDao.getUserByName(userName,password);
+		Users user = usersDao.getUserByName(phone);
 		list.add(user);
 		return list;
 	}
 
+	@Override
+	public List<Users> weblogin(String name, String password) {
+		List<Users> list = new ArrayList<Users>();
+		Users user = usersDao.weblogin(name, password);
+		list.add(user);
+		return list;
+	}
 
 	@Override
 	public boolean addUsers(Users user) {
@@ -113,5 +120,4 @@ public class UsersBizImpl implements UsersBiz {
 		}
 		return count / pageSize + 1;
 	}
-
 }

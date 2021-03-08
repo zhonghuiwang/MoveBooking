@@ -12,7 +12,9 @@ import com.leonyip.movebooking.entity.ResumeSkills;
 import com.leonyip.movebooking.entity.Users;
 
 public interface UsersDao {
-	public Users getUserByName(String userName,String password);
+	public Users getUserByName(String phone);
+	
+	public Users weblogin(String name,String password);
 	
 	public boolean addUser(Users user);
 	

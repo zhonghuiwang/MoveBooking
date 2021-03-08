@@ -17,11 +17,11 @@ import com.leonyip.movebooking.entity.ResumeSkills;
 import com.leonyip.movebooking.entity.Users;
 
 public class UsersDaoJdbcImpl implements UsersDao {
-	public Users getUserByName(String userName,String password) {
+	public Users getUserByName(String phone) {
 		Users user = new Users();
 		try {
-			String sql = "select id,name,password,phone,location,member from users where name = ? and password = ?";
-			ResultSet rs = DBHelper.executeQuery(sql, new Object[] { userName,password });
+			String sql = "select id,name,password,phone,location,member from users where phone = ?;";
+			ResultSet rs = DBHelper.executeQuery(sql, new Object[] { phone });
 			if(rs.next()) {
 				user = new Users(rs.getInt("id"), rs.getString("name"),
 						rs.getString("password"), rs.getString("phone"),
@@ -38,6 +38,28 @@ public class UsersDaoJdbcImpl implements UsersDao {
 		return user;
 	}
 
+	@Override
+	public Users weblogin(String name, String password) {
+		Users user = new Users();
+		try {
+			String sql = "select id,name,password,phone,location,member from users where name = ? and password = ?;";
+			ResultSet rs = DBHelper.executeQuery(sql, new Object[] { name, password });
+			if(rs.next()) {
+				user = new Users(rs.getInt("id"), rs.getString("name"),
+						rs.getString("password"), rs.getString("phone"),
+						rs.getString("location"), rs.getString("member"));
+				
+			}else{
+				user = new Users(0, "super", "super", "super", "super", "super");
+			}
+			DBHelper.free(rs);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user;
+	}
+	
 	@Override
 	public boolean addUser(Users user) {
 		String sql = "insert into users values (null,?,?,?,?,?)";
