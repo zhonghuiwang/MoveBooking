@@ -56,6 +56,12 @@
 			<result name="goods_chain" type="chain">goods_getGoodsBasic</result>
 		</action>
 	</package>
+	<package name="news_*" extends="struts-default">
+		<action name="news_*"
+			class="com.leonyip.movebooking.struts.action.NewsAction" method="{1}">
+			<result name="success">/market.jsp</result>
+		</action>
+	</package>
 	<package name="jobApply" extends="struts-default">
 		<action name="jobApply_*"
 			class="com.leonyip.movebooking.struts.action.JobApplyAction" method="{1}">
