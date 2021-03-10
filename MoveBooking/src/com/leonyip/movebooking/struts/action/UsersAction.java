@@ -79,18 +79,27 @@ public class UsersAction extends ActionSupport implements ModelDriven<Users> ,Se
         response.setContentType("application/json;charset=utf-8");
 		request = ServletActionContext.getRequest();
 		String phone = java.net.URLDecoder.decode(request.getParameter("phone"),"UTF-8");
-		System.out.println("phone:"+phone);
         List<Users> loginedUser = usersBiz.login(phone); //数据库查询 
 		map.put("status", 200);
 		map.put("msg", "SUCCEED");
 		map.put("data", loginedUser);
 		response.getWriter().write(JSONObject.fromObject(map).toString());//返回手机端
-		
-		/*if(loginedUser.get(0).getId() != 0){
-			return SUCCESS;
-		}
-		return LOGIN;*/
 	}
+	
+	//用户登录
+	public void userExt() throws Exception {
+		HashMap<String,Object> map=new HashMap<String,Object>();
+		response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json;charset=utf-8");
+		request = ServletActionContext.getRequest();
+		String phone = java.net.URLDecoder.decode(request.getParameter("phone"),"UTF-8");
+		System.out.println("phone:"+phone);
+        List<Users> loginedUser = usersBiz.login(phone); //数据库查询 
+		map.put("status", 200);
+		map.put("msg", "SUCCEED");
+		map.put("data", loginedUser);
+		response.getWriter().write(JSONObject.fromObject(map).toString());//返回手机端		
+		}
 	
 	//添加用户
 	public void addUser() throws Exception{

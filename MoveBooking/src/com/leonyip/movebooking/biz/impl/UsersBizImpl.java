@@ -24,9 +24,20 @@ public class UsersBizImpl implements UsersBiz {
 	}
 
 
+	//判断用户是否存在，不存在存入查询。
 	public List<Users> login(String phone) {
 		List<Users> list = new ArrayList<Users>();
 		Users user = usersDao.getUserByName(phone);
+		if(user == null){
+			 Users users = new Users();
+		     users.setName("unknown");
+		     users.setPassword("unknown");
+		     users.setLocation("unknown");
+		     users.setPhone(phone);
+		     users.setMember("1");
+		     usersDao.addUser(users);
+		     user = usersDao.getUserByName(phone);
+		}
 		list.add(user);
 		return list;
 	}
