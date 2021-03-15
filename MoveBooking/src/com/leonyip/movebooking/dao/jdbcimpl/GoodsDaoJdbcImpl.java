@@ -6,9 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.leonyip.movebooking.dao.GoodsDao;
+import com.leonyip.movebooking.entity.Cart;
 import com.leonyip.movebooking.entity.Category;
 import com.leonyip.movebooking.entity.Goods;
 import com.leonyip.movebooking.entity.Shop;
+import com.leonyip.movebooking.entity.Users;
 
 public class GoodsDaoJdbcImpl implements GoodsDao{
 
@@ -135,5 +137,43 @@ public class GoodsDaoJdbcImpl implements GoodsDao{
 	public int getGoodsCount() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public boolean addCart(Cart cart) {
+		String sql = "insert into goods_cart values (null,?,?);";
+		Object[] obj = new Object[] { cart.getList().get(0).getGoodId(), cart.getUser().getId()};
+		int result = DBHelper.executeNonQuery(sql, obj);
+		if(result == 1) return true;
+		else return false;
+	}
+
+	@Override
+	public Cart getCart(int uid) {
+		Cart cart = new Cart();
+		Users user = new Users();
+        List<Goods> list = new ArrayList<Goods>();
+		ResultSet rs;
+		try{
+			String sql = "select * from users as u,goods as g,goods_cart as c where u.id=c.user_id and g.goodId=c.goods_id and user_id=?;";
+			rs = DBHelper.executeQuery(sql, new Object[] { uid });
+			while(rs.next()) {
+				Goods goo = new Goods(rs.getInt("goodId"), rs.getString("goodName"), rs.getInt("goodPrice"),
+						rs.getString("priceType"), rs.getInt("goodCount"), rs.getString("countType"),
+						rs.getString("goodLogo"), rs.getString("goodImage"), rs.getString("goodDescription"),
+						rs.getInt("shopId"), rs.getInt("cateId"));
+				user = new Users(rs.getInt("id"), rs.getString("name"),
+						rs.getString("password"), rs.getString("phone"),
+						rs.getString("location"), rs.getString("member"));
+				cart.setCartId(rs.getInt("car_id"));
+				list.add(goo);
+			}
+			cart.setList(list);
+			cart.setUser(user);
+			DBHelper.free(rs);
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return cart;
 	}
 }

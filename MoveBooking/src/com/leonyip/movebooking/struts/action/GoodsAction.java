@@ -6,8 +6,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -17,6 +17,7 @@ import java.util.Random;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.apache.commons.io.FileUtils;
@@ -25,9 +26,11 @@ import org.apache.struts2.interceptor.ServletResponseAware;
 
 import com.leonyip.movebooking.biz.GoodsBiz;
 import com.leonyip.movebooking.biz.impl.GoodsBizImpl;
+import com.leonyip.movebooking.entity.Cart;
 import com.leonyip.movebooking.entity.Category;
 import com.leonyip.movebooking.entity.Goods;
 import com.leonyip.movebooking.entity.Shop;
+import com.leonyip.movebooking.entity.Users;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -280,6 +283,57 @@ public class GoodsAction extends ActionSupport implements ServletResponseAware{
 	    if(null!=bos){
 	    	bos.close();//本方法的调用是关闭FileOutStream(des)的输入流
 	    }
+	}
+	
+	//添加购物车
+	public void addCart() throws IOException{
+		HashMap<String,Object> map=new HashMap<String,Object>();
+		response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json;charset=utf-8");
+		request = ServletActionContext.getRequest();
+		String cart = java.net.URLDecoder.decode(request.getParameter("cart"),"UTF-8"); 
+		JSONObject json = JSONObject.fromObject(cart);
+        Cart carts = new Cart();
+        Users user = new Users();
+        List<Goods> list = new ArrayList<Goods>();
+        JSONArray array = json.getJSONArray("list");
+        //json转实体类
+        for(int i = 0;i < array.size();i++){
+        	Goods goods = new Goods();
+        	JSONObject object = (JSONObject) array.get(i);
+        	goods = (Goods) JSONObject.toBean(object,Goods.class);
+        	list.add(goods);
+        }
+        carts.setList(list);
+        JSONObject jsonuser = JSONObject.fromObject(json.getString("user"));
+        user = (Users) JSONObject.toBean(jsonuser,Users.class);
+        carts.setUser(user);
+        
+        boolean b = goodsBiz.addCart(carts);
+        if(b){
+        	map.put("status", 200);
+        	map.put("msg", "SUCCEED");
+        	map.put("data", b);
+        }else{
+        	map.put("status", 100);
+    		map.put("msg", "FAILED");
+    		map.put("data", b);
+        }
+		response.getWriter().write(JSONObject.fromObject(map).toString());//返回手机端
+	}
+	
+	//获取购物车信息
+	public void getCart() throws IOException{
+		HashMap<String,Object> map=new HashMap<String,Object>();
+		response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json;charset=utf-8");
+		request = ServletActionContext.getRequest();
+		String uid = java.net.URLDecoder.decode(request.getParameter("uid"),"UTF-8"); 
+		Cart cart = goodsBiz.getCart(Integer.parseInt(uid));
+		map.put("status", 200);
+    	map.put("msg", "SUCCEED");
+    	map.put("data", cart);
+    	response.getWriter().write(JSONObject.fromObject(map).toString());//返回手机端
 	}
 
 }

@@ -2,6 +2,7 @@ package com.leonyip.movebooking.biz;
 
 import java.util.List;
 
+import com.leonyip.movebooking.entity.Cart;
 import com.leonyip.movebooking.entity.Category;
 import com.leonyip.movebooking.entity.Goods;
 import com.leonyip.movebooking.entity.Shop;
@@ -34,5 +35,11 @@ public interface GoodsBiz {
 	
 	//删除商品
 	public boolean delGoods(int goodId);
+	
+	//添加购物车
+	public boolean addCart(Cart cart);
+	
+	//获取购物车信息
+	public Cart getCart(int uid);
 
 }

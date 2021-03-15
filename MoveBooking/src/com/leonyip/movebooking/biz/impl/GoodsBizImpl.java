@@ -5,6 +5,7 @@ import java.util.List;
 import com.leonyip.movebooking.biz.GoodsBiz;
 import com.leonyip.movebooking.dao.GoodsDao;
 import com.leonyip.movebooking.dao.jdbcimpl.GoodsDaoJdbcImpl;
+import com.leonyip.movebooking.entity.Cart;
 import com.leonyip.movebooking.entity.Category;
 import com.leonyip.movebooking.entity.Goods;
 import com.leonyip.movebooking.entity.Shop;
@@ -60,5 +61,17 @@ public class GoodsBizImpl implements GoodsBiz{
 			return count / pageSize;
 		}
 		return count / pageSize + 1;
+	}
+
+	@Override
+	public boolean addCart(Cart cart) {
+		// TODO Auto-generated method stub
+		return goodsDao.addCart(cart);
+	}
+
+	@Override
+	public Cart getCart(int uid) {
+		// TODO Auto-generated method stub
+		return goodsDao.getCart(uid);
 	}
 }
