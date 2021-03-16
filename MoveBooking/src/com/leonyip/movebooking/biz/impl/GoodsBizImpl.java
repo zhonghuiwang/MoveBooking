@@ -74,4 +74,10 @@ public class GoodsBizImpl implements GoodsBiz{
 		// TODO Auto-generated method stub
 		return goodsDao.getCart(uid);
 	}
+
+	@Override
+	public boolean delCart(int cartId) {
+		// TODO Auto-generated method stub
+		return goodsDao.delCart(cartId);
+	}
 }

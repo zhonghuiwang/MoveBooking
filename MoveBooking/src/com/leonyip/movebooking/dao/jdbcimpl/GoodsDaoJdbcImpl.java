@@ -141,12 +141,32 @@ public class GoodsDaoJdbcImpl implements GoodsDao{
 
 	@Override
 	public boolean addCart(Cart cart) {
+		String ifSql = "select goods_id from goods_cart where goods_id=?;";
+		int ifHas = -1;
+		try {
+			ifHas = getCartIsHave(ifSql,cart.getList().get(0).getGoodId());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(ifHas == -1){
 		String sql = "insert into goods_cart values (null,?,?);";
 		Object[] obj = new Object[] { cart.getList().get(0).getGoodId(), cart.getUser().getId()};
 		int result = DBHelper.executeNonQuery(sql, obj);
 		if(result == 1) return true;
 		else return false;
+		}else{
+			return true;
+		}
 	}
+		
+	public int getCartIsHave(String sql,int id) throws SQLException{
+		ResultSet rs = DBHelper.executeQuery(sql,new Object[]{id});
+		if (rs.next()) {
+			return id;
+		}
+		return -1;
+	}		
 
 	@Override
 	public Cart getCart(int uid) {
@@ -175,5 +195,13 @@ public class GoodsDaoJdbcImpl implements GoodsDao{
 			e.printStackTrace();
 		}
 		return cart;
+	}
+
+	@Override
+	public boolean delCart(int cartId) {
+		String sql = "delete from goods_cart where goods_id=?;";
+		int result = DBHelper.executeNonQuery(sql, new Object[]{cartId});
+		if(result == 1) return true;
+		else return false;
 	}
 }

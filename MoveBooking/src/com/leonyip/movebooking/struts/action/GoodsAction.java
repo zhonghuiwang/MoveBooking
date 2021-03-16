@@ -335,5 +335,25 @@ public class GoodsAction extends ActionSupport implements ServletResponseAware{
     	map.put("data", cart);
     	response.getWriter().write(JSONObject.fromObject(map).toString());//返回手机端
 	}
+	
+	//删除购物车信息
+	public void delCart() throws IOException{
+		HashMap<String,Object> map=new HashMap<String,Object>();
+		response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json;charset=utf-8");
+		request = ServletActionContext.getRequest();
+		String cartId = java.net.URLDecoder.decode(request.getParameter("cartId"),"UTF-8");
+		boolean b = goodsBiz.delCart(Integer.parseInt(cartId));
+		if(b){
+			map.put("status", 200);
+	    	map.put("msg", "SUCCEED");
+	    	map.put("data", b);
+		}else{
+			map.put("status", 100);
+	    	map.put("msg", "FAILED");
+	    	map.put("data", b);
+		}
+		response.getWriter().write(JSONObject.fromObject(map).toString());//返回手机端
+	}
 
 }

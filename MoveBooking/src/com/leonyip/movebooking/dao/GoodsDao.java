@@ -41,4 +41,7 @@ public interface GoodsDao {
 	
 	//获取购物车信息
 	public Cart getCart(int uid);
+	
+	//删除购物车
+	public boolean delCart(int cartId);
 }
