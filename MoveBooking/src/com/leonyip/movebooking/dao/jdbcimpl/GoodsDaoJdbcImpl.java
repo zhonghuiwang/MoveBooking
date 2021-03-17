@@ -41,7 +41,8 @@ public class GoodsDaoJdbcImpl implements GoodsDao{
 			ResultSet rs = DBHelper.executeQuery(sql);
 			while(rs.next()) {
 				Shop shop = new Shop(rs.getInt("shopId"),rs.getString("shopName"),
-						rs.getString("shopDescription"), rs.getString("shopDate"), rs.getString("shopQRcode"));
+						rs.getString("shopDescription"), rs.getString("shopDate"), 
+						rs.getString("shopImg"), rs.getInt("uid"));
 				
 				list.add(shop);
 			}

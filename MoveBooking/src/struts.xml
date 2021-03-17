@@ -74,4 +74,10 @@
 			<result name="edit">/index.jsp</result>
 		</action>
 	</package>
+	<package name="message" extends="struts-default">
+		<action name="message_*"
+			class="com.leonyip.movebooking.struts.action.MessageAction" method="{1}">
+			<result name="edit">/index.jsp</result>
+		</action>
+	</package>
 </struts>    
