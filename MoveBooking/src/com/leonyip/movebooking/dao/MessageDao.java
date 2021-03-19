@@ -11,4 +11,7 @@ public interface MessageDao {
 	
 	//修改消息状态0为全部
 	public boolean updateMessage(int toid);
+	
+	//删除消息
+	public boolean delMessage(int toid);
 }

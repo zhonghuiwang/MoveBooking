@@ -131,4 +131,11 @@ public class UsersBizImpl implements UsersBiz {
 		}
 		return count / pageSize + 1;
 	}
+
+
+	@Override
+	public boolean delAddress(int aid) {
+		// TODO Auto-generated method stub
+		return usersDao.delAddress(aid);
+	}
 }

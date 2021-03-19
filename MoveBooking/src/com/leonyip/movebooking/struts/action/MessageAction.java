@@ -63,4 +63,24 @@ public class MessageAction extends ActionSupport implements ServletResponseAware
 		}
 		response.getWriter().write(JSONObject.fromObject(map).toString());
 	}
+	
+	//É¾³ýÏûÏ¢
+	public void delMessage() throws IOException{
+		HashMap<String,Object> map=new HashMap<String,Object>();
+		response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json;charset=utf-8");
+        request = ServletActionContext.getRequest();
+		String toid = request.getParameter("toid");  
+		boolean b = messageBiz.delMessage(Integer.parseInt(toid));
+		if(b){
+			map.put("status", 200);
+			map.put("msg", "SUCCEED");
+			map.put("data", b);
+		}else{
+			map.put("status", 100);
+			map.put("msg", "FAILED");
+			map.put("data", b);
+		}
+		response.getWriter().write(JSONObject.fromObject(map).toString());
+	}
 }

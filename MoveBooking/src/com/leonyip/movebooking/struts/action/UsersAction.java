@@ -372,6 +372,27 @@ public class UsersAction extends ActionSupport implements ModelDriven<Users> ,Se
 		    response.getWriter().write(JSONObject.fromObject(map).toString());
 		} 
 		
+		//删除收货地址
+		public  void delAddress() throws IOException{
+			Address address = new Address();
+			HashMap<String,Object> map=new HashMap<String,Object>();
+			response.setCharacterEncoding("UTF-8");
+	        response.setContentType("application/json;charset=utf-8");
+			request = ServletActionContext.getRequest();
+	        String aid = java.net.URLDecoder.decode(request.getParameter("aid"),"utf-8");
+			boolean b = usersBiz.delAddress(Integer.parseInt(aid));
+			if(b){
+				map.put("status", 200);
+				map.put("msg", "SUCCEED");
+				map.put("data", b);
+			}else{
+				map.put("status", 100);
+				map.put("msg", "FAILED");
+				map.put("data", b);
+			}
+		    response.getWriter().write(JSONObject.fromObject(map).toString());
+		}
+		
 		//网页端系统管理员登录
 		@SuppressWarnings("unchecked")
 		public String doWebLogin() throws Exception {

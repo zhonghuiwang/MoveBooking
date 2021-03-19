@@ -41,4 +41,6 @@ public interface UsersDao {
 	public List<Users> getUsersByPaging(int pageNum, int pageSize);
 	
 	public int getUsersCount();
+	
+	public boolean delAddress(int aid);
 }

@@ -22,4 +22,10 @@ public class MessageBizImpl implements MessageBiz{
 		return messageDao.updateMessage(toid);
 	}
 
+	@Override
+	public boolean delMessage(int toid) {
+		// TODO Auto-generated method stub
+		return messageDao.delMessage(toid);
+	}
+
 }

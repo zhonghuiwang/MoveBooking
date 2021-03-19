@@ -42,4 +42,6 @@ public interface UsersBiz {
 	public List<Users> getUsersByPaging(int pageNum, int pageSize);
 	
 	public int getPageCount(int pageSize);
+	
+	public boolean delAddress(int aid);
 }

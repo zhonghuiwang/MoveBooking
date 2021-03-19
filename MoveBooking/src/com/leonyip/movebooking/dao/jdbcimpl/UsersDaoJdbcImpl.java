@@ -286,4 +286,12 @@ public class UsersDaoJdbcImpl implements UsersDao {
 		return count;
 	}
 
+	@Override
+	public boolean delAddress(int aid) {
+		String sql = "delete from address where addr_id=?;";
+		int rs = DBHelper.executeNonQuery(sql, new Object[]{aid});
+		if(rs == 1) return true;
+		return false;
+	}
+
 }

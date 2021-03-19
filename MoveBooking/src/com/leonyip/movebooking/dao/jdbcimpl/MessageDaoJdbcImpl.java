@@ -42,4 +42,14 @@ public class MessageDaoJdbcImpl implements MessageDao{
 		return false;
 	}
 
+	@Override
+	public boolean delMessage(int toid) {
+		String sql = "delete from messagetowho where toid=?;";
+		int rs = DBHelper.executeNonQuery(sql, new Object[]{toid});
+		if(rs == 1) return true;
+		return false;
+	}
+	
+	
+
 }
