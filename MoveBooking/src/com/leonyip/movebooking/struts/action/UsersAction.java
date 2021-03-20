@@ -121,13 +121,35 @@ public class UsersAction extends ActionSupport implements ModelDriven<Users> ,Se
 			map.put("status", 200);
 			map.put("msg", "success");
 			map.put("data", "注册成功");
-			response.getWriter().write(JSONObject.fromObject(map).toString());//返回手机端
 		}else{
 			map.put("status", 100);
 			map.put("msg", "failed");
 			map.put("data", "注册失败");
-			response.getWriter().write(JSONObject.fromObject(map).toString());//返回手机端
 		}
+		response.getWriter().write(JSONObject.fromObject(map).toString());//返回手机端
+	}
+	
+	//修改用户
+	public void updateUsers() throws Exception{
+		HashMap<String,Object> map=new HashMap<String,Object>();
+		response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json;charset=utf-8");
+		request = ServletActionContext.getRequest();
+		String users = java.net.URLDecoder.decode(request.getParameter("user"),"utf-8");
+		
+		JSONObject json = JSONObject.fromObject(users);
+		Users us = (Users)JSONObject.toBean(json,Users.class);
+		boolean b = usersBiz.updateUsers(us);
+		if(b){
+			map.put("status", 200);
+			map.put("msg", "success");
+			map.put("data", "修改成功");
+		}else{
+			map.put("status", 100);
+			map.put("msg", "failed");
+			map.put("data", "修改失败");
+		}
+		response.getWriter().write(JSONObject.fromObject(map).toString());//返回手机端
 	}
 	
 	//添加简历基本信息

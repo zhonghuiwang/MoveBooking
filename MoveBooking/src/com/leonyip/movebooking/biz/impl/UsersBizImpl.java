@@ -138,4 +138,11 @@ public class UsersBizImpl implements UsersBiz {
 		// TODO Auto-generated method stub
 		return usersDao.delAddress(aid);
 	}
+
+
+	@Override
+	public boolean updateUsers(Users users) {
+		// TODO Auto-generated method stub
+		return usersDao.updateUsers(users);
+	}
 }

@@ -43,4 +43,6 @@ public interface UsersDao {
 	public int getUsersCount();
 	
 	public boolean delAddress(int aid);
+	
+	public boolean updateUsers(Users users);
 }

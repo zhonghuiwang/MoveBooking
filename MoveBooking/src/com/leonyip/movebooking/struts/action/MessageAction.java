@@ -31,7 +31,7 @@ public class MessageAction extends ActionSupport implements ServletResponseAware
 		response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json;charset=utf-8");
         request = ServletActionContext.getRequest();
-		String uid = request.getParameter("uid");  
+		String uid = java.net.URLDecoder.decode(request.getParameter("uid"),"utf-8");  
 		List<MessageToWho> list = messageBiz.getToMessage(Integer.parseInt(uid));
 		map.put("status", 200);
 		map.put("msg", "SUCCEED");
@@ -39,6 +39,21 @@ public class MessageAction extends ActionSupport implements ServletResponseAware
 	    response.getWriter().write(JSONObject.fromObject(map).toString());
 	}
 
+	//按商铺获取个人信息列表
+	public void getMessageByShop() throws IOException{
+		HashMap<String,Object> map=new HashMap<String,Object>();
+		response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json;charset=utf-8");
+        request = ServletActionContext.getRequest();
+        String uid = java.net.URLDecoder.decode(request.getParameter("uid"),"utf-8");  
+        String shopid = java.net.URLDecoder.decode(request.getParameter("shopid"),"utf-8");  
+		List<MessageToWho> list = messageBiz.getMessageByShop(Integer.parseInt(uid), Integer.parseInt(shopid));
+		map.put("status", 200);
+		map.put("msg", "SUCCEED");
+		map.put("data", list);
+	    response.getWriter().write(JSONObject.fromObject(map).toString());
+	}
+	
 	@Override
 	public void setServletResponse(HttpServletResponse response) {
 		this.response = response;
@@ -50,7 +65,7 @@ public class MessageAction extends ActionSupport implements ServletResponseAware
 		response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json;charset=utf-8");
         request = ServletActionContext.getRequest();
-		String toid = request.getParameter("toid");  
+		String toid = java.net.URLDecoder.decode(request.getParameter("toid"),"utf-8");  
 		boolean b = messageBiz.updateMessage(Integer.parseInt(toid));
 		if(b){
 			map.put("status", 200);
@@ -70,7 +85,7 @@ public class MessageAction extends ActionSupport implements ServletResponseAware
 		response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json;charset=utf-8");
         request = ServletActionContext.getRequest();
-		String toid = request.getParameter("toid");  
+		String toid = java.net.URLDecoder.decode(request.getParameter("toid"),"utf-8");    
 		boolean b = messageBiz.delMessage(Integer.parseInt(toid));
 		if(b){
 			map.put("status", 200);

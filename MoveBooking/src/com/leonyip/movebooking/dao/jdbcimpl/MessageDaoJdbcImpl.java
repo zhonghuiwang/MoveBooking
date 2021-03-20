@@ -15,9 +15,10 @@ public class MessageDaoJdbcImpl implements MessageDao{
 	public List<MessageToWho> getToMessage(int uid) {
 		List<MessageToWho> list = new ArrayList<MessageToWho>();
 		try {
-			String sql = "select u.id,w.uid,s.shopid,m.mid,w.toid,shopName,shopImg,mtitle,mcontent,mtime,w.tstatus "
+			String sql = "select u.id,w.uid,m.shopid,m.mid,w.toid,shopName,shopImg,mtitle,mcontent,m.mtime,w.tstatus "
 					+ "from users as u ,shop as s ,message as m ,messagetowho as w "
-					+ "where m.mid = w.mid and s.shopId = m.shopid and u.id = s.uid and w.uid=? order by w.toid desc;";
+					+ "where m.mid = w.mid and s.shopId = m.shopid and u.id = s.uid and w.uid=? "
+					+ "and m.mtime in (select max(mtime) from message group by shopid) order by mtime desc;";
 			ResultSet rs = DBHelper.executeQuery(sql, new Object[] { uid });
 			while(rs.next()) {
 				MessageToWho msg = new MessageToWho(rs.getInt("id"), rs.getInt("uid"), rs.getInt("shopid"), rs.getInt("mid"),
@@ -49,7 +50,26 @@ public class MessageDaoJdbcImpl implements MessageDao{
 		if(rs == 1) return true;
 		return false;
 	}
-	
-	
 
+	@Override
+	public List<MessageToWho> getMessageByShop(int uid, int shopid) {
+		List<MessageToWho> list = new ArrayList<MessageToWho>();
+		try {
+			String sql ="select u.id,w.uid,m.shopid,m.mid,w.toid,shopName,shopImg,mtitle,mcontent,m.mtime,w.tstatus from users as u ,shop as s ,message as m ,messagetowho as w "
+					+ "where m.mid = w.mid and s.shopId = m.shopid and u.id = s.uid and w.uid=? and m.shopid=?;";
+			ResultSet rs = DBHelper.executeQuery(sql, new Object[] { uid, shopid });
+			while(rs.next()) {
+				MessageToWho msg = new MessageToWho(rs.getInt("id"), rs.getInt("uid"), rs.getInt("shopid"), rs.getInt("mid"),
+						rs.getInt("toid"),rs.getString("shopName"), rs.getString("shopImg"), rs.getString("mtitle"), rs.getString("mcontent"),
+						rs.getString("mtime"), rs.getInt("tstatus"));
+				
+				list.add(msg);
+			}
+			DBHelper.free(rs);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
 }

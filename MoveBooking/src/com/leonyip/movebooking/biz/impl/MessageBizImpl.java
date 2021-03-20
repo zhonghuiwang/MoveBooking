@@ -28,4 +28,10 @@ public class MessageBizImpl implements MessageBiz{
 		return messageDao.delMessage(toid);
 	}
 
+	@Override
+	public List<MessageToWho> getMessageByShop(int uid, int shopid) {
+		// TODO Auto-generated method stub
+		return messageDao.getMessageByShop(uid, shopid);
+	}
+
 }

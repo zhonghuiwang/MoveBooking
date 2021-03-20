@@ -6,7 +6,7 @@ import com.leonyip.movebooking.entity.MessageToWho;
 
 public interface MessageDao {
 
-	//获取发送信息
+	//获取个人消息
 	public List<MessageToWho> getToMessage(int uid);
 	
 	//修改消息状态0为全部
@@ -14,4 +14,7 @@ public interface MessageDao {
 	
 	//删除消息
 	public boolean delMessage(int toid);
+	
+	//按商户获取个人消息
+	public List<MessageToWho> getMessageByShop(int uid, int shopid);
 }

@@ -44,4 +44,6 @@ public interface UsersBiz {
 	public int getPageCount(int pageSize);
 	
 	public boolean delAddress(int aid);
+	
+	public boolean updateUsers(Users users);
 }

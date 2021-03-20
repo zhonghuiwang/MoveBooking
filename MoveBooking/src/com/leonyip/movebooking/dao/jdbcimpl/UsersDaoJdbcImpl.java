@@ -294,4 +294,14 @@ public class UsersDaoJdbcImpl implements UsersDao {
 		return false;
 	}
 
+	@Override
+	public boolean updateUsers(Users users) {
+		String sql = "update users set name=?, password=?, phone=?, location=? where id = ?;";
+		
+		int result = DBHelper.executeNonQuery(sql, new Object[]{users.getName(), users.getPassword(), users.getPhone(),
+				users.getLocation(), users.getId()});
+		if(result == 1) return true;
+		else return false;
+	}
+
 }
