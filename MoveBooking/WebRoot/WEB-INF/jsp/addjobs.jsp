@@ -65,6 +65,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		<td><s:textfield name="companyName"></s:textfield></td>
     	</tr>
     	<tr>
+    		<td ><center>招聘标题：</center></td>
+    		<td><s:textarea style=" height:80%;width:45%" name="jobTitle" rows="8" cols="30"/></td>
+    	</tr>
+    	<tr>
     		<td ><center>公司信息：</center></td>
     		<td><s:textarea style=" height:80%;width:45%" name="companyInfo" rows="8" cols="30"/></td>
     	</tr>

@@ -3,6 +3,7 @@ package com.leonyip.movebooking.entity;
 public class JobSearch implements java.io.Serializable{
 	private static final long serialVersionUID = 2548742047971256421L;
 	private Integer id;
+	private String jobTitle;
 	private String companyName;
 	private String CompanyInfo;
 	private String jobInfo;
@@ -15,17 +16,18 @@ public class JobSearch implements java.io.Serializable{
 	private String education;
 	private String publish_date;
 	private int jobCateId;
-	private int uid;
+	private Users user;
 	
 	public JobSearch(){
 	}
 
-	public JobSearch(Integer id, String companyName, String companyInfo,
+	public JobSearch(Integer id, String jobTitle, String companyName, String companyInfo,
 			String jobInfo, String address, String address_detail, String tel, String category,
 			String salary, String workExp, String education,
-			String publish_date, int jobCateId, int uid) {
+			String publish_date, int jobCateId, Users user) {
 		super();
 		this.id = id;
+		this.jobTitle = jobTitle; //招聘标题
 		this.companyName = companyName;  //公司名称
 		CompanyInfo = companyInfo;  //公司信息
 		this.jobInfo = jobInfo;  //职位信息（岗位职责、任职要求、实际问题）
@@ -38,7 +40,7 @@ public class JobSearch implements java.io.Serializable{
 		this.education = education;  //学历
 		this.publish_date = publish_date;  //发布时间
 		this.jobCateId = jobCateId;
-		this.uid = uid;  //发布人id
+		this.user = user;  //发布人id
 	}
 
 	public String getAddress_detail() {
@@ -55,6 +57,14 @@ public class JobSearch implements java.io.Serializable{
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	public String getJobTitle() {
+		return jobTitle;
+	}
+
+	public void setJobTitle(String jobTitle) {
+		this.jobTitle = jobTitle;
 	}
 
 	public String getCompanyName() {
@@ -145,12 +155,12 @@ public class JobSearch implements java.io.Serializable{
 		this.jobCateId = jobCateId;
 	}
 
-	public int getUid() {
-		return uid;
+	public Users getUser() {
+		return user;
 	}
 
-	public void setUid(int uid) {
-		this.uid = uid;
+	public void setUser(Users user) {
+		this.user = user;
 	}
 
 	public static long getSerialversionuid() {

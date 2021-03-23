@@ -185,7 +185,7 @@ public class GoodsDaoJdbcImpl implements GoodsDao{
 						rs.getInt("shopId"), rs.getInt("cateId"));
 				user = new Users(rs.getInt("id"), rs.getString("name"),
 						rs.getString("password"), rs.getString("phone"),
-						rs.getString("location"), rs.getString("member"));
+						rs.getString("location"), rs.getString("avatar"), rs.getString("member"));
 				cart.setCartId(rs.getInt("car_id"));
 				list.add(goo);
 			}

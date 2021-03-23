@@ -14,8 +14,8 @@ public class JobSearchBizImpl implements JobSearchBiz{
 	public void setJobSearchDao(JobSearchDao jobSearchDao){
 		this.jobSearchDao = jobSearchDao;
 	}
-	public List<JobSearch> getAllInfo() {
-		List<JobSearch> job = jobSearchDao.getJobSearchDetail();
+	public List<JobSearch> getAllInfo(String city, String cate) {
+		List<JobSearch> job = jobSearchDao.getJobSearchDetail(city, cate);
 		return job;
 	}
 	@Override

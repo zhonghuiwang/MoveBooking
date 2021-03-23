@@ -17,6 +17,7 @@ public class Users implements java.io.Serializable {
 	private String password;
 	private String phone;
 	private String location;
+	private String avatar;
 	private String member;
 
 	// Constructors
@@ -25,13 +26,14 @@ public class Users implements java.io.Serializable {
 	public Users() {
 	}
 
-	public Users(Integer id, String name, String password, String phone, String location, String member) {
+	public Users(Integer id, String name, String password, String phone, String location, String avatar, String member) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.password = password;
-		this.setPhone(phone);
-		this.setLocation(location);
+		this.phone = phone;
+		this.location = location;
+		this.avatar = avatar;
 		this.member = member;
 	}
 
@@ -89,6 +91,14 @@ public class Users implements java.io.Serializable {
 
 	public void setLocation(String location) {
 		this.location = location;
+	}
+
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 
 }

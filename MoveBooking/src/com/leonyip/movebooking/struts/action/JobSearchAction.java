@@ -61,7 +61,7 @@ public class JobSearchAction extends ActionSupport implements ServletRequestAwar
 	}
 	
 	public String getAllJobSearch() throws IOException{
-		List<JobSearch> list = jobSearchBiz.getAllInfo();
+		List<JobSearch> list = jobSearchBiz.getAllInfo("全部城市","全部分类");
 		ActionContext.getContext().put("InfoList", list);
 		return "edit";
 	}
@@ -70,7 +70,10 @@ public class JobSearchAction extends ActionSupport implements ServletRequestAwar
 		HashMap<String,Object> map=new HashMap<String,Object>();
 		response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json;charset=utf-8");
-		List<JobSearch> list = jobSearchBiz.getAllInfo();
+        request = ServletActionContext.getRequest();
+        String city = java.net.URLDecoder.decode(request.getParameter("city"),"UTF-8");
+        String cate = java.net.URLDecoder.decode(request.getParameter("cate"),"UTF-8");
+		List<JobSearch> list = jobSearchBiz.getAllInfo(city,cate);
 		map.put("status", 200);
 		map.put("msg", "SUCCEED");
 		map.put("data", list);
@@ -108,6 +111,7 @@ public class JobSearchAction extends ActionSupport implements ServletRequestAwar
 		request = ServletActionContext.getRequest();
 		HttpSession session=request.getSession();
 		Users user = (Users)session.getAttribute("user"); //获取登录用户信息
+		String jobTitle = request.getParameter("jobTitle");
 		String companyName = request.getParameter("companyName");
 		String companyInfo = request.getParameter("companyInfo");
 		String jobInfo = request.getParameter("jobInfo");
@@ -118,6 +122,7 @@ public class JobSearchAction extends ActionSupport implements ServletRequestAwar
 		String salary = request.getParameter("salary");
 		String workExp = request.getParameter("workExp");
 		String education = request.getParameter("education");
+		job.setJobTitle(jobTitle);
 		job.setCompanyName(companyName);
 		job.setCompanyInfo(companyInfo);
 		job.setJobInfo(jobInfo);
@@ -129,7 +134,7 @@ public class JobSearchAction extends ActionSupport implements ServletRequestAwar
 		job.setWorkExp(workExp);
 		job.setEducation(education);
 		job.setPublish_date(df.format(new Date()));
-		job.setUid(user.getId());
+		job.setUser(user);
 		job.setJobCateId(1);
 		
 		//前端显示是否成功
